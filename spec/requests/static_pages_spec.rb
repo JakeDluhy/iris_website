@@ -2,29 +2,27 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+  subject { page }
+
   describe "Home page" do
-
-  	it "should have the content 'IRIS'" do
-  		visit '/static_pages/home'
-  		expect(page).to have_content('IRIS')
-  	end
-
-  	it "should have the proper title" do
-  		visit '/static_pages/home'
-  		expect(page).to have_title('IRIS | Home')
-  	end
+    before { visit root_path }
+  	
+    it { should have_content('IRIS') }
+    it { should have_title('IRIS') }
+    it { should_not have_title('| Home') }
   end
 
   describe "About page" do
+  	before { visit about_path }
+    
+    it { should have_content('Illinois Robotics in Space') }
+    it { should have_title('IRIS | About') }
+  end
 
-  	it "should have the content 'Illinois Robotics In Space'" do
-  		visit '/static_pages/about'
-  		expect(page).to have_content('Illinois Robotics In Space')
-  	end
-
-  	it "should have the proper title" do
-  		visit '/static_pages/about'
-  		expect(page).to have_title('IRIS | About')
-  	end
+  describe "Contact page" do
+    before { visit contact_path }
+    
+    it { should have_content('Contact') }
+    it { should have_title('IRIS | Contact') }
   end
 end
