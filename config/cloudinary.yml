@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: illinois-robotics-in-space
+  api_key: '974124777349167'
+  api_secret: MriA3UJp_tcjK4vmYHFNsb0gP2k
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: illinois-robotics-in-space
+  api_key: '974124777349167'
+  api_secret: MriA3UJp_tcjK4vmYHFNsb0gP2k
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: illinois-robotics-in-space
+  api_key: '974124777349167'
+  api_secret: MriA3UJp_tcjK4vmYHFNsb0gP2k
+  enhance_image_tag: true
+  static_image_support: false
