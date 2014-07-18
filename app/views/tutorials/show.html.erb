@@ -1,0 +1,36 @@
+<div class="card-container">
+  <div class="half-width-card-center title-container">
+    <div class="rendered-title">
+      <h3><%= @tutorial.title %></h3>
+      <h5>Created by: <%= @tutorial.author.name%></h5>
+      <h5>For: <%= @tutorial.subteam.name %></h5>
+    </div>
+  </div>
+
+  <% @instructions.each do |instruction| %>
+    <div class="half-width-card-center show-instruction">
+      <h4><%= instruction.title %></h4><h4 class="order-id"><%= instruction.order_id %></h4>
+      <p><%= instruction.content %></p>
+    </div>
+  <% end %>
+
+  <% if current_user.id == @tutorial.author_id %>
+  <div class="half-width-card-center new-instruction">
+    <h4>Create an instruction</h4>
+    <%= form_for(@instruction) do |f| %>
+      <%= f.label :title, class: "form-label" %>
+      <%= f.text_field :title, class: "instruction-field" %><br/>
+
+      <%= f.label :content, class: "form-label" %>
+      <%= f.text_area :content, { rows: 6 } %>
+
+      <%= render partial: 'shared/picture_form', locals: { label: 'Relevant Pictures', f: f } %>
+
+      <input type="hidden" id="instruction_tutorial_id" name="instruction[tutorial_id]" value="<%= @tutorial.id %>" />
+      <input type="hidden" id="instruction_order_id" name="instruction[order_id]" value="<%= @order_id %>" />
+
+      <%= f.submit "Create", class: "btn btn-primary instruction-create-button" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<div class="user-container">
+  <h4>Subteam Users</h4>
+</div>
+<% users.sort_by{ |user| user.name.downcase }.each do |user| %>
+  <div class="user-container">
+    <%= image_tag user.avatar.thumb %>
+    <%= link_to user.name, user %>
+  </div>
+<% end %>

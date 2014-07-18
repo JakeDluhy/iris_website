@@ -1,0 +1,14 @@
+<div class="full-width-card new-instruction">
+  <h4>Create an instruction</h4>
+  <form accept-charset='UTF-8' action="/instructions" class="new_instruction" id="new_instruction" method="post">
+    <label class="form-label" for="instruction_title">Title:</label>
+    <input class="instruction-field" id="instruction_title" name="instruction[title]" type="text">
+    <br/>
+
+    <label class="form-label" for="instruction_description">Content:</label>
+    <textarea class="instruction-field" id="instruction_content" name="instruction[content]" rows="6"></textarea>
+    <br/>
+
+    <input class="btn btn-primary instruction-create-button" name="commit" type="submit" value="Create">
+  </form>
+</div>

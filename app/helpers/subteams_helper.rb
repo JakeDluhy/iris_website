@@ -1,0 +1,2 @@
+module SubteamsHelper
+end

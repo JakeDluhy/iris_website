@@ -1,0 +1,16 @@
+<h1>Create a Tutorial</h1>
+<div class="card-container">
+  <div class="half-width-card-center">
+    <%= form_for(@tutorial) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { object: @tutorial } %>
+      
+      <%= f.label :title, "Create a title:", class: "form-label" %>
+      <%= f.text_field :title, class: "title-field" %><br/>
+      <%= f.label :subteam_id, "Choose an associated subteam:", class: "form-label" %>
+      <%= f.collection_select(:subteam_id, @subteams, :id, :name, prompt: true, class: "subteam-select") %><br/>
+
+      <%= f.submit "Create", class: "btn btn-primary title-create-button" %>
+    <% end %>
+  </div>
+</div>
+

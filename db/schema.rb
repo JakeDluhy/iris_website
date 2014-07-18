@@ -11,20 +11,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615214828) do
+ActiveRecord::Schema.define(version: 20140713151633) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "instructions", force: true do |t|
+    t.string  "title"
+    t.string  "content"
+    t.integer "tutorial_id"
+    t.integer "order_id"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer "team_id"
+    t.integer "subteam_id"
+    t.integer "user_id"
+  end
+
+  add_index "memberships", ["subteam_id"], name: "index_memberships_on_subteam_id", using: :btree
+  add_index "memberships", ["team_id"], name: "index_memberships_on_team_id", using: :btree
+  add_index "memberships", ["user_id", "subteam_id"], name: "index_memberships_on_user_id_and_subteam_id", unique: true, using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
+
+  create_table "picture_attachments", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subteams", force: true do |t|
+    t.string  "name"
+    t.string  "description"
+    t.string  "hook"
+    t.integer "team_id"
+    t.integer "segment_id"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string  "title"
+    t.text    "content"
+    t.integer "author_id"
+    t.integer "team_id"
+    t.integer "subteam_id"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string  "name"
+    t.string  "description"
+    t.string  "hook"
+    t.integer "segment_id"
+  end
+
+  create_table "tutorials", force: true do |t|
+    t.string  "title"
+    t.integer "author_id"
+    t.integer "team_id"
+    t.integer "subteam_id"
+  end
+
+  create_table "updates", force: true do |t|
+    t.string  "title"
+    t.text    "content"
+    t.integer "author_id"
+    t.integer "team_id"
+    t.integer "subteam_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "bio"
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
+  create_table "workers", force: true do |t|
+    t.integer "user_id"
+    t.integer "task_id"
+  end
+
+  add_index "workers", ["task_id"], name: "index_workers_on_task_id", using: :btree
+  add_index "workers", ["user_id", "task_id"], name: "index_workers_on_user_id_and_task_id", unique: true, using: :btree
+  add_index "workers", ["user_id"], name: "index_workers_on_user_id", using: :btree
 
 end

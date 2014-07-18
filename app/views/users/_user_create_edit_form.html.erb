@@ -1,7 +1,7 @@
 <div class="row">
-	<div class="span6 offset3">
+	<div class="half-width-card-center">
 		<%= form_for(@user) do |f| %>
-			<%= render partial: 'shared/error_messages' %>
+			<%= render partial: 'shared/error_messages', locals: { object: @user } %>
 			
 			<%= f.label :name %>
 			<%= f.text_field :name %>
@@ -9,7 +9,7 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-			<%= f.file_field :avatar %>
+			<%= render partial: 'shared/picture_form', locals: { label: 'Choose a Picture', f: f } %>
 
 			<%= f.label :password %>
 			<%= f.password_field :password %>

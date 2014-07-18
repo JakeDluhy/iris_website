@@ -1,0 +1,114 @@
+@import "bootstrap";
+
+/* Index page */
+
+.team-container {
+  &.three-quarters-card-center {
+    padding: 0;
+  }
+
+  .team-display {
+    width: 100%;
+    overflow: hidden;
+  }
+  img {
+    max-height: 100px;
+    width: auto;
+    margin: 10px;
+    display: block;
+    float: left;
+  }
+
+  .content-container {
+    margin-top: 0;
+    margin-left: 10px;
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    p {
+      margin-right: 10px;
+    }
+  }
+
+  .subteam-content-container {
+    padding: 10px;
+  }
+  .odd-true {
+    background-color: #aaa;
+  }
+  .odd-false {
+    background-color: #ddd;
+  }
+
+  .subteam-row {
+    position: relative;
+  }
+
+  .individual-subteam-container {
+    
+  }
+
+  .users-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height:100%;
+    overflow: scroll;
+    .user-container {
+      display: inline-block;
+      width: 100%;
+      h4 {
+        text-align: center;
+      }
+      img {
+        width: 45px;
+        height: 45px;
+        margin: 5px;
+        display: inline-block;
+      }
+      a {
+        font-size: 18px;
+        color: #000;
+        vertical-align: middle;
+        display: inline-block;
+        margin: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.icon-container {
+  width: 100%;
+  height: auto;
+  padding: 0 10px 10px 10px;
+  div {
+    float: right;
+    margin-top: 5px;
+    display: block;
+    p { float: left; margin: 0 5px 0 0;}
+    i { margin-top: 3px;}
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* Show */
+.team-show {
+  overflow: hidden;
+
+  .image-container {
+    max-width: 40%;
+    float: left;
+  }
+  .content-container {
+    max-width: 55%;
+    float: left;
+    margin-left: 15px;
+  }
+}

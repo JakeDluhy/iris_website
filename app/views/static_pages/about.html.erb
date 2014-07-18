@@ -1,3 +1,9 @@
 <% provide(:title, 'About') %>
-<h1>Illinois Robotics In Space</h1>
-<p>This is all about the illustrious history and future and present of our club.</p>
+<h1 class="centered">Illinois Robotics In Space</h1>
+<div class="three-quarters-card-center">
+  <p>This is all about the illustrious history and future and present of our club.</p>
+</div>
+
+<h3 class="centered">IRIS Teams and Users</h3>
+
+<%= render partial: 'shared/teams', locals: { teams: @teams } %>

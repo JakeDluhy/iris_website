@@ -34,7 +34,7 @@ h1 {
 	font-size: 3em;
 	letter-spacing: -2px;
 	margin-bottom: 30px;
-	text-align: center;
+  text-align: center;
 }
 
 h2 {
@@ -43,12 +43,21 @@ h2 {
 	margin-bottom: 30px;
 	text-align: center;
 	font-weight: normal;
-	color: $grayLight;
+	color: #999;
 }
 
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
+}
+
+.centered {
+  text-align: center;
+}
+
+
+.footer {
+	width: 100%;
 }
 
 .debug_dump {
@@ -58,3 +67,96 @@ p {
 	margin-top: 45px;
 	@include box_sizing;
 }
+
+/* Card styling */
+
+.full-width-card {
+	width: 100%;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.half-width-card-left {
+	width: 48%;
+	float: left;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.half-width-card-right {
+	width: 48%;
+	float: right;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.half-width-card-center {
+  width: 50%;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.three-quarters-card-center {
+  width: 75%;
+  background-color: #eee;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+/* Input boxes */
+
+div.file-input-container {
+  position: relative;
+  min-height: 60px;
+  width: 100%;
+  border: 1px solid #000;
+  padding: 5px;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+
+  input.file-input {
+    position: absolute;
+    left: -999px;
+    top: -999px;
+    height: 100%;
+    width: auto;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  }
+
+  div.file-input-wrapper {
+    width: 86px;
+    height: 24px;
+    margin: 0;
+    background: url(file_upload_button.png) 0 0 no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+    float: left;
+  }
+
+  div.file-input-preview {
+    float: left;
+    margin-left: 20px;
+
+    div {
+      float: left;
+      margin-right: 5px;
+      padding: 3px;
+      background-color: #666;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+  }
+}
+

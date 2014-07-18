@@ -1,0 +1,60 @@
+// Place all the styles related to the Tutorials controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-container {
+  .title-container {
+    
+    form, div {
+      margin: 10px;
+    }
+
+    .title-field, #tutorial_subteam_id {
+      align: left;
+      display: block;
+      width: 50%;
+    }
+    .title-create-button {
+      align: left;
+      display: block;
+      margin-top: -20px;
+    }
+  }
+
+  .rendered-title {
+      text-align: left;
+      h3 {text-decoration: underline;}
+      margin-left: 10px;
+  }
+
+  .new-instruction {
+    form, h4 {
+      margin: 10px;
+    }
+    .instruction-form-label {
+
+    }
+  }
+
+  .show-instruction {
+    position: relative;
+    h4, p {
+      margin: 10px;
+      text-align: left;
+    }
+    .order-id { 
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+  }
+
+  .form-label {
+    text-align: left;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+}

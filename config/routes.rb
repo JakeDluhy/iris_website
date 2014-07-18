@@ -1,7 +1,15 @@
 IrisWebsite::Application.routes.draw do
   root "static_pages#home"
   resources :users
+  match '/users/:id/join_teams' => 'users#join_teams', :via => :put
   resources :sessions, only: [:new, :create, :destroy]
+  resources :updates
+  resources :tutorials
+  resources :instructions, :except => [:create]
+  resources :instructions, :only => [:create], :format => :json
+  resources :tasks
+  resources :teams
+  resources :subteams
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
