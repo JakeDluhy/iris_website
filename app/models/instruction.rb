@@ -11,5 +11,5 @@ class Instruction < ActiveRecord::Base
   #updated_at - datetime
 
   belongs_to :tutorial
-  has_many :pictures, foreign_key: "parent_id", class_name: 'PictureAttachment' dependent: :destroy
+  has_many :pictures, foreign_key: "parent_id", class_name: 'PictureAttachment', dependent: :destroy
 end
