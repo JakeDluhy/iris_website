@@ -14,5 +14,5 @@ class Task < ActiveRecord::Base
   belongs_to :subteam
   has_many :workers
   has_many :users, through: :workers
-  has_many :pictures, foreign_key: "parent_id", class_name: 'PictureAttachment' dependent: :destroy
+  has_many :pictures, foreign_key: "parent_id", class_name: 'PictureAttachment', dependent: :destroy
 end
