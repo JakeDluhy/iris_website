@@ -159,7 +159,7 @@ GEM
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     slop (3.5.0)
-    sprockets (2.12.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -214,7 +214,7 @@ DEPENDENCIES
   sass-rails
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
-  sprockets
+  sprockets (= 2.11.0)
   turbolinks
   uglifier
   underscore-rails
