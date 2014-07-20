@@ -139,7 +139,7 @@ div.file-input-container {
     width: 86px;
     height: 24px;
     margin: 0;
-    background-image: url('<%= asset_path("file_upload_button.png") %>');
+    background-image: image-url('file_upload_button.png');
     overflow: hidden;
     cursor: pointer;
     float: left;
