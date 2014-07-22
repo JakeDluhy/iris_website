@@ -1,0 +1,33 @@
+<% provide(:title, 'Backend') %>
+<h1 class="centered">Backend Actions</h1>
+<div class="three-quarters-card-center">
+    <div class="backend-link"><%= link_to "Create an Update", new_update_path %>:
+      <p>
+        Use this link to create an update. You should be creating an update whenever you're team or subteam is up to something new, or something that missing members would want to hear about. Be liberal with your updates! Team members want to be kept in the loop!
+      </p>
+    </div>
+    <div class="backend-link">
+      <%= link_to "Create a Tutorial", new_tutorial_path %>:
+      <p>
+        Use this link to create a tutorial. Tutorials are useful if you want to provide information to all of your team members about a subject. Want to help people set up Ubuntu as a virtual box? Create a tutorial! Want to teach everyone the proper way to checkout a tool? Use tutorials!
+      </p>
+    </div>
+    <div class="backend-link">
+      <%= link_to "Create a Task", new_task_path %>:
+      <p>
+        Use this link to create a new task. Tasks are perfect for organizing your teams workflow. Make sure everyone knows what they're doing and when it should be done by. By assigning tasks to teams and subteams, and designating which individuals are expected to do what, you can make sure everyone is working towards your final goal.
+      </p>
+    </div>
+    <div class="backend-link">
+      <%= link_to "Create a Team", new_team_path %>:
+      <p>
+        Use this to create a new team. For the most part, all the teams will have already been created. If you should be creating a team, then you know what to do.
+      </p>
+    </div>
+    <div class="backend-link">
+      <%= link_to "Create a Subteam", new_subteam_path %>:
+      <p>
+        Use this link to create a subteam. As you break up your team into it's different groups, it will be helpful to organize everyone via subteam. This way, each subteam can be self contained, and updates pertaining to it will only go out to those members.
+      </p>
+    </div>
+</div>

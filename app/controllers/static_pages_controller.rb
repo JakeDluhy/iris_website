@@ -6,4 +6,8 @@ class StaticPagesController < ApplicationController
   def about
     @teams = Team.all
   end
+
+  def backend
+
+  end
 end

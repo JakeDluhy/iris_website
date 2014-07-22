@@ -3,7 +3,7 @@
 </div>
 <% users.sort_by{ |user| user.name.downcase }.each do |user| %>
   <div class="user-container">
-    <%= image_tag user.avatar.thumb %>
+    <%= image_tag user.avatar.thumb.url %>
     <%= link_to user.name, user %>
   </div>
 <% end %>
