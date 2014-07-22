@@ -33,7 +33,6 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-      @user[:avatar] = params[:user][:pictures][0]
       sign_in @user
   		flash[:success] = "Welcome to IRIS!"
   		redirect_to @user
@@ -49,7 +48,6 @@ class UsersController < ApplicationController
   def update
 
     if @user.update_attributes(user_params)
-      binding.pry
       @user[:avatar] = params[:user][:pictures][0]
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -76,7 +74,7 @@ class UsersController < ApplicationController
   private
 
   	def user_params
-      params[:user][:avatar] = params[:user][:pictures][0]
+      params[:user][:avatar] = params[:user][:pictures][0] if params[:user][:pictures]
   		params.require(:user).permit(:name, :email, :avatar, :password, :password_confirmation)
   	end
 
