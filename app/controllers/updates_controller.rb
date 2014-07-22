@@ -1,3 +1,4 @@
+require './lib/mailchimp.rb'
 class UpdatesController < ApplicationController
 
 
@@ -38,7 +39,7 @@ class UpdatesController < ApplicationController
   end
 
   def email_to_members(update)
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     if !update.team_id.nil?
       team = Team.find(update.team_id)
     elsif !update.subteam_id.nil?

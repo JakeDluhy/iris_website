@@ -1,3 +1,4 @@
+require './lib/mailchimp.rb'
 module TeamHelper
   extend ActiveSupport::Concern
 
@@ -15,13 +16,13 @@ module TeamHelper
 
   #Callbacks
   def create_email_segment
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     segment_id = mailchimp.create_segment(self.name)
     self.update_attributes(segment_id: segment_id)
   end
 
   def delete_email_segment
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     mailchimp.delete_segment(self.segment_id)
   end
 end

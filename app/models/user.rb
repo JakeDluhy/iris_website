@@ -1,4 +1,4 @@
-
+require './lib/mailchimp.rb'
 class User < ActiveRecord::Base
 
 
@@ -44,12 +44,12 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_to_mailing_list
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     mailchimp.subscribe(self.email, self.name)
   end
 
   def unsubscribe_from_mailing_list
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     mailchimp.unsubscribe(self.email)
   end
 

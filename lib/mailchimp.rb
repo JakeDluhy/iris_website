@@ -1,4 +1,4 @@
-class API::Mailchimp
+class Mailchimp
   MAILING_LIST_ID = "77bc6731c9"
 
   def initialize

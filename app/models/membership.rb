@@ -1,3 +1,4 @@
+require './lib/mailchimp.rb'
 class Membership < ActiveRecord::Base
 
   #memberships table
@@ -19,13 +20,13 @@ class Membership < ActiveRecord::Base
 
   #Callbacks
   def subscribe_member_to_segment
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     mailchimp.subscribe_member_to_segment(team.segment_id, user.email) unless team_id.nil?
     mailchimp.subscribe_member_to_segment(subteam.segment_id, user.email) unless subteam_id.nil?    
   end
 
   def unsubscribe_member_from_segment
-    mailchimp = API::Mailchimp.new
+    mailchimp = Mailchimp.new
     mailchimp.unsubscribe_member_from_segment(team.segment_id, user.email) unless team_id.nil?
     mailchimp.unsubscribe_member_from_segment(subteam.segment_id, user.email) unless subteam_id.nil?    
   end
