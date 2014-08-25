@@ -203,7 +203,6 @@ $(document).ready(function() {
       var updatesCollection = new UpdatesCollection();
       var self = this;
       updatesCollection.fetch({
-        data: {filter: filter},
         success: function() {
           var updatesView = new UpdatesView({collection: updatesCollection});
           self.show(updatesView);
@@ -214,7 +213,6 @@ $(document).ready(function() {
       var tutorialsCollection = new TutorialsCollection();
       var self = this;
       tutorialsCollection.fetch({
-        data: {filter: filter},
         success: function() {
           var tutorialsView = new TutorialsView({collection: tutorialsCollection});
           self.show(tutorialsView);
@@ -225,7 +223,6 @@ $(document).ready(function() {
       var tasksCollection = new TasksCollection();
       var self = this;
       tasksCollection.fetch({
-        data: {filter: filter},
         success: function() {
           var tasksView = new TasksView({collection: tasksCollection});
           self.show(tasksView);
@@ -236,7 +233,6 @@ $(document).ready(function() {
       var usersCollection = new UsersCollection();
       var self = this;
       usersCollection.fetch({
-        data: {filter: filter},
         success: function() {
           var usersView = new UsersView({collection: usersCollection});
           self.show(usersView);
