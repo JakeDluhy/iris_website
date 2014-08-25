@@ -1,4 +1,9 @@
-<div class="full-width-card show-instruction">
+<div class="half-width-card-center show-instruction">
   <h4><%= title %></h4><h4 class="order-id"><%= order_id %></h4>
   <p><%= content %></p>
+  <div>
+    <% for(var j = 0; j < pictures.length; j++) { %>
+      <a href=<%= pictures[j].avatar.url %> target="_blank"><img class="content-pic" src=<%= pictures[j].avatar.thumb.url %> ></a>
+    <% } %>
+  </div>
 </div>

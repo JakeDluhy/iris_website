@@ -1,0 +1,120 @@
+@import "bootstrap";
+
+.info-container {
+  float: left;
+  margin-left: 0;
+  width: calc(100% - 60px);
+  width: -webkit-calc(100% - 60px);
+  width: -moz-calc(100% - 60px);
+  h3 {
+    margin: 0;
+    a {
+      margin: 0;
+      display: block;
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+  a {
+    color: #eee;
+  }
+  p {
+    margin: 0;
+    color: #fff;
+  }
+  .user-name {
+    margin-left: 10px;
+  }
+  .user-email {
+    margin-left: 10px;
+  }
+  .content-container>p {
+    line-height: 18px;
+  }
+}
+
+/* Users */
+.top-container {
+  overflow: hidden;
+}
+.user-pic {
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+
+
+/* Tasks */
+.pic-container {
+  float: right;
+  margin-left: 5px;
+  img {
+    display: block;
+    padding-bottom: 5px;
+    width: 50px;
+  }
+}
+
+/* Tutorials */
+.tut-info-container {
+  padding: 10px;
+  padding-bottom: 0;
+  h3 {
+    margin: 0;
+    a {
+      margin: 0;
+      display: block;
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+  a {
+    color: #eee;
+  }
+  p {
+    margin: 0;
+    color: #fff;
+  }
+}
+
+.instructions-container {
+  .instruction-container {
+    padding: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    .title-order-container {
+      position: relative;
+      h4 {
+        margin: 0;
+        color: #fff;
+      }
+      p {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+      }
+    }
+    .instruction-content {
+      .content-container {
+        color: #fff;
+      }
+      .pic-container {
+        width: 100%;
+        img {
+          float: left;
+          padding-right: 10px;
+        }
+      }
+    }
+    &:nth-child(even) {
+      background: #999;
+    }
+    &:nth-child(odd) {
+      background: #ccc;
+    }
+  }
+}
+
+

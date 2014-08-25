@@ -11,6 +11,12 @@
     <div class="half-width-card-center show-instruction">
       <h4><%= instruction.title %></h4><h4 class="order-id"><%= instruction.order_id %></h4>
       <p><%= instruction.content %></p>
+      <div>
+        <% pictures = instruction.pictures %>
+        <% pictures.each do |picture| %>
+          <a href=<%= picture.avatar.url %> target="_blank"><img class="content-pic" src=<%= picture.avatar.thumb.url %> ></a>
+        <% end %>
+      </div>
     </div>
   <% end %>
 

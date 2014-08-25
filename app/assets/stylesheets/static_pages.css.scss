@@ -1,15 +1,99 @@
 @import "bootstrap";
 
 /* Home Page */
-
-.center {
-	text-align: center;
+body, html, .container {
+  height: 100%;
+}
+.wrapper {
+  overflow: hidden;
+  height: 80%;
 }
 
-.center h1 {
-	margin-bottom: 10px;
+#left-half-div, #right-half-div {
+  float: left;
+  width: 47.5%;
+  height: 100%;
+  overflow: scroll;
+  padding: 0 10px 10px 10px;
+  margin-top: 10px;
+  z-index: 500;
+  .display-item-card {
+    width: 100%;
+    background-color: #999;
+    padding: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    &.tutorial-card { padding: 0; }
+  }
 }
 
+#navigation-div {
+  float: left;
+  width: 4.99%;
+  padding: 0 5px 10px 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  z-index: 1030;
+  .navigation-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 10px;
+    background-color: #999;
+
+    //Eliminate button styling
+    border: none;
+    outline: none;
+    &.hovered {
+      .fa {
+        color: #000;
+      }
+    }
+    .fa {
+      position: absolute;
+      color: #fff;
+      font-size: 20px;
+      left: calc(50% - 10px);
+      left: -webkit-calc(50% - 10px);
+      left: -moz-calc(50% - 10px);
+      top: calc(50% - 10px);
+      top: -webkit-calc(50% - 10px);
+      top: -moz-calc(50% - 10px);
+    }
+  }
+}
+.subnav {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  z-index: 1000;
+  background-color: #fff;
+  border: solid 1px #000;
+  .subnav-menu {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    li {
+      list-style: none;
+      line-height: 20px;
+      padding: 4px;
+      padding-left: 10px;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}
+.left-subnav {
+  left: -150px;
+}
+.right-subnav {
+  right: -150px;
+}
+.subnav-menu {
+
+}
 /* Backend */
 
 .backend-link {

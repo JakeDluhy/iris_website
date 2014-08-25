@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @subteams = Subteam.all
+    @teams = Team.all
   end
 
   def show
@@ -16,6 +17,11 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.author_id = current_user.id
     if @task.save
+      unless params[:task][:pictures].nil?
+        params[:task][:pictures].each do |picture|
+          PictureAttachment.create({avatar: picture, imageable: @task})
+        end
+      end
       flash[:success] = "Task created"
       redirect_to @task
     else
@@ -31,6 +37,6 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:title, :content, :pictures)
+      params.require(:task).permit(:title, :content, :team_id, :subteam_id, :pictures)
     end
 end

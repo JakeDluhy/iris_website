@@ -12,6 +12,11 @@ class InstructionsController < ApplicationController
   def create
     @instruction = Instruction.new(instructions_params)
     if @instruction.save
+      unless params[:instruction][:pictures].nil?
+        params[:instruction][:pictures].each do |picture|
+          PictureAttachment.create({avatar: picture, imageable: @instruction})
+        end
+      end
       render :json => @instruction.to_json
     end
   end

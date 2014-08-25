@@ -17,16 +17,20 @@ ActiveRecord::Schema.define(version: 20140713151633) do
   enable_extension "plpgsql"
 
   create_table "instructions", force: true do |t|
-    t.string  "title"
-    t.string  "content"
-    t.integer "tutorial_id"
-    t.integer "order_id"
+    t.string   "title"
+    t.string   "content"
+    t.integer  "tutorial_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", force: true do |t|
-    t.integer "team_id"
-    t.integer "subteam_id"
-    t.integer "user_id"
+    t.integer  "team_id"
+    t.integer  "subteam_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "memberships", ["subteam_id"], name: "index_memberships_on_subteam_id", using: :btree
@@ -35,48 +39,59 @@ ActiveRecord::Schema.define(version: 20140713151633) do
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "picture_attachments", force: true do |t|
-    t.integer  "parent_id"
     t.string   "avatar"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "subteams", force: true do |t|
-    t.string  "name"
-    t.string  "description"
-    t.string  "hook"
-    t.integer "team_id"
-    t.integer "segment_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "hook"
+    t.integer  "team_id"
+    t.integer  "segment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tasks", force: true do |t|
-    t.string  "title"
-    t.text    "content"
-    t.integer "author_id"
-    t.integer "team_id"
-    t.integer "subteam_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "author_id"
+    t.integer  "team_id"
+    t.integer  "subteam_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|
-    t.string  "name"
-    t.string  "description"
-    t.string  "hook"
-    t.integer "segment_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "hook"
+    t.integer  "segment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tutorials", force: true do |t|
-    t.string  "title"
-    t.integer "author_id"
-    t.integer "team_id"
-    t.integer "subteam_id"
+    t.string   "title"
+    t.integer  "author_id"
+    t.integer  "team_id"
+    t.integer  "subteam_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "updates", force: true do |t|
-    t.string  "title"
-    t.text    "content"
-    t.integer "author_id"
-    t.integer "team_id"
-    t.integer "subteam_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "author_id"
+    t.integer  "team_id"
+    t.integer  "subteam_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -95,8 +110,10 @@ ActiveRecord::Schema.define(version: 20140713151633) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   create_table "workers", force: true do |t|
-    t.integer "user_id"
-    t.integer "task_id"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "workers", ["task_id"], name: "index_workers_on_task_id", using: :btree

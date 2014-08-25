@@ -14,7 +14,7 @@ class Update < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   belongs_to :subteam
   belongs_to :team
-  has_many :pictures, foreign_key: "parent_id", class_name: 'PictureAttachment', dependent: :destroy
+  has_many :pictures, :class_name => "PictureAttachment", :as => :imageable, dependent: :destroy
 
   
   

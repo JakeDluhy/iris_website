@@ -1,0 +1,23 @@
+<div class="tut-info-container">
+  <h3><a href='/tutorials/<%= id %>'><%= title %></a></h3>
+  <p><strong>By:</strong> <a href='/users/<%= author_id %>' class="task-user-name"><%= author_name %></a></p>
+  <p><strong>Team:</strong> <a href="/teams/<%= team_id %>" class="linked-info"><%= team_name %></a></p>
+  <p><strong>Subteam:</strong> <a href="/subteams/<%= subteam_id %>" class="linked-info"><%= subteam_name %></a></p>
+  <p><strong>Instructions: </strong><span class="instruction-toggle">Show</span> | <span class="instruction-expand">Expand All</span> | <span class="instruction-collapse">Collapse All</span></p>
+</div>
+<div class="instructions-container hidden">
+  <% for(var i = 0; i < instructions.length; i++) { %>
+    <div class="instruction-container">
+      <div class="title-order-container"><h4><%= instructions[i].title %></h4> <p><%= instructions[i].order_id %></p></div>
+      <div class="instruction-content hidden">
+        <div class="content-container"><p><%= instructions[i].content %></p></div>
+        <div class="pic-container">
+          <% pictures = instructions[i].pictures %>
+          <% for(var j = 0; j < pictures.length; j++) { %>
+            <a href=<%= pictures[j].avatar.url %> target="_blank"><img class="content-pic" src=<%= pictures[j].avatar.thumb.url %> ></a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>

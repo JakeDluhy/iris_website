@@ -17,6 +17,9 @@
       <%= f.label :subteam_id, "Choose an associated subteam:", class: "form-label" %>
       <%= f.collection_select(:subteam_id, @subteams, :id, :name, prompt: true, class: "subteam-select") %><br/>
 
+      <%= f.label :team_id, "Choose an associated team:", class: "form-label" %>
+      <%= f.collection_select(:team_id, @teams, :id, :name, prompt: true, class: "team-select") %><br/>
+
       <%= f.submit "Create", class: "btn btn-primary" %>
     <% end %>
   </div>

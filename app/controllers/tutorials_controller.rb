@@ -7,6 +7,7 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.new
     @instruction = Instruction.new
     @subteams = Subteam.all
+    @teams = Team.all
   end
 
   def show
@@ -35,6 +36,6 @@ class TutorialsController < ApplicationController
   private
 
     def tutorials_params
-      params.require(:tutorial).permit(:title, :subteam_id)
+      params.require(:tutorial).permit(:title, :team_id, :subteam_id)
     end
 end

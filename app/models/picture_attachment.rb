@@ -7,9 +7,7 @@ class PictureAttachment < ActiveRecord::Base
   #created_at - datetime
   #updated_at - datetime
 
-  belongs_to :updated
-  belongs_to :instruction
-  belongs_to :task
+  belongs_to :imageable, polymorphic: true
 
   mount_uploader :avatar, AvatarUploader
 end

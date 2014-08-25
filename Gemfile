@@ -11,8 +11,6 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'pg'
 
-gem 'underscore-rails'
-gem 'rails-backbone'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick'

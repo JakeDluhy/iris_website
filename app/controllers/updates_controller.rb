@@ -23,7 +23,7 @@ class UpdatesController < ApplicationController
     if @update.save
       unless params[:update][:pictures].nil?
         params[:update][:pictures].each do |picture|
-          PictureAttachment.create({avatar: picture, parent_id: @update.id})
+          PictureAttachment.create({avatar: picture, imageable: @update})
         end
       end
       email_to_members(@update)

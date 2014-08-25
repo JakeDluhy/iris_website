@@ -4,10 +4,16 @@ $(document).ready( function() {
   var instructionForm = $('#new_instruction');
 
   instructionForm.on('submit', function(e) {
+    var data = instructionForm.serializeArray();
+    // Need to find out how to get the value of a file input
+    // data.push({
+    //   name: 'instruction[pictures]',
+    //   value: 
+    // });
     $.ajax({
       url: instructionForm.prop('action'),
       type: instructionForm.prop('method') || 'POST',
-      data: instructionForm.serializeArray(),
+      data: data,
       dataType: instructionForm.data('type') || 'json',
       success: function(data, status, xhr) {
         var html = JST['templates/show_instruction'](data);

@@ -10,6 +10,7 @@ class Tutorial < ActiveRecord::Base
   #updated_at - datetime
 
   belongs_to :author, class_name: "User"
+  belongs_to :team
   belongs_to :subteam
   has_many :instructions, dependent: :destroy
 end

@@ -5,6 +5,8 @@ class CreateInstructions < ActiveRecord::Migration
       t.string :content
       t.integer :tutorial_id
       t.integer :order_id
+
+      t.timestamps
     end
   end
 end

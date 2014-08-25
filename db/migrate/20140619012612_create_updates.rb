@@ -6,7 +6,8 @@ class CreateUpdates < ActiveRecord::Migration
       t.integer :author_id
       t.integer :team_id
       t.integer :subteam_id
-      t.integer :team_id
+
+      t.timestamps
     end
   end
 end

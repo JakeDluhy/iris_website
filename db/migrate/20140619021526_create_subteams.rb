@@ -6,6 +6,8 @@ class CreateSubteams < ActiveRecord::Migration
       t.string :hook
       t.integer :team_id
       t.integer :segment_id
+
+      t.timestamps
     end
   end
 end
