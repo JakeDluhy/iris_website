@@ -56,7 +56,7 @@ module SessionsHelper
   end
 
   def admin_user
-  	if current_user.nil? and !current_user.admin?
+  	if current_user.nil? or !current_user.admin?
 	  	flash[:error] = "Sorry, you are not authorized to access that page"
 	    redirect_to(root_url)
 	  end
