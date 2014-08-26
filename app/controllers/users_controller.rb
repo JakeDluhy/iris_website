@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :non_signed_in_user, only: [:new, :create]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :target_not_admin, only: :destroy
 
   def index
     @users = User.paginate(page: params[:page])
@@ -77,26 +78,4 @@ class UsersController < ApplicationController
       params[:user][:avatar] = params[:user][:pictures][0] unless params[:user][:pictures].nil?
   		params.require(:user).permit(:name, :email, :avatar, :password, :password_confirmation)
   	end
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
-
-    def non_signed_in_user
-      redirect_to root_url if signed_in?
-    end
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      if (User.find(params[:id]).admin?) || !(current_user.admin?)
-        redirect_to(root_url)
-      end
-    end
 end

@@ -38,4 +38,31 @@ module SessionsHelper
 	def store_location
 		session[:return_to] = request.url if request.get?
 	end
+
+	def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
+  def non_signed_in_user
+    redirect_to root_url if signed_in?
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def admin_user
+  	unless current_user.admin?
+	  	flash[:error] = "Sorry, you are not authorized to access that page"
+	    redirect_to(root_url)
+	  end
+  end
+
+  def target_not_admin
+  	redirect_to(root_url) if User.find(params[:id]).admin?
+  end
 end

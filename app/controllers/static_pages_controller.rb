@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :admin_user, only: :backend
 	
   def home
   end
