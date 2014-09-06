@@ -17,7 +17,6 @@ class Api::UsersController < Api::ApiController
         @users = User.all.order(:updated_at)
       end
     end
-    render :json => @users.to_json
   end
 
   def show
