@@ -3,7 +3,7 @@ json.array! @users do |user|
   json.name           user.name
   json.email          user.email
   json.bio            user.bio
-  json.url            user.avatar.url
-  json.thumb_url      user.avatar.thumb.url
+  json.url            if !user.avatar.nil? ? user.avatar.url : ''
+  json.thumb_url      if !user.avatar.nil? ? user.avatar.thumb.url : ''
   json.signed_in      signed_in?
 end
