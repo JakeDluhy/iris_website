@@ -1,8 +1,2 @@
 <% provide(:title, "#{@team.name}") %>
-  <h1><%= @team.name %></h1>
-<div class="card container">
-  <div class="three-quarters-card-center team-show">
-    <div class="image-container"><%= image_tag "#{@team.name.downcase}.jpg" %></div>
-    <div class="content-container"><p><%= @team.description %></p></div>
-  </div>
-</div>
+<%= render partial: 'shared/team', locals: { team: @team } %>

@@ -1,4 +1,5 @@
 json.array! @tasks do |task|
+  json.id             task.id
   json.title          task.title
   json.content        task.content
   json.author_name    task.author.name

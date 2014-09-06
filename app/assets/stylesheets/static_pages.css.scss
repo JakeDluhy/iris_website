@@ -11,7 +11,7 @@ body, html, .container {
 
 #left-half-div, #right-half-div {
   float: left;
-  width: 47.5%;
+  width: 46%;
   height: 100%;
   overflow: scroll;
   padding: 0 10px 10px 10px;
@@ -29,13 +29,13 @@ body, html, .container {
 
 #navigation-div {
   float: left;
-  width: 4.99%;
-  padding: 0 5px 10px 5px;
+  width: 7.99%;
+  padding: 0 15px 10px 15px;
   margin-top: 10px;
-  cursor: pointer;
   z-index: 1030;
   .navigation-link {
     display: block;
+    cursor: pointer;
     position: relative;
     width: 100%;
     padding-bottom: 100%;
@@ -60,6 +60,27 @@ body, html, .container {
       top: calc(50% - 10px);
       top: -webkit-calc(50% - 10px);
       top: -moz-calc(50% - 10px);
+    }
+    .left-arrow, .right-arrow {
+      position: absolute;
+      font-size: 32px;
+      color: #000;
+      left: 0;
+      top: calc(50% - 16px);
+      top: -webkit-calc(50% - 16px);
+      top: -moz-calc(50% - 16px);
+      &.blanked-out {
+        color: #fff;
+      }
+      &.orange-it {
+        color: orange;
+      }
+    }
+    .left-arrow {
+      left: -12px;
+    }
+    .right-arrow {
+      left: 100%;
     }
   }
 }
@@ -94,6 +115,54 @@ body, html, .container {
 .subnav-menu {
 
 }
+/* About */
+.img-container1, .img-container3 {
+  float: left;
+  clear: right;
+  max-width: 275px;
+  padding-right: 10px;
+  img { width: 100%; }
+}
+.img-container2 {
+  float: right;
+  clear: left;
+  max-width: 275px;
+  padding-left: 10px;
+  img { width: 100%; }
+}
+
+/* Contact */
+
+.leader-top-container {
+  overflow: hidden;
+  .info-container {
+    h3>a { color: #000;}
+    width: calc(100% - 110px);
+    width: -webkit-calc(100% - 110px);
+    width: -moz-calc(100% - 110px);
+  }
+}
+.leader-pic {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+.leader-wrapper:nth-child(2n) {
+  .leader-top-container>a {
+    .leader-pic {
+      float: right;
+    }
+  }
+}
+.leader-wrapper{
+  padding: 10px 0;
+  border-top: 2px solid #000;
+  &:nth-child(1) {
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
 /* Backend */
 
 .backend-link {

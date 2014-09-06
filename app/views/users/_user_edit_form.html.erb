@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="half-width-card-left">
+    <%= form_for(@user) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { object: @user } %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= render partial: 'shared/picture_form', locals: { label: 'Choose an Avatar Picture', f: f } %>
+
+      <%= f.label :bio, "A short bio" %>
+      <%= f.text_area :bio, rows: 3 %>
+
+      <%= f.label :password, "Password (to verfiy)" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

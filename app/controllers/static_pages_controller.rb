@@ -8,6 +8,10 @@ class StaticPagesController < ApplicationController
     @teams = Team.all
   end
 
+  def contact
+    @leaders = User.where('admin IS TRUE');
+  end
+
   def backend
 
   end

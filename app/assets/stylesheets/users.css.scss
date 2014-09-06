@@ -24,20 +24,23 @@ input {
 /* User Show page */
 
 .user-header-info {
-	img {
-		width: 33%;
-		float: left;
-		display: block;
-		margin-right:10px;
-	}
-	.name { 
-		float: left;
-		margin: 0 0 10px 0px;
-		width: 64%;
-		h3 { margin: 0px; }
-	}
-	.description {
-		margin: 0 0 0 10px;
+	.user-profile-info {
+		overflow: hidden;
+		img {
+			width: 33%;
+			float: left;
+			display: block;
+			margin-right:10px;
+		}
+		.name { 
+			float: left;
+			margin: 0 0 10px 0px;
+			width: 64%;
+			h3 { margin: 0px; }
+		}
+		.description {
+			margin: 0 0 0 10px;
+		}
 	}
 }
 

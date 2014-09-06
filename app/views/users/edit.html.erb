@@ -1,4 +1,46 @@
 <% provide(:title, 'Edit user') %>
 <h1>Update your profile</h1>
 
-<%= render partial: "user_create_edit_form", locals: { button_writing: "Save changes" } %>
+<div class="row">
+  <div class="half-width-card-left">
+    <%= form_for(@user) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: { object: @user } %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= render partial: 'shared/picture_form', locals: { label: 'Choose an Avatar Picture', f: f } %>
+
+      <%= f.label :bio, "A short bio" %>
+      <%= f.text_area :bio, rows: 3 %>
+
+      <%= f.label :password, "Password (to verfiy)" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+  <div class="half-width-card-right team-memberships">
+    <%= form_tag("/users/#{@user.id}/join_teams", method: :put, id: "join_teams") %>
+    <div class="team-options">
+      <h4>Join Teams</h4>
+      <% @other_teams.each do |team| %>
+        <p><%= check_box_tag("teams[#{team.id}]", true) %><%= "#{team.name}" %>: <%= team.hook %> </p>
+      <% end %>
+    </div>
+    <div class="subteam-options">
+    <h4>Join Subteams</h4>
+      <% @other_subteams.each do |subteam| %>
+        <%= check_box_tag("subteams[#{subteam.id}]", true) %><%= "#{subteam.name}"  %>: <%= subteam.hook %> </p>
+      <% end %>
+    </div>
+
+    <%= submit_tag("Join Teams", class: "btn btn-primary team-join-button") %>
+</div>
+</div>

@@ -1,2 +1,5 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<% provide(:title, "Tasks") %>
+<h1>Tasks</h1>
+<% @tasks.each do |task| %>
+<%= render partial: 'shared/basic_presenter', locals: {title: task.title, content: task.content, pictures: task.pictures} %>
+<% end %>

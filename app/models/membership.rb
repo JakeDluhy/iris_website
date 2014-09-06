@@ -21,13 +21,29 @@ class Membership < ActiveRecord::Base
   #Callbacks
   def subscribe_member_to_segment
     mailchimp = Mailchimp.new
-    mailchimp.subscribe_member_to_segment(team.segment_id, user.email) unless team_id.nil?
-    mailchimp.subscribe_member_to_segment(subteam.segment_id, user.email) unless subteam_id.nil?    
+    begin
+      mailchimp.subscribe_member_to_segment(team.segment_id, user.email) unless team_id.nil?
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
+    begin
+      mailchimp.subscribe_member_to_segment(subteam.segment_id, user.email) unless subteam_id.nil?    
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
   end
 
   def unsubscribe_member_from_segment
     mailchimp = Mailchimp.new
-    mailchimp.unsubscribe_member_from_segment(team.segment_id, user.email) unless team_id.nil?
-    mailchimp.unsubscribe_member_from_segment(subteam.segment_id, user.email) unless subteam_id.nil?    
+    begin
+      mailchimp.unsubscribe_member_from_segment(team.segment_id, user.email) unless team_id.nil?
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
+    begin
+      mailchimp.unsubscribe_member_from_segment(subteam.segment_id, user.email) unless subteam_id.nil?     
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end  
   end
 end

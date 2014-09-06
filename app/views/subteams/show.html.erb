@@ -1,2 +1,3 @@
-<h1>Subteams#show</h1>
-<p>Find me in app/views/subteams/show.html.erb</p>
+<% provide(:title, "#{@subteam.name}") %>
+<h1><%= @subteam.name %></h1>
+<%= render partial: 'shared/subteam', locals: {subteam: @subteam} %>

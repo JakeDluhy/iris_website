@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+.display-item-card {
+  p {
+    margin: 0;
+    color: #fff;
+  }
+}
+
 .info-container {
   float: left;
   margin-left: 0;
@@ -17,10 +24,6 @@
   }
   a {
     color: #eee;
-  }
-  p {
-    margin: 0;
-    color: #fff;
   }
   .user-name {
     margin-left: 10px;
@@ -42,6 +45,10 @@
   width: 50px;
   height: 50px;
 }
+.user-bio {
+  margin-left: 10px;
+}
+
 
 
 /* Tasks */
@@ -74,6 +81,9 @@
   p {
     margin: 0;
     color: #fff;
+  }
+  .instruction-toggle, .instruction-expand, .instruction-collapse {
+    cursor: pointer;
   }
 }
 

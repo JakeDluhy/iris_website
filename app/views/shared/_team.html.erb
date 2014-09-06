@@ -1,0 +1,15 @@
+<div class="team-container three-quarters-card-center">
+  <div class="team-display">
+    <%= image_tag "#{team.name.downcase.gsub(/ /, '_')}.png" %>
+    <div class="team-content-container">
+      <h3><%= team.name %></h3>
+      <p><%= team.description %></p>
+    </div>
+  </div>
+  <div class="subteam-container">
+    <%= render partial: 'shared/subteams', locals: {subteams: team.subteams} %>
+  </div>
+  <div class="icon-container">
+    <div><a data-tooltip="View Subteams" class="tooltip-left"><i class="fa fa-chevron-up subteam-toggle"></i></a></div>
+  </div>
+</div>

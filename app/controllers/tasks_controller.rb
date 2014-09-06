@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
+
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order('updated_at DESC')
   end
 
   def new
@@ -26,6 +27,24 @@ class TasksController < ApplicationController
       redirect_to @task
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+    redirect_to root_url unless user_author(@task.author)
+    @subteams = Subteam.all
+    @teams = Team.all
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    redirect_to root_url unless user_author(@task.author)
+    if @task.update_attributes(task_params)
+      flash[:success] = "Task updated"
+      redirect_to @task
+    else
+      render 'edit'
     end
   end
 

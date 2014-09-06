@@ -1,9 +1,8 @@
 require './lib/mailchimp.rb'
 class UpdatesController < ApplicationController
 
-
   def index
-    @updates = Update.all
+    @updates = Update.all.order('updated_at DESC')
   end
 
   def new
@@ -34,6 +33,24 @@ class UpdatesController < ApplicationController
     end
   end
 
+  def edit
+    @update = Update.find(params[:id])
+    redirect_to root_url unless user_author(@update.author)
+    @teams = Team.all
+    @subteams = Subteam.all
+  end
+
+  def update
+    @update = Update.find(params[:id])
+    redirect_to root_url unless user_author(@update.author)
+    if @update.update_attributes(update_params)
+      flash[:success] = "Update updated"
+      redirect_to @update
+    else
+      render 'edit'
+    end
+  end
+
   def destory
     Update.find(params[:id]).destroy
   end
@@ -53,7 +70,11 @@ class UpdatesController < ApplicationController
     update.pictures.each do |picture|
       picture_urls << request.protocol + request.host_with_port + picture.avatar.url
     end
-    mailchimp.send_out_emails(team_name, team_segment_id, User.find(update.author_id).name, update.title, update.content, picture_urls)
+    begin
+      mailchimp.send_out_emails(team_name, team_segment_id, User.find(update.author_id).name, update.title, update.content, picture_urls)
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
   end
 
   private

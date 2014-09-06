@@ -1,0 +1,22 @@
+<div class="half-width-card-right team-memberships">
+  <div class="add-teams-container">
+    <%= form_tag("/users/#{@user.id}/join_teams", method: :put, id: "join_teams") %>
+    <div class="team-options">
+      <h4>Join Teams</h4>
+      <% @other_teams.each do |team| %>
+        <p><%= check_box_tag("teams[#{team.id}]", true) %><%= "#{team.name}" %>: Hook for team </p>
+      <% end %>
+    </div>
+    <div class="subteam-options">
+    <h4>Join Subteams</h4>
+      <% @other_subteams.each do |subteam| %>
+        <%= check_box_tag("subteams[#{subteam.id}]", true) %><%= "#{subteam.name}"  %>: Hook for subteam </p>
+      <% end %>
+    </div>
+
+    <%= submit_tag("Join Teams", class: "btn btn-primary team-join-button") %>
+  </div>
+  <div class="icon-container">
+    <div><a data-tooltip="Join teams" class="tooltip-left"><i class="fa fa-chevron-up join-teams-toggle"></i></a></div>
+  </div>
+</div>

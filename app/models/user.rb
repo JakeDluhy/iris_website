@@ -45,12 +45,21 @@ class User < ActiveRecord::Base
 
   def subscribe_to_mailing_list
     mailchimp = Mailchimp.new
-    mailchimp.subscribe(self.email, self.name)
+    begin
+      mailchimp.subscribe(self.email, self.name)
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
+
   end
 
   def unsubscribe_from_mailing_list
     mailchimp = Mailchimp.new
-    mailchimp.unsubscribe(self.email)
+    begin
+      mailchimp.unsubscribe(self.email)
+    rescue Gibbon::MailChimpError => e
+      puts e
+    end
   end
 
   private

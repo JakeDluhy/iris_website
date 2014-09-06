@@ -1,16 +1,16 @@
 <% subteams.each_with_index do |subteam, index| %>
-<div class="subteam-row">
-  <div class="individual-subteam-container odd-<%= index.odd? %>">
-    <div class="subteam-content-container">
-      <h4><%= subteam.name %></h4>
-      <p><%= subteam.description %></p>
+  <div class="subteam-row">
+    <div class="individual-subteam-container odd-<%= index.odd? %>">
+      <div class="subteam-content-container">
+        <h4><%= subteam.name %></h4>
+        <p><%= subteam.description %></p>
+      </div>
+      <div class="icon-container">
+        <div><a data-tooltip="View Users" class="tooltip-left"><i class="fa fa-chevron-right subteam-users-toggle"></i></a></div>
+      </div>
     </div>
-    <div class="icon-container">
-      <div><a data-tooltip="View Users" class="tooltip-left"><i class="fa fa-chevron-right subteam-users-toggle"></i></a></div>
+    <div class="users-container">
+      <%= render partial: 'shared/subteam_users', locals: { users: subteam.users } %>
     </div>
   </div>
-  <div class="users-container">
-    <%= render partial: 'shared/subteam_users', locals: { users: subteam.users } %>
-  </div>
-</div>
 <% end %>

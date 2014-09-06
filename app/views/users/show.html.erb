@@ -1,49 +1,31 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <div class="half-width-card-left user-header-info">
-    <%= image_tag @user.avatar.url.to_s %>
-    <div class="name">
-    	<h3>
-    		<%= @user.name %>
-    	</h3>
+  <div class="half-width-card-center user-header-info">
+    <div class="user-profile-info">
+      <%= image_tag @user.avatar.url.to_s %>
+      <div class="name">
+      	<h3>
+      		<%= @user.name %>
+      	</h3>
+      </div>
+      <p class="description"><% if @user[:bio] %>
+        <%= @user[:bio] %>
+        <% elsif @user == current_user %>
+        <%= link_to "Write a short bio", edit_user_path(current_user) %>
+        <% end %>
+      </p>
+      </p>
     </div>
-      <p class="description"><%= @user[:bio] || "A short description about this team member." %></p>
-  </div>
-  <div class="half-width-card-right team-memberships">
     <div class="teams">
-      <h4>Teams</h4>
+      <% unless @teams.empty? %><h4>Teams</h4><% end %>
       <% @teams.each do |team| %>
         <p><%= link_to team.name, team %>: Hook for team</p>
       <% end %>
     </div>
     <div class="subteams">
-      <h4>Subteams</h4>
+      <% unless @subteams.empty? %><h4>Subteams</h4><% end %>
       <% @subteams.each do |subteam| %>
         <p><%= link_to subteam.name, subteam %>: Hook for subteam</p>
       <% end %>
     </div>
-
-    <% if current_user?(@user) %>
-    <div class="add-teams-container">
-      <%= form_tag("/users/#{@user.id}/join_teams", method: :put, id: "join_teams") %>
-      <div class="team-options">
-        <h4>Join Teams</h4>
-        <% @other_teams.each do |team| %>
-          <p><%= check_box_tag("teams[#{team.id}]", true) %><%= "#{team.name}" %>: Hook for team </p>
-        <% end %>
-      </div>
-      <div class="subteam-options">
-      <h4>Join Subteams</h4>
-        <% @other_subteams.each do |subteam| %>
-          <%= check_box_tag("subteams[#{subteam.id}]", true) %><%= "#{subteam.name}"  %>: Hook for subteam </p>
-        <% end %>
-      </div>
-
-      <%= submit_tag("Join Teams", class: "btn btn-primary team-join-button") %>
-    </div>
-    <div class="icon-container">
-      <div><a data-tooltip="Join teams" class="tooltip-left"><i class="fa fa-chevron-up join-teams-toggle"></i></a></div>
-    </div>
-    <% end %>
   </div>
-</div>
+  

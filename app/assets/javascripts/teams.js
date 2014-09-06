@@ -1,8 +1,7 @@
 $(document).ready( function() {
 
   //Pull subteam containers down
-  $('.subteam-container').hide();
-  $('.users-container').hide();
+
   $('.subteam-toggle').click(function() { 
     $(this).closest('.team-container').find('.subteam-container').animate({
       height: 'toggle'

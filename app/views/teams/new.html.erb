@@ -3,17 +3,5 @@
 <h1>Create new team</h1>
 
 <div class="card-container">
-  <div class="half-width-card-center title-container">
-    <%= form_for(@team) do |f| %>
-      <%= render partial: 'shared/error_messages', locals: { object: @team } %>
-      
-      <%= f.label :name, "Name:", class: "form-label" %>
-      <%= f.text_field :name %>
-
-      <%= f.label :description, "Description:", class: "form-label" %>
-      <%= f.text_area :description, { rows: 6 } %>
-
-      <%= f.submit 'Create Team', class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <%= render partial: 'create_edit_form' %>
 </div>

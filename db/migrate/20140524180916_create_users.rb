@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :bio
+      t.text :bio
       t.string :password_digest
       t.string :remember_token
       t.boolean :admin, default: false

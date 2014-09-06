@@ -1,9 +1,12 @@
 <% provide(:title, 'About') %>
 <h1 class="centered">Illinois Robotics In Space</h1>
 <div class="three-quarters-card-center">
-  <p>This is all about the illustrious history and future and present of our club.</p>
+  <div class="img-container1"><%= image_tag 'about_pic1.png' %></div>
+  <div class="img-container2"><%= image_tag 'about_pic3.png' %></div>
+  <!-- <div class="img-container3"><%#= image_tag 'about_pic4.png' %></div> -->
+  <p>Illinois Robotics In Space is a multidisciplinary student organization formed to compete in the annual NASA Robotic Mining Competition.  IRIS provides an opportunity for University of Illinois students to experience the development of innovative robotic systems in a peer-based learning environment, fostering systems thinking and collaboration though development, manufacturing, and operation of complex, space-oriented robots in a Systems Engineering framework.  IRIS’s hands-on learning environment extends into the Champaign-Urbana community through educational outreach projects and demonstrations that promote Science, Technology, Engineering, and Mathematics and inspire the next generation of students about robotics and space exploration.</p>
 </div>
 
-<h3 class="centered">IRIS Teams and Users</h3>
+<h3 class="centered">IRIS Teams</h3>
 
 <%= render partial: 'shared/teams', locals: { teams: @teams } %>

@@ -1,0 +1,18 @@
+@import "bootstrap";
+
+.subteam{
+  .info-container {
+    padding-bottom: 10px;
+  }
+  .users-container {
+    padding-top: 10px;
+    .user-container {
+      padding: 5px 0;
+      a {
+        color: black;
+        font-weight: bold;
+      }
+    }
+  }
+  
+}

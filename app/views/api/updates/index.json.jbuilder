@@ -1,4 +1,5 @@
 json.array! @updates do |update|
+  json.id             update.id
   json.title          update.title
   json.content        update.content
   json.author_name    update.author.name

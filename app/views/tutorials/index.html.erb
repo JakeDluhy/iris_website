@@ -1,2 +1,26 @@
+<% provide(:title, "Tutorials") %>
 <h1>IRIS Tutorials Library</h1>
+<% @tutorials.each do |tutorial| %>
+  <div class="card-container">
+    <div class="half-width-card-center title-container">
+      <div class="rendered-title">
+        <h3><%= tutorial.title %></h3>
+        <h5>Created by: <%= tutorial.author.name%></h5>
+        <h5>For: <%= tutorial.subteam.name %></h5>
+      </div>
+    </div>
 
+    <% tutorial.instructions.each do |instruction| %>
+      <div class="half-width-card-center show-instruction">
+        <h4><%= instruction.title %></h4><h4 class="order-id"><%= instruction.order_id %></h4>
+        <p><%= instruction.content %></p>
+        <div>
+          <% pictures = instruction.pictures %>
+          <% pictures.each do |picture| %>
+            <a href=<%= picture.avatar.url %> target="_blank"><img class="content-pic" src=<%= picture.avatar.thumb.url %> ></a>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

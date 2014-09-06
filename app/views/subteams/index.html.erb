@@ -1,2 +1,5 @@
-<h1>Subteams#index</h1>
-<p>Find me in app/views/subteams/index.html.erb</p>
+<% provide(:title, 'IRIS Teams') %>
+<h1>Subteams</h1>
+<% @subteams.each do |subteam| %>
+  <%= render partial: 'shared/subteam', locals: {subteam: subteam} %>
+<% end %>

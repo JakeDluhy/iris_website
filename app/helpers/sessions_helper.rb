@@ -62,6 +62,15 @@ module SessionsHelper
 	  end
   end
 
+  def user_author(author)
+    if current_user == author
+      return true
+    else
+      flash[:error] = "Sorry, you are not authorized to edit that"
+      return false
+    end
+  end
+
   def target_not_admin
   	redirect_to(root_url) if User.find(params[:id]).admin?
   end

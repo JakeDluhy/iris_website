@@ -119,87 +119,95 @@ $(document).ready(function() {
     template: JST['templates/nav'],
     tagName: 'button',
     className: 'navigation-link',
+
+    onShow: function() {
+      this.setIndicators();
+    },
     
     events: {
-      'click': 'toggleMenus',
-      'focusout': 'removeMenus',
-      'click .subnav-link': 'setDisplays',
-      'mouseover': 'addHovered',
-      'mouseout': 'removeHovered'
+      'mouseover': 'showArrows',
+      'mouseout': 'removeArrow',
+      'mouseover .nav-arrow': 'showArrows',
+      'mouseout .nav-arrow': 'removeArrows',
+      'click .left-arrow': 'setLeft',
+      'click .right-arrow': 'setRight'
     },
 
     /* ------------ Event Handlers -------------------- */
 
-    toggleMenus: function() {
-      // docCookies.setItem('leftType', this.model.get('link_to'), Infinity);
-      // FrontPage.commands.execute('displayItems', this.model.get('link_to'));
-      this.$el.find('.subnav').toggleClass('hidden');
+    showArrows: function() {
+      this.$el.find('.nav-arrow').removeClass('blanked-out');
     },
-    removeMenus: function() {
-      this.$el.find('.subnav').addClass('hidden');
+    removeArrow: function() {
+      this.setIndicators();
     },
-    setDisplays: function(event) {
-      var side = $(event.target).data('side');
-      var filter = $(event.target).data('filter');
-      this.determineDisplays(side, filter);
+    setLeft: function() {
+      this.determineDisplays('left');
     },
-    addHovered: function() {
-      this.$el.addClass('hovered');
-    },
-    removeHovered: function() {
-      this.$el.removeClass('hovered');
+    setRight: function() {
+      this.determineDisplays('right');
     },
 
 
 
-    determineDisplays: function(side, filter) {
+    determineDisplays: function(side) {
       var currentLeft = docCookies.getItem('leftType');
       var currentRight = docCookies.getItem('rightType');
       var leftType = currentLeft;
       var rightType = currentRight;
       if(side === 'right') {
-        var rightFilter = filter;
-        var leftFilter = docCookies.getItem('leftFilter');
         rightType = this.model.get('link_to');
         ((currentLeft === this.model.get('link_to')) ? leftType = currentRight : leftType = currentLeft);
       } else if (side === 'left') {
-        var leftFilter = filter;
-        var rightFilter = docCookies.getItem('rightFilter');
         leftType = this.model.get('link_to');
         ((currentRight === this.model.get('link_to')) ? rightType = currentLeft : rightType = currentRight);
       } else { console.log('error'); }
-      FrontPage.commands.execute('displayItems', leftType, rightType, leftFilter, rightFilter);
+      FrontPage.commands.execute('displayItems', leftType, rightType);
+      this.model.collection.fetch(); //Hack, should think of better way to rerender items
+    },
+
+
+    setIndicators: function() {
+      if(docCookies.getItem('leftType') === this.model.get('link_to')) {
+        this.$el.find('.left-arrow').removeClass('blanked-out');
+        this.$el.find('.right-arrow').addClass('blanked-out');
+        this.$el.find('.left-arrow').addClass('orange-it');
+      } else if(docCookies.getItem('rightType') === this.model.get('link_to')) {
+        this.$el.find('.right-arrow').removeClass('blanked-out');
+        this.$el.find('.left-arrow').addClass('blanked-out');
+        this.$el.find('.right-arrow').addClass('orange-it');
+      } else {
+        this.$el.find('.nav-arrow').addClass('blanked-out');
+        this.$el.find('.nav-arrow').removeClass('orange-it');
+      }
     }
   });
 
   TasksView = Backbone.Marionette.CollectionView.extend({
-    childView: TaskView,
-    initialize: function() {
-      
-    }
+    childView: TaskView
   });
 
   UpdatesView = Backbone.Marionette.CollectionView.extend({
-    childView: UpdateView,
+    childView: UpdateView
   });
 
   UsersView = Backbone.Marionette.CollectionView.extend({
-    childView: UserView,
+    childView: UserView
   });
 
   TutorialsView = Backbone.Marionette.CollectionView.extend({
-    childView: TutorialView,
+    childView: TutorialView
   });
 
   NavigationView = Backbone.Marionette.CollectionView.extend({
-    childView: NavView,
+    childView: NavView
   });
 
   /* -------------- Regions ------------------------
   ----------------------------------------------- */
 
   DisplayRegion = Marionette.Region.extend({
-    showUpdates: function(filter) {
+    showUpdates: function() {
       var updatesCollection = new UpdatesCollection();
       var self = this;
       updatesCollection.fetch({
@@ -209,7 +217,7 @@ $(document).ready(function() {
         }
       });
     },
-    showTutorials: function(filter) {
+    showTutorials: function() {
       var tutorialsCollection = new TutorialsCollection();
       var self = this;
       tutorialsCollection.fetch({
@@ -219,7 +227,7 @@ $(document).ready(function() {
         }
       });
     },
-    showTasks: function(filter) {
+    showTasks: function() {
       var tasksCollection = new TasksCollection();
       var self = this;
       tasksCollection.fetch({
@@ -229,7 +237,7 @@ $(document).ready(function() {
         }
       });
     },
-    showUsers: function(filter) {
+    showUsers: function() {
       var usersCollection = new UsersCollection();
       var self = this;
       usersCollection.fetch({
@@ -273,58 +281,58 @@ $(document).ready(function() {
   /* -------------- Startup ------------------------
   ----------------------------------------------- */
 
-  FrontPage.displayItems = function(leftType, rightType, leftFilter, rightFilter) {
+  FrontPage.displayItems = function(leftType, rightType) {
     if(leftType === null) {
       if(rightType === 'updates') {
         docCookies.setItem('leftType', 'users', Infinity);
-        FrontPage.leftRegion.showUsers(leftFilter);
+        FrontPage.leftRegion.showUsers();
       } else {
         docCookies.setItem('leftType', 'updates', Infinity);
-        FrontPage.leftRegion.showUpdates(leftFilter);
+        FrontPage.leftRegion.showUpdates();
       }
     } else {
       switch(leftType){
         case 'updates':
-          FrontPage.leftRegion.showUpdates(leftFilter);
+          FrontPage.leftRegion.showUpdates();
           break;
         case 'tutorials':
-          FrontPage.leftRegion.showTutorials(leftFilter);
+          FrontPage.leftRegion.showTutorials();
           break;
         case 'tasks':
-          FrontPage.leftRegion.showTasks(leftFilter);
+          FrontPage.leftRegion.showTasks();
           break;
         case 'users':
-          FrontPage.leftRegion.showUsers(leftFilter);
+          FrontPage.leftRegion.showUsers();
           break;
         default:
-          FrontPage.leftRegion.showUpdates(leftFilter);
+          FrontPage.leftRegion.showUpdates();
           break;
       }
     }
     if(rightType === null) {
       if(leftType === 'users') {
         docCookies.setItem('rightType', 'updates', Infinity);
-        FrontPage.rightRegion.showUpdates(rightFilter);
+        FrontPage.rightRegion.showUpdates();
       } else {
         docCookies.setItem('rightType', 'users', Infinity);
-        FrontPage.rightRegion.showUsers(rightFilter);
+        FrontPage.rightRegion.showUsers();
       }
     } else {
       switch(rightType){
         case 'updates':
-          FrontPage.rightRegion.showUpdates(rightFilter);
+          FrontPage.rightRegion.showUpdates();
           break;
         case 'tutorials':
-          FrontPage.rightRegion.showTutorials(rightFilter);
+          FrontPage.rightRegion.showTutorials();
           break;
         case 'tasks':
-          FrontPage.rightRegion.showTasks(rightFilter);
+          FrontPage.rightRegion.showTasks();
           break;
         case 'users':
-          FrontPage.rightRegion.showUsers(rightFilter);
+          FrontPage.rightRegion.showUsers();
           break;
         default:
-          FrontPage.rightRegion.showUsers(rightFilter);
+          FrontPage.rightRegion.showUsers();
           break;
       }
     }
@@ -333,9 +341,9 @@ $(document).ready(function() {
   FrontPage.addInitializer(function(options) {
     var leftType = docCookies.getItem('leftType');
     var rightType = docCookies.getItem('rightType');
-    var leftFilter = docCookies.getItem('leftFilter');
-    var rightFilter = docCookies.getItem('rightFilter');
-    FrontPage.displayItems(leftType, rightType, leftFilter, rightFilter);
+    // var leftFilter = docCookies.getItem('leftFilter');
+    // var rightFilter = docCookies.getItem('rightFilter');
+    FrontPage.displayItems(leftType, rightType);
     var navCollection = new NavigationCollection();
 
     navCollection.fetch({
@@ -345,12 +353,12 @@ $(document).ready(function() {
       }
     });
 
-    FrontPage.commands.setHandler('displayItems', function(leftType, rightType, leftFilter, rightFilter) {
+    FrontPage.commands.setHandler('displayItems', function(leftType, rightType) {
       docCookies.setItem('leftType', leftType, Infinity);
       docCookies.setItem('rightType', rightType, Infinity);
-      docCookies.setItem('leftFilter', leftFilter, Infinity);
-      docCookies.setItem('rightFilter', rightFilter, Infinity);
-      FrontPage.displayItems(leftType, rightType, leftFilter, rightFilter);
+      // docCookies.setItem('leftFilter', leftFilter, Infinity);
+      // docCookies.setItem('rightFilter', rightFilter, Infinity);
+      FrontPage.displayItems(leftType, rightType);
     });
     var controller = new Controller();
     var router = new Router({controller: controller});

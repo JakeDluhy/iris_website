@@ -19,8 +19,8 @@
     float: left;
   }
 
-  .content-container {
-    margin-top: 0;
+  .team-content-container {
+    margin-top: 10px;
     margin-left: 10px;
 
     h3 {
@@ -49,8 +49,12 @@
   .individual-subteam-container {
     
   }
+  .subteam-container {
+    display: none;
+  }
 
   .users-container {
+    display: none;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -106,6 +110,9 @@
   .image-container {
     max-width: 40%;
     float: left;
+    img {
+      max-width: 100%;
+    }
   }
   .content-container {
     max-width: 55%;

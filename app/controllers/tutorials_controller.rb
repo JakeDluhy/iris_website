@@ -1,6 +1,7 @@
 class TutorialsController < ApplicationController
+  
   def index
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.all.order('updated_at DESC')
   end
 
   def new

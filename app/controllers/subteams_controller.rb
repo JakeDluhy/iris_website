@@ -1,4 +1,6 @@
 class SubteamsController < ApplicationController
+  before_action :admin_user,     only: [:new, :create, :edit, :update]
+  
   def index
     @subteams = Subteam.all
   end
@@ -19,6 +21,21 @@ class SubteamsController < ApplicationController
       redirect_to @subteam
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @subteam = Team.find(params[:id])
+    @teams = Team.all
+  end
+
+  def update
+    @subteam = Subteam.find(params[:id])
+    if @subteam.update_attributes(subteam_params)
+      flash[:success] = "Subteam updated"
+      redirect_to @subteam
+    else
+      render 'edit'
     end
   end
 

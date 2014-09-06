@@ -6,7 +6,8 @@
   <div class="picture-container">
   <% pictures.each do |picture| %>
     <div class="picture-wrapper">
-      <%= image_tag picture.avatar.url.to_s %>
+      <a href="<%= picture.avatar.url %>"><%= image_tag picture.avatar.url.to_s %></a>
     </div>
   <% end %>
+  </div>
 </div>
