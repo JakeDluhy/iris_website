@@ -29,15 +29,31 @@
   <div class="half-width-card-right team-memberships">
     <%= form_tag("/users/#{@user.id}/join_teams", method: :put, id: "join_teams") %>
     <div class="team-options">
-      <h4>Join Teams</h4>
-      <% @other_teams.each do |team| %>
-        <p><%= check_box_tag("teams[#{team.id}]", true) %><%= "#{team.name}" %>: <%= team.hook %> </p>
+      <% unless @teams.empty? %>
+        <h4>Your Teams</h4>
+        <% @teams.each do |team| %>
+          <p><%= team.name %></p>
+        <% end %>
+      <% end %>
+      <% unless @other_teams.empty? %>
+        <h4>Join Teams</h4>
+        <% @other_teams.each do |team| %>
+          <p><%= check_box_tag("teams[#{team.id}]", true) %><%= "#{team.name}" %>: <%= "#{team.hook}" %> </p>
+        <% end %>
       <% end %>
     </div>
     <div class="subteam-options">
-    <h4>Join Subteams</h4>
-      <% @other_subteams.each do |subteam| %>
-        <%= check_box_tag("subteams[#{subteam.id}]", true) %><%= "#{subteam.name}"  %>: <%= subteam.hook %> </p>
+      <% unless @subteams.empty? %>
+        <h4>Your Subteams</h4>
+        <% @subteams.each do |subteam| %>
+          <p><%= subteam.name %></p>
+        <% end %>
+      <% end %>
+      <% unless @other_subteams %>
+        <h4>Join Subteams</h4>
+        <% @other_subteams.each do |subteam| %>
+          <%= check_box_tag("subteams[#{subteam.id}]", true) %><%= "#{subteam.name}"  %>: <%= subteam.hook %> </p>
+        <% end %>
       <% end %>
     </div>
 

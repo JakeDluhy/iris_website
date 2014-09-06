@@ -47,6 +47,6 @@ class SubteamsController < ApplicationController
   private
 
     def subteam_params
-      params.require(:subteam).permit(:name, :description, :team_id)
+      params.require(:subteam).permit(:name, :description, :team_id, :hook)
     end
 end
