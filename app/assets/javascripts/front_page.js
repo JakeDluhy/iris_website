@@ -308,7 +308,10 @@ $(document).ready(function() {
         docCookies.setItem('leftType', 'updates', Infinity);
         FrontPage.leftRegion.showUpdates();
       }
-    } else {
+    } else if(leftType === 'users') {
+      docCookies.setItem('leftType', 'calendar', Infinity);
+      FrontPage.leftRegion.showCalendar();
+    }  else {
       switch(leftType){
         case 'updates':
           FrontPage.leftRegion.showUpdates();
@@ -331,10 +334,12 @@ $(document).ready(function() {
       if(leftType === 'calendar') {
         docCookies.setItem('rightType', 'updates', Infinity);
         FrontPage.rightRegion.showUpdates();
-      } else {
+      }  else {
         docCookies.setItem('rightType', 'calendar', Infinity);
         FrontPage.rightRegion.showCalendar();
       }
+    } else if(rightType === 'users') {
+      docCookies.setItem('rightType', 'calendar', Infinity);
     } else {
       switch(rightType){
         case 'updates':
