@@ -77,6 +77,12 @@ $(document).ready(function() {
     }
   });
 
+  CalendarView = Backbone.Marionette.ItemView.extend({
+    template: JST['templates/calendar'],
+    tagName: 'div',
+    className: 'calendar-container'
+  });
+
   TutorialView = Backbone.Marionette.ItemView.extend({
     template: JST['templates/tutorial'],
     tagName: 'div',
@@ -115,10 +121,18 @@ $(document).ready(function() {
     }
   });
 
+
+
   NavView = Backbone.Marionette.ItemView.extend({
     template: JST['templates/nav'],
     tagName: 'button',
-    className: 'navigation-link',
+    className: 'navigation-link tooltip-bottom',
+    attributes: function() {
+      var tooltip = this.model.get('tooltip');
+      return {
+        'data-tooltip': tooltip
+      }
+    },
 
     onShow: function() {
       this.setIndicators();
@@ -246,6 +260,10 @@ $(document).ready(function() {
           self.show(usersView);
         }
       });
+    },
+    showCalendar: function() {
+      var calendarView = new CalendarView();
+      this.show(calendarView);
     }
   });
 
@@ -284,8 +302,8 @@ $(document).ready(function() {
   FrontPage.displayItems = function(leftType, rightType) {
     if(leftType === null) {
       if(rightType === 'updates') {
-        docCookies.setItem('leftType', 'users', Infinity);
-        FrontPage.leftRegion.showUsers();
+        docCookies.setItem('leftType', 'calendar', Infinity);
+        FrontPage.leftRegion.showCalendar();
       } else {
         docCookies.setItem('leftType', 'updates', Infinity);
         FrontPage.leftRegion.showUpdates();
@@ -301,8 +319,8 @@ $(document).ready(function() {
         case 'tasks':
           FrontPage.leftRegion.showTasks();
           break;
-        case 'users':
-          FrontPage.leftRegion.showUsers();
+        case 'calendar':
+          FrontPage.leftRegion.showCalendar();
           break;
         default:
           FrontPage.leftRegion.showUpdates();
@@ -310,12 +328,12 @@ $(document).ready(function() {
       }
     }
     if(rightType === null) {
-      if(leftType === 'users') {
+      if(leftType === 'calendar') {
         docCookies.setItem('rightType', 'updates', Infinity);
         FrontPage.rightRegion.showUpdates();
       } else {
-        docCookies.setItem('rightType', 'users', Infinity);
-        FrontPage.rightRegion.showUsers();
+        docCookies.setItem('rightType', 'calendar', Infinity);
+        FrontPage.rightRegion.showCalendar();
       }
     } else {
       switch(rightType){
@@ -328,11 +346,11 @@ $(document).ready(function() {
         case 'tasks':
           FrontPage.rightRegion.showTasks();
           break;
-        case 'users':
-          FrontPage.rightRegion.showUsers();
+        case 'calendar':
+          FrontPage.rightRegion.showCalendar();
           break;
         default:
-          FrontPage.rightRegion.showUsers();
+          FrontPage.rightRegion.showCalendar();
           break;
       }
     }

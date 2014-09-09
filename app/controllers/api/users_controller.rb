@@ -7,14 +7,14 @@ class Api::UsersController < Api::ApiController
       if filter == 'team'
         #Work on this - need to fit array of ids in in array of ids
         teams = current_user.teams.pluck(:id)
-        @users = User.where('team_id IN (?)', teams).order(:updated_at)
+        @users = User.where('team_id IN (?)', teams).order('updated_at DESC')
       elsif filter == 'subteam'
         subteams = current_user.subteams.pluck(:id)
-        @users = User.where('subteam_id IN (?)', subteams).order(:updated_at)
+        @users = User.where('subteam_id IN (?)', subteams).order('updated_at DESC')
       elsif filter == 'important'
-        @users = User.all.order(:updated_at)
+        @users = User.all.order('updated_at DESC')
       else
-        @users = User.all.order(:updated_at)
+        @users = User.all.order('updated_at DESC')
       end
     end
   end

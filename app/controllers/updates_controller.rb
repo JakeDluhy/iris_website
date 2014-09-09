@@ -71,7 +71,7 @@ class UpdatesController < ApplicationController
       picture_urls << request.protocol + request.host_with_port + picture.avatar.url
     end
     begin
-      #mailchimp.send_out_emails(team_name, team_segment_id, User.find(update.author_id).name, update.title, update.content, picture_urls)
+      #mailchimp.send_out_emails(team_name, team_segment_id, User.find(update.author_id).name, update.title, update.content, picture_urls) if Rails.env.production?
     rescue Gibbon::MailChimpError => e
       puts e
     end

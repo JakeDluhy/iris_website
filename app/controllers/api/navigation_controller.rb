@@ -3,19 +3,28 @@ class Api::NavigationController < Api::ApiController
     nav = [
       {
         link_to: 'updates',
-        symbol: 'comment'
+        symbol: 'comment',
+        tooltip: 'Updates'
       },
       {
         link_to: 'tutorials',
-        symbol: 'university'
+        symbol: 'university',
+        tooltip: 'Tutorials'
       },
       {
         link_to: 'tasks',
-        symbol: 'pencil'
+        symbol: 'pencil',
+        tooltip: 'Tasks'
       },
+      # {
+      #   link_to: 'users',
+      #   symbol: 'group',
+      #   tooltip: 'Users'
+      # },
       {
-        link_to: 'users',
-        symbol: 'group'
+        link_to: 'calendar',
+        symbol: 'calendar',
+        tooltip: 'Calendar'
       }
     ];
     render :json => nav.to_json
