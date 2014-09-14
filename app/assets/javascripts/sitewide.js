@@ -1,6 +1,7 @@
 $(document).ready( function() {
 
   $('.file-input-wrapper').on('click', function(event) {
+    console.log('here');
     event.stopImmediatePropagation();
     $('.file-input').trigger('click');
   });

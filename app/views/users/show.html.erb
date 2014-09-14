@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
   <div class="half-width-card-center user-header-info">
     <div class="user-profile-info">
-      <%= image_tag @user.avatar.url.to_s %>
+      <%= image_tag @user.avatar_url(:display) %>
       <div class="name">
       	<h3>
       		<%= @user.name %>

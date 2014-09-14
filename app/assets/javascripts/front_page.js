@@ -1,4 +1,5 @@
 $(document).ready(function() {
+if(window.location.href === "http://localhost:3000/" || window.location.href === "https://irisengineering.herokuapp.com"){
   FrontPage = new Backbone.Marionette.Application();
 
   /* -------------- Models -----------------------
@@ -391,5 +392,6 @@ $(document).ready(function() {
 
 
   FrontPage.start();
+}
 });
 

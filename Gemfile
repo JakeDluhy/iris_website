@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate'
 gem 'pg'
 
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'font-awesome-sass'
