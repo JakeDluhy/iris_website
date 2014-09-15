@@ -63,24 +63,12 @@ body, html, .container {
     }
     .left-arrow, .right-arrow {
       position: absolute;
-      font-size: 32px;
-      color: #000;
-      left: 0;
-      top: calc(50% - 16px);
-      top: -webkit-calc(50% - 16px);
-      top: -moz-calc(50% - 16px);
-      &.blanked-out {
-        color: #fff;
-      }
-      &.orange-it {
-        color: orange;
-      }
-    }
-    .left-arrow {
-      left: -12px;
-    }
-    .right-arrow {
-      left: 100%;
+      width: 40%;
+      height: 100%;
+      top: 0;
+      opacity: .75;
+      &.left-arrow { left: 0; }
+      &.right-arrow { right: 0;}
     }
   }
 }

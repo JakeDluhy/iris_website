@@ -142,8 +142,6 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     events: {
       'mouseover': 'showArrows',
       'mouseout': 'removeArrow',
-      'mouseover .nav-arrow': 'showArrows',
-      'mouseout .nav-arrow': 'removeArrows',
       'click .left-arrow': 'setLeft',
       'click .right-arrow': 'setRight'
     },
@@ -151,7 +149,13 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     /* ------------ Event Handlers -------------------- */
 
     showArrows: function() {
-      this.$el.find('.nav-arrow').removeClass('blanked-out');
+      if(!this.$el.find('.left-arrow.orange').hasClass('hidden')) {
+        this.$el.find('.nav-arrow.right-arrow').removeClass('hidden');
+      } else if (!this.$el.find('.right-arrow.orange').hasClass('hidden')) {
+        this.$el.find('.nav-arrow.left-arrow').removeClass('hidden');
+      } else {
+        this.$el.find('.nav-arrow').removeClass('hidden');
+      }
     },
     removeArrow: function() {
       this.setIndicators();
@@ -184,16 +188,13 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
     setIndicators: function() {
       if(docCookies.getItem('leftType') === this.model.get('link_to')) {
-        this.$el.find('.left-arrow').removeClass('blanked-out');
-        this.$el.find('.right-arrow').addClass('blanked-out');
-        this.$el.find('.left-arrow').addClass('orange-it');
+        this.$el.find('.left-arrow.orange').removeClass('hidden');
+        this.$el.find('.right-arrow').addClass('hidden');
       } else if(docCookies.getItem('rightType') === this.model.get('link_to')) {
-        this.$el.find('.right-arrow').removeClass('blanked-out');
-        this.$el.find('.left-arrow').addClass('blanked-out');
-        this.$el.find('.right-arrow').addClass('orange-it');
+        this.$el.find('.right-arrow.orange').removeClass('hidden');
+        this.$el.find('.left-arrow').addClass('hidden');
       } else {
-        this.$el.find('.nav-arrow').addClass('blanked-out');
-        this.$el.find('.nav-arrow').removeClass('orange-it');
+        this.$el.find('.nav-arrow').addClass('hidden');
       }
     }
   });
