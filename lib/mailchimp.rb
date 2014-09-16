@@ -83,7 +83,7 @@ class Mailchimp
       :options => {
         :list_id => MAILING_LIST_ID,
         :subject => "Update from #{name}",
-        :from_email => 'dluhy2@illinois.edu',
+        :from_email => 'iris.uiuc@gmail.com',
         :from_name => 'IRIS Updates',
         :to_name => "*|TITLE:FNAME|*"
       },

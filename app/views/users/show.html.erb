@@ -1,7 +1,11 @@
 <% provide(:title, @user.name) %>
   <div class="half-width-card-center user-header-info">
     <div class="user-profile-info">
+      <% if @user.avatar_url.nil?  %>
+      <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png' %>
+      <% else %>
       <%= image_tag @user.avatar_url(:display) %>
+      <% end %>
       <div class="name">
       	<h3>
       		<%= @user.name %>
