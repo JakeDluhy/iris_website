@@ -126,7 +126,7 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
   NavView = Backbone.Marionette.ItemView.extend({
     template: JST['templates/nav'],
-    tagName: 'button',
+    tagName: 'div',
     className: 'navigation-link tooltip-bottom',
     attributes: function() {
       var tooltip = this.model.get('tooltip');
@@ -161,9 +161,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       this.setIndicators();
     },
     setLeft: function() {
+      console.log('here');
       this.determineDisplays('left');
     },
     setRight: function() {
+      console.log('here');
       this.determineDisplays('right');
     },
 
