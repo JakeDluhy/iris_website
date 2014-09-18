@@ -3,7 +3,7 @@
     <div class="individual-subteam-container odd-<%= index.odd? %>">
       <div class="subteam-content-container">
         <h4><%= subteam.name %></h4>
-        <p><%= subteam.description %></p>
+        <p><%= markdown(subteam.description) %></p>
       </div>
       <div class="icon-container">
         <div><a data-tooltip="View Users" class="tooltip-left"><i class="fa fa-chevron-right subteam-users-toggle"></i></a></div>

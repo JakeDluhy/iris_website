@@ -1,7 +1,7 @@
 json.array! @tasks do |task|
   json.id             task.id
   json.title          task.title
-  json.content        task.content
+  json.content        markdown(task.content)
   json.author_name    task.author.name
   json.author_id      task.author.id
   json.team_name      task.team.nil? ? '' : task.team.name

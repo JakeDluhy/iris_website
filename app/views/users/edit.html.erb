@@ -32,7 +32,9 @@
       <% unless @other_teams.empty? %>
         <h4>Join Teams</h4>
         <% @other_teams.each do |team| %>
-          <%= check_box_tag("teams[#{team.id}]", true) %><p><%= "#{team.name}" %>: <%= "#{team.hook}" %> </p>
+        <div class="team-join-container">
+          <div class="box"><%= check_box_tag("teams[#{team.id}]", true) %></div><div class="box-description"><%= "#{team.name}" %>: <%= "#{team.hook}" %> </div>
+        </div>
         <% end %>
       <% end %>
     </div>

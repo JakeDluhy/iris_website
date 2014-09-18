@@ -1,7 +1,7 @@
 <div class="half-width-card-center">
   <div class="information-container">
     <h3><%= title %></h3>
-    <p><%= content %></p>
+    <p><%= markdown(content) %></p>
   </div>
   <div class="picture-container">
   <% pictures.each do |picture| %>

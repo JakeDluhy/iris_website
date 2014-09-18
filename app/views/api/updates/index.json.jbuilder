@@ -1,7 +1,7 @@
 json.array! @updates do |update|
   json.id             update.id
   json.title          update.title
-  json.content        update.content
+  json.content        markdown(update.content)
   json.author_name    update.author.name
   json.author_id      update.author.id
   json.team_name      update.team.nil? ? '' : update.team.name

@@ -9,7 +9,7 @@ json.array! @tutorials do |tutorial|
   json.subteam_id     tutorial.subteam.nil? ? 1 : tutorial.subteam.id
   json.instructions   tutorial.instructions do |instruction|
     json.title        instruction.title
-    json.content      instruction.content
+    json.content      markdown(instruction.content)
     json.order_id     instruction.order_id
     json.pictures     instruction.pictures
   end

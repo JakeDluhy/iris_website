@@ -3,7 +3,7 @@
     <%= image_tag "#{team.name.downcase.gsub(/ /, '_')}.png" %>
     <div class="team-content-container">
       <h3><%= team.name %></h3>
-      <p><%= team.description %></p>
+      <p><%= markdown(team.description) %></p>
     </div>
   </div>
   <div class="subteam-container">

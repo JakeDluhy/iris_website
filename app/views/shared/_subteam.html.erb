@@ -1,6 +1,6 @@
 <div class="half-width-card-center subteam">
   <div class="info-container">
-    <%= subteam.description %>
+    <%= markdown(subteam.description) %>
   </div>
   <div class="users-container">
     <%= render partial: 'shared/subteam_users', locals: {users: subteam.users} %>
