@@ -73,6 +73,7 @@
   content: attr(data-tooltip);
   font-size: 14px;
   line-height: 1.2;
+  text-align: center;
 }
 
 /* Directions */
@@ -101,7 +102,7 @@
 [data-tooltip]:after,
 .tooltip:after,
 .tooltip-top:after {
-  margin-left: -80px;
+  margin-left: -10px;
 }
 
 [data-tooltip]:hover:before,
@@ -152,7 +153,13 @@
 .tooltip-bottom:after {
   top: 100%;
   bottom: auto;
+  left: 0;
+}
+.tooltip-bottom:before {
   left: 50%;
+}
+.tooltip-bottom:after {
+  width: 80px;
 }
 
 .tooltip-bottom:before {
