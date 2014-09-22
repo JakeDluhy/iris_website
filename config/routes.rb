@@ -15,6 +15,7 @@ IrisWebsite::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/sponsors',to: 'static_pages#sponsors',via: 'get'
   match '/backend', to: 'static_pages#backend', via: 'get'
 
   namespace :api do
@@ -23,6 +24,7 @@ IrisWebsite::Application.routes.draw do
     resources :users, only: [:index, :show]
     resources :tutorials, only: [:index, :show]
     resources :navigation, only: [:index]
+    resources :filtering, only: [:index]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

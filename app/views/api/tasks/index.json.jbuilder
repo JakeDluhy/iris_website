@@ -10,4 +10,5 @@ json.array! @tasks do |task|
   json.subteam_id     task.subteam.nil? ? 1 : task.subteam.id
   json.pictures       task.pictures
   json.users          task.users
+  json.created_at     task.created_at.strftime('%m/%d/%y')
 end

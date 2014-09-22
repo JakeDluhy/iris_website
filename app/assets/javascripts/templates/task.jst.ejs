@@ -1,9 +1,9 @@
 <div class="info-container">
   <h3><a href="tasks/<%= id %>"><%= title %></a></h3>
-  <p><strong>By:</strong> <a href='/users/<%= author_id %>' class="task-user-name"><%= author_name %></a></p>
   <p><strong>Team:</strong> <a href="/teams/<%= team_id %>" class="linked-info"><%= team_name %></a></p>
   <p><strong>Subteam:</strong> <a href="/subteams/<%= subteam_id %>" class="linked-info"><%= subteam_name %></a></p>
   <div class="content-container"><p><%= content %></p></div>
+  <p><strong>By:</strong> <a href='/users/<%= author_id %>' class="task-user-name"><%= author_name %></a> on <%= created_at %></p>
 </div>
 <div class="pic-container">
   <% for(var i = 0; i < pictures.length; i++) { %>

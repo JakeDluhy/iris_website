@@ -9,4 +9,5 @@ json.array! @updates do |update|
   json.subteam_name   update.subteam.nil? ? '' : update.subteam.name
   json.subteam_id     update.subteam.nil? ? 1 : update.subteam.id
   json.pictures       update.pictures
+  json.created_at     update.created_at.strftime('%m/%d/%y')
 end

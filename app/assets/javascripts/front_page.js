@@ -52,7 +52,8 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
   NavigationCollection = Backbone.Collection.extend({
     model: Nav,
     url: '/api/navigation.json'
-  })
+  });
+
 
   /* -------------- Views ------------------------
   --------------------------------------------- */
@@ -201,6 +202,42 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     }
   });
 
+  FilterView = Backbone.Marionette.ItemView.extend({
+    template: JST['templates/filtering'],
+    tagName: 'div',
+
+    events: {
+      'click .filter-link-header' : 'expand',
+      'click .filter-link'        : 'selectFilter',
+    },
+
+    selectFilter: function(event) {
+      var target = $(event.target);
+      var filter = target.data('filter');
+      console.log(filter);
+      docCookies.setItem('filter', filter);
+      this.setupFilters();
+    },
+
+    expand: function() {
+      this.$el.find('.filters-container').animate({
+        height: "toggle"
+      }, 500);
+    },
+
+    setupFilters: function() {
+      var filter = docCookies.getItem('filter');
+      this.$el.find('.active-info').html(filter);
+      elements = this.$el.find('.filter-link');
+      elements.removeClass('active');
+      for(var i = 0; i < elements.length; i++){
+        if(filter === elements[i].data('filter')) {
+          elements[i].addClass('active');
+        }
+      }
+    }
+  });
+
   TasksView = Backbone.Marionette.CollectionView.extend({
     childView: TaskView
   });
@@ -277,7 +314,8 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         selector: '#left-half-div',
         regionClass: DisplayRegion
       },
-      navRegion: '#navigation-div',
+      navRegion: '#nav-region',
+      filterRegion: '#filter-region',
       rightRegion: {
         selector: '#right-half-div',
         regionClass: DisplayRegion
@@ -368,8 +406,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
   FrontPage.addInitializer(function(options) {
     var leftType = docCookies.getItem('leftType');
     var rightType = docCookies.getItem('rightType');
-    // var leftFilter = docCookies.getItem('leftFilter');
-    // var rightFilter = docCookies.getItem('rightFilter');
+    var filter = docCookies.getItem('filter');
+    if(filter === null){
+      filter = 'general';
+      docCookies.setItem('filter', filter, Infinity);
+    }
     FrontPage.displayItems(leftType, rightType);
     var navCollection = new NavigationCollection();
 
@@ -379,6 +420,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         FrontPage.navRegion.show(navView);
       }
     });
+
+    var filterView = new FilterView();
+    FrontPage.filterRegion.show(filterView);
 
     FrontPage.commands.setHandler('displayItems', function(leftType, rightType) {
       docCookies.setItem('leftType', leftType, Infinity);

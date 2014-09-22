@@ -71,6 +71,34 @@ body, html, .container {
       &.right-arrow { right: 0;}
     }
   }
+  #filter-region {
+    .filter-link-header, .filter-link {
+      display:block;
+      cursor: pointer;
+      width: 100%;
+      background-color: #999;
+      .info {
+        color: #fff;
+        font-size: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        background-color: #999;
+        width: 100%;
+        top: calc(50% - 14px);
+        top: -webkit-calc(50% - 14px);
+        top: -moz-calc(50% - 14px);
+      }
+      &.active {
+        display: none;
+      }
+    }
+    .filters-container {
+      display: none;
+    }
+    &.all {
+      z-index: 1020;
+    }
+  }
 }
 .subnav {
   position: absolute;
@@ -156,4 +184,17 @@ body, html, .container {
 .backend-link {
   padding: 5px 0;
   p { text-indent: 20px;}
+}
+
+/* Sponsor Page */
+.sponsor-year {
+  text-align: center;
+  font-size: 2.5em;
+}
+.sponsor-container {
+  img {
+    max-width: 32%;
+    padding: 1%;
+    float: left;
+  }
 }

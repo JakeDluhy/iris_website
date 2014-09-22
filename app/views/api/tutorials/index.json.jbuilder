@@ -13,4 +13,5 @@ json.array! @tutorials do |tutorial|
     json.order_id     instruction.order_id
     json.pictures     instruction.pictures
   end
+  json.created_at     tutorial.created_at.strftime('%m/%d/%y')
 end
