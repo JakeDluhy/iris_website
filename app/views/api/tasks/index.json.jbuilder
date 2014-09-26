@@ -11,4 +11,5 @@ json.array! @tasks do |task|
   json.pictures       task.pictures
   json.users          task.users
   json.created_at     task.created_at.strftime('%m/%d/%y')
+  json.logged_in_id   current_user.id
 end
