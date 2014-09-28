@@ -1,8 +1,13 @@
 json.array! @tutorials do |tutorial|
   json.id             tutorial.id
   json.title          tutorial.title
-  json.author_name    tutorial.author.name
-  json.author_id      tutorial.author.id
+  if tutorial.author.nil?
+    json.author_name    'Unknown'
+    json.author_id      0
+  else
+    json.author_name    tutorial.author.name
+    json.author_id      tutorial.author.id
+  end
   json.team_name      tutorial.team.nil? ? '' : tutorial.team.name
   json.team_id        tutorial.team.nil? ? 1 : tutorial.team.id
   json.subteam_name   tutorial.subteam.nil? ? '' : tutorial.subteam.name
