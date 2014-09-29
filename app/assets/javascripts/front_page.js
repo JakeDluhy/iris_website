@@ -162,11 +162,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       this.setIndicators();
     },
     setLeft: function() {
-      console.log('here');
       this.determineDisplays('left');
     },
     setRight: function() {
-      console.log('here');
       this.determineDisplays('right');
     },
 
@@ -323,21 +321,6 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     });
   })();
 
-  /* -------------- Router and Controller ------------------------
-  ------------------------------------------------------------- */
-
-  Router = Marionette.AppRouter.extend({
-    appRoutes: {
-        ''  : 'home'
-    }
-  });
-
-  Controller = Marionette.Controller.extend({
-    home: function() {
-      console.log('home');
-    }
-  });
-
   /* -------------- Startup ------------------------
   ----------------------------------------------- */
 
@@ -421,8 +404,8 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       }
     });
 
-    var filterView = new FilterView();
-    FrontPage.filterRegion.show(filterView);
+    // var filterView = new FilterView();
+    // FrontPage.filterRegion.show(filterView);
 
     FrontPage.commands.setHandler('displayItems', function(leftType, rightType) {
       docCookies.setItem('leftType', leftType, Infinity);

@@ -1,7 +1,7 @@
 <div class="tut-info-container">
   <h3><a href='/tutorials/<%= id %>'><%= title %></a></h3>
-  <% if(!(author_id == 0)) { %><p><strong>By:</strong> <a href='/users/<%= author_id %>' class="task-user-name"><%= author_name %></a> on <%= created_at %></p><% } %>
-  <% if(logged_in_id === author_id) { %><a href="/updates/<%= id %>/edit" class="edit-link">edit</a><% } %>
+  <% if(!(author_id === 0)) { %><p><strong>By:</strong> <a href='/users/<%= author_id %>' class="task-user-name"><%= author_name %></a> on <%= created_at %></p><% } %>
+  <% if(logged_in_id !== -1 && logged_in_id === author_id) { %><a href="/updates/<%= id %>/edit" class="edit-link">edit</a><% } %>
   <p><strong>Team:</strong> <a href="/teams/<%= team_id %>" class="linked-info"><%= team_name %></a></p>
   <p><strong>Subteam:</strong> <a href="/subteams/<%= subteam_id %>" class="linked-info"><%= subteam_name %></a></p>
   <p><strong>Instructions: </strong><span class="instruction-toggle">Show</span> | <span class="instruction-expand">Expand All</span> | <span class="instruction-collapse">Collapse All</span></p>

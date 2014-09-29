@@ -15,5 +15,5 @@ json.array! @updates do |update|
   json.subteam_id     update.subteam.nil? ? 1 : update.subteam.id
   json.pictures       update.pictures
   json.created_at     update.created_at.strftime('%m/%d/%y')
-  json.logged_in_id   current_user.id
+  json.logged_in_id   current_user.nil? ? -1 : current_user.id 
 end
