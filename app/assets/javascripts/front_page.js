@@ -205,19 +205,23 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     tagName: 'div',
 
     events: {
-      'click .filter-link-header' : 'expand',
+      'click .filter-link-header' : 'expandRetract',
       'click .filter-link'        : 'selectFilter',
     },
 
-    selectFilter: function(event) {
-      var target = $(event.target);
-      var filter = target.data('filter');
-      console.log(filter);
-      docCookies.setItem('filter', filter);
+    onShow: function() {
       this.setupFilters();
     },
 
-    expand: function() {
+    selectFilter: function(event) {
+      var target = $(event.target).parent();
+      var filter = target.data('filter');
+      docCookies.setItem('filter', filter);
+      this.expandRetract();
+      this.setupFilters();
+    },
+
+    expandRetract: function() {
       this.$el.find('.filters-container').animate({
         height: "toggle"
       }, 500);
@@ -229,8 +233,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       elements = this.$el.find('.filter-link');
       elements.removeClass('active');
       for(var i = 0; i < elements.length; i++){
-        if(filter === elements[i].data('filter')) {
-          elements[i].addClass('active');
+        if(filter === elements.eq(i).data('filter')) {
+          console.log('here');
+          elements.eq(i).addClass('active');
         }
       }
     }
@@ -404,18 +409,14 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       }
     });
 
-    // var filterView = new FilterView();
-    // FrontPage.filterRegion.show(filterView);
+    var filterView = new FilterView();
+    FrontPage.filterRegion.show(filterView);
 
     FrontPage.commands.setHandler('displayItems', function(leftType, rightType) {
       docCookies.setItem('leftType', leftType, Infinity);
       docCookies.setItem('rightType', rightType, Infinity);
-      // docCookies.setItem('leftFilter', leftFilter, Infinity);
-      // docCookies.setItem('rightFilter', rightFilter, Infinity);
       FrontPage.displayItems(leftType, rightType);
     });
-    var controller = new Controller();
-    var router = new Router({controller: controller});
   });
 
 

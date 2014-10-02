@@ -39,14 +39,17 @@ footer {
 		color: #999;
 	}
 	small {
-		float: left;
 	}
 	ul {
-		float: right;
+		padding-left: 0;
 		list-style: none;
 		li {
 			float: left;
-			margin-left: 10px;
+			margin-right: 10px;
 		}
+	}
+	.user-container {
+		float: left;
+		margin: 0 10px 0 10px;
 	}
 }
