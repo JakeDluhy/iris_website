@@ -33,6 +33,7 @@
   }
 
   .subteam-content-container {
+    background-color: #D17918;
     padding: 10px;
   }
   .odd-true {
@@ -90,6 +91,9 @@
   height: auto;
   padding: 0 10px 10px 10px;
   overflow: hidden;
+  background-color: #D17918;
+  background-color: #51668C;
+  &.subteam-icon-container { background-color: #D17918; }
   div {
     float: right;
     margin-top: 5px;

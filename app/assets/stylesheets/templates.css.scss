@@ -19,7 +19,7 @@
       margin: 0;
       display: block;
       font-size: 20px;
-      color: #fff;
+      color: #EF8A1C;
     }
   }
   a {
@@ -47,6 +47,7 @@
 }
 .user-bio {
   margin-left: 10px;
+  color: #fff;
 }
 
 
@@ -134,5 +135,6 @@
 }
 
 a.edit-link {
-  color: #0000EE;
+  color: #999;
+  &:hover { color: #fff;}
 }

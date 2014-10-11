@@ -219,17 +219,25 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       docCookies.setItem('filter', filter);
       this.expandRetract();
       this.setupFilters();
+      FrontPage.displayItems();
     },
 
     expandRetract: function() {
+      var self = this;
       this.$el.find('.filters-container').animate({
         height: "toggle"
-      }, 500);
+      }, 500, function() {
+        self.$el.find('.filters-container').css('overflow', 'visible');
+      });
+
     },
 
     setupFilters: function() {
       var filter = docCookies.getItem('filter');
-      this.$el.find('.active-info').html(filter);
+      if (filter === null) {
+        filter = 'all';
+      }
+      this.$el.find('.active-info').html(filter.toUpperCase());
       elements = this.$el.find('.filter-link');
       elements.removeClass('active');
       for(var i = 0; i < elements.length; i++){
@@ -266,9 +274,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
   DisplayRegion = Marionette.Region.extend({
     showUpdates: function() {
+      var filter = docCookies.getItem('filter');
       var updatesCollection = new UpdatesCollection();
       var self = this;
       updatesCollection.fetch({
+        data: {filter: filter},
         success: function() {
           var updatesView = new UpdatesView({collection: updatesCollection});
           self.show(updatesView);
@@ -276,9 +286,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       });
     },
     showTutorials: function() {
+      var filter = docCookies.getItem('filter');
       var tutorialsCollection = new TutorialsCollection();
       var self = this;
       tutorialsCollection.fetch({
+        data: {filter: filter },
         success: function() {
           var tutorialsView = new TutorialsView({collection: tutorialsCollection});
           self.show(tutorialsView);
@@ -286,9 +298,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       });
     },
     showTasks: function() {
+      var filter = docCookies.getItem('filter');
       var tasksCollection = new TasksCollection();
       var self = this;
       tasksCollection.fetch({
+        data: {filter: filter },
         success: function() {
           var tasksView = new TasksView({collection: tasksCollection});
           self.show(tasksView);
@@ -296,9 +310,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
       });
     },
     showUsers: function() {
+      var filter = docCookies.getItem('filter');
       var usersCollection = new UsersCollection();
       var self = this;
       usersCollection.fetch({
+        data: {filter: filter },
         success: function() {
           var usersView = new UsersView({collection: usersCollection});
           self.show(usersView);
@@ -396,7 +412,7 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     var rightType = docCookies.getItem('rightType');
     var filter = docCookies.getItem('filter');
     if(filter === null){
-      filter = 'general';
+      filter = 'gen';
       docCookies.setItem('filter', filter, Infinity);
     }
     FrontPage.displayItems(leftType, rightType);

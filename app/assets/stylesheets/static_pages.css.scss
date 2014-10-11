@@ -19,7 +19,7 @@ body, html, .container {
   z-index: 500;
   .display-item-card {
     width: 100%;
-    background-color: #999;
+    background-color: #51668C;
     padding: 10px;
     margin-bottom: 10px;
     overflow: hidden;
@@ -40,7 +40,7 @@ body, html, .container {
     width: 100%;
     padding-bottom: 100%;
     margin-bottom: 10px;
-    background-color: #999;
+    background-color: #51668C;
 
     //Eliminate button styling
     border: none;
@@ -76,13 +76,12 @@ body, html, .container {
       display:block;
       cursor: pointer;
       width: 100%;
-      background-color: #999;
+      background-color: #51668C;
       .info {
         color: #fff;
         font-size: 100%;
         text-align: center;
-        text-transform: uppercase;
-        background-color: #999;
+        background-color: #51668C;
         width: 100%;
         top: calc(50% - 14px);
         top: -webkit-calc(50% - 14px);
@@ -152,7 +151,7 @@ body, html, .container {
 .leader-top-container {
   overflow: hidden;
   .info-container {
-    h3>a { color: #000;}
+    h3>a { color: #D17918;}
     width: calc(100% - 110px);
     width: -webkit-calc(100% - 110px);
     width: -moz-calc(100% - 110px);

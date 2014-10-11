@@ -93,39 +93,42 @@ p {
 }
 
 /* Card styling */
+.full-width-card, .half-width-card-left, .half-width-card-right, .half-width-card-center, .three-quarters-card-center {
+  background-color: #51668C;
+  overflow: hidden;
+  padding: 10px;
+  p {
+    color: #fff;
+  }
+  a {
+    color: #fff;
+    &:hover { color: #D17918; }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: #D17918;
+  }
+}
 
 .full-width-card {
 	width: 100%;
-  background-color: #eee;
-  overflow: hidden;
   margin: 20px 0;
-  padding: 10px;
 }
 
 .half-width-card-left {
 	width: 48%;
 	float: left;
-  background-color: #eee;
-  overflow: hidden;
   margin: 20px 0;
-  padding: 10px;
 }
 
 .half-width-card-right {
 	width: 48%;
 	float: right;
-  background-color: #eee;
-  overflow: hidden;
   margin: 20px 0;
-  padding: 10px;
 }
 
 .half-width-card-center {
   width: 50%;
-  background-color: #eee;
-  overflow: hidden;
   margin: 20px auto;
-  padding: 10px;
   .information-container {
     h3 {
       margin-top: 0;
@@ -144,10 +147,7 @@ p {
 
 .three-quarters-card-center {
   width: 75%;
-  background-color: #eee;
-  overflow: hidden;
   margin: 20px auto;
-  padding: 10px;
 }
 
 /* Input boxes */

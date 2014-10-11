@@ -4,7 +4,7 @@
   </div>
   <div id="navigation-div">
     <div id="nav-region"><!-- Populated by backbone --></div>
-    <div id="filter-region"><!-- Populated by backbone --></div>
+    <% if signed_in? %><div id="filter-region"><!-- Populated by backbone --></div><% end %>
   </div>
   <div id="right-half-div">
     <!-- Populated by backbone -->

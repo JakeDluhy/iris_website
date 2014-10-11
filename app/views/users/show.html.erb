@@ -22,13 +22,13 @@
     <div class="teams">
       <% unless @teams.empty? %><h4>Teams</h4><% end %>
       <% @teams.each do |team| %>
-        <p><%= link_to team.name, team %>: <%= team.hook %></p>
+        <p><%= link_to team.name, team %><%= ": #{team.hook}" unless team.hook.nil? %></p>
       <% end %>
     </div>
     <div class="subteams">
       <% unless @subteams.empty? %><h4>Subteams</h4><% end %>
       <% @subteams.each do |subteam| %>
-        <p><%= link_to subteam.name, subteam %>: <%= subteam.hook %></p>
+        <p><%= link_to subteam.name, subteam %>: <%= ": #{subteam.hook}" unless subteam.hook.nil? %></p>
       <% end %>
     </div>
   </div>

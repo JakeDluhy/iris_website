@@ -4,14 +4,16 @@ class Api::UpdatesController < Api::ApiController
     if current_user.nil?
       @updates = Update.all.order('updated_at DESC')
     else
-      if filter == 'team'
+      if filter == 'all'
+        @updates = Update.all.order('updated_at DESC')
+      elsif filter == 'gen'
+        @updates = Update.where('subteam_id IS NULL AND team_id IS NULL').order('updated_at DESC')
+      elsif filter == 'team'
         teams = current_user.teams.pluck(:id)
         @updates = Update.where('team_id IN (?)', teams).order('updated_at DESC')
-      elsif filter == 'subteam'
+      elsif filter == 'sub'
         subteams = current_user.subteams.pluck(:id)
         @updates = Update.where('subteam_id IN (?)', subteams).order('updated_at DESC')
-      elsif filter == 'important'
-        @updates = Update.all.order('updated_at DESC')
       else
         @updates = Update.all.order('updated_at DESC')
       end
