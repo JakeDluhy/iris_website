@@ -182,7 +182,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         leftType = this.model.get('link_to');
         ((currentRight === this.model.get('link_to')) ? rightType = currentLeft : rightType = currentRight);
       } else { console.log('error'); }
-      FrontPage.commands.execute('displayItems', leftType, rightType);
+      console.log(leftType);
+      console.log(rightType);
+      FrontPage.displayItems(leftType, rightType);
       this.model.collection.fetch(); //Hack, should think of better way to rerender items
     },
 
@@ -346,6 +348,8 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
   ----------------------------------------------- */
 
   FrontPage.displayItems = function(leftType, rightType) {
+    docCookies.setItem('leftType', leftType, Infinity);
+    docCookies.setItem('rightType', rightType, Infinity);
     if(leftType === null) {
       if(rightType === 'updates') {
         docCookies.setItem('leftType', 'calendar', Infinity);
@@ -427,12 +431,6 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
     var filterView = new FilterView();
     FrontPage.filterRegion.show(filterView);
-
-    FrontPage.commands.setHandler('displayItems', function(leftType, rightType) {
-      docCookies.setItem('leftType', leftType, Infinity);
-      docCookies.setItem('rightType', rightType, Infinity);
-      FrontPage.displayItems(leftType, rightType);
-    });
   });
 
 
