@@ -416,7 +416,7 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     var rightType = docCookies.getItem('rightType');
     var filter = docCookies.getItem('filter');
     if(filter === null){
-      filter = 'gen';
+      filter = 'all';
       docCookies.setItem('filter', filter, Infinity);
     }
     FrontPage.displayItems(leftType, rightType);
