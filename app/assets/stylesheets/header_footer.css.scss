@@ -25,26 +25,56 @@ $grayMediumLight: #eaeaea;
 
 /* footer */
 
-footer {
-	margin-top: 45px;
-	padding-top: 5px;
-	border-top: 1px solid $grayMediumLight;
-	color: #eee;
-	p {
-		color: #999;
-	}
-	small {
-	}
-	ul {
-		padding-left: 0;
-		list-style: none;
-		li {
+.footer-container {
+	width: 100%;
+	height: 17%;
+	margin-top: 20px;
+	padding: 10px;
+	.footer-info {
+		background-color: #51668C;
+		height: 100%;
+		width: 100%;
+		.footer-heading {
 			float: left;
-			margin-right: 10px;
+			width: 20%;
+			padding: 10px;
+			h3 {
+				color: #D17918;
+				margin: 0;
+			}
+			p {
+				color: #fff;
+				line-height: 1.2em;
+			}
 		}
-	}
-	.user-container {
-		float: left;
-		margin: 0 10px 0 10px;
+		.member-of-week {
+			float: left;
+			width: 79.99%;
+			padding: 10px;
+			img {
+				float: left;
+				max-height: 75%;
+				max-width: 25%;
+			}
+			.info-container {
+				padding-left: 10px;
+				float: left;
+				max-width: 25%;
+				h3 > a { margin: 0; }
+				p {
+					color: #fff;
+					line-height: 1.2em;
+				}
+			}
+			.award-description {
+				padding-left: 10px;
+				float: left;
+				max-width: 50%;
+				p {
+					color: #fff;
+					line-height: 1.2em;
+				}
+			}
+		}
 	}
 }

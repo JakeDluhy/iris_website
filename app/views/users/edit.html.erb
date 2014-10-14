@@ -49,7 +49,7 @@
         <h4>Join Subteams</h4>
         <% @other_subteams.each do |subteam| %>
           <div class="team-join-container">
-            <div class="box"><%= check_box_tag("teams[#{subteam.id}]", true) %></div><div class="box-description"><%= "#{subteam.name}" %><%= ": #{subteam.hook}" unless subteam.hook.nil? %> </div>
+            <div class="box"><%= check_box_tag("subteams[#{subteam.id}]", true) %></div><div class="box-description"><%= "#{subteam.name}" %><%= ": #{subteam.hook}" unless subteam.hook.nil? %> </div>
           </div>
         <% end %>
       <% end %>
