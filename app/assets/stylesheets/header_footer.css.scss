@@ -54,16 +54,18 @@ $grayMediumLight: #eaeaea;
 			height: 100%;
 			img {
 				float: left;
-				height: 100%;
+				max-height: 100%;
+				max-width: 15%;
 			}
 			.info-container {
 				padding-left: 10px;
 				float: left;
-				max-width: 80%;
+				max-width: 85%;
 				h3 > a { margin: 0; }
 				p {
 					color: #fff;
 					line-height: 1.2em;
+					font-size: 1em;
 				}
 			}
 			// .award-description {
