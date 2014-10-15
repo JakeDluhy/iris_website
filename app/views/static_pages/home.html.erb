@@ -15,6 +15,7 @@
   <div class="footer-info">
     <div class="footer-heading">
       <h3>IRIS Members of the Week</h3>
+      <p>Week of <%= @first_member.weekly_award.award_week %></p>
     </div>
     <div class="member-of-week">
       <% if @first_member.avatar_url.nil?  %>
@@ -24,9 +25,6 @@
       <% end %>
       <div class="info-container">
         <h3><a class="user-name" href="/users/<%= @first_member.id %>"><%= @first_member.name %></a></h3>
-        <p><%= @first_member.weekly_award.award_week %></p>
-      </div>
-      <div class="award-description">
         <p><%= @first_member.weekly_award.award_description %></p>
       </div>
     </div>

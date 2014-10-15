@@ -53,28 +53,27 @@ $grayMediumLight: #eaeaea;
 			padding: 10px;
 			img {
 				float: left;
-				max-height: 75%;
-				max-width: 15%;
+				height: 75%;
 			}
 			.info-container {
 				padding-left: 10px;
 				float: left;
-				max-width: 20%;
+				max-width: 80%;
 				h3 > a { margin: 0; }
 				p {
 					color: #fff;
 					line-height: 1.2em;
 				}
 			}
-			.award-description {
-				padding-left: 10px;
-				float: left;
-				max-width: 65%;
-				p {
-					color: #fff;
-					line-height: 1.2em;
-				}
-			}
+			// .award-description {
+			// 	padding-left: 10px;
+			// 	float: left;
+			// 	max-width: 65%;
+			// 	p {
+			// 		color: #fff;
+			// 		line-height: 1.2em;
+			// 	}
+			// }
 		}
 	}
 }
