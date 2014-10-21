@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :subteams, through: :memberships
   has_many :teams, through: :memberships
-  has_one :weekly_award
+  has_many :weekly_awards
 
   mount_uploader :avatar, AvatarUploader
 

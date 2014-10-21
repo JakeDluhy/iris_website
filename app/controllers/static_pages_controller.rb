@@ -3,8 +3,8 @@ class StaticPagesController < ApplicationController
 	
   def home
     members_of_the_week = User.where('member_of_the_week IS TRUE').order('created_at DESC')
-    members_of_the_week[0].nil? ? @first_member = User.find(1) : @first_member = members_of_the_week[0]
-    members_of_the_week[1].nil? ? @second_member = User.find(2) : @second_member = members_of_the_week[1]
+    members_of_the_week[0].nil? ? @first_member = User.all.first : @first_member = members_of_the_week[0]
+    @weekly_award = @first_member.weekly_awards.last
   end
 
   def about
@@ -12,7 +12,8 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
-    @leaders = User.where('admin IS TRUE')
+    @ateam = User.where(role_type: "ateam").order('name ASC')
+    @exec = User.where(role_type: "exec").order('name ASC')
   end
 
   def backend

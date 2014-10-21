@@ -33,22 +33,26 @@
   }
 
   .subteam-content-container {
-    background-color: #D17918;
     padding: 10px;
+    h4 {
+      margin: 0;
+      color: #fff;
+    }
   }
-  .odd-true {
-    background-color: #aaa;
-  }
-  .odd-false {
-    background-color: #ddd;
-  }
+  // .subteam-icon-container:nth-child(odd) {background-color: #D17918;}
+  // .subteam-icon-container:nth-child(even) {background-color: #A35E13;}
 
   .subteam-row {
     position: relative;
   }
 
-  .individual-subteam-container {
-    
+  .individual-subteam-container:nth-child(odd) {
+    background-color: #A35E13;
+    // .subteam-content-container {background-color: #D17918;}
+  }
+  .individual-subteam-container:nth-child(even) {
+    background-color: #D17918;
+    // .subteam-content-container {background-color: #A35E13;}
   }
   .subteam-container {
     display: none;
@@ -91,9 +95,6 @@
   height: auto;
   padding: 0 10px 10px 10px;
   overflow: hidden;
-  background-color: #D17918;
-  background-color: #51668C;
-  &.subteam-icon-container { background-color: #D17918; }
   div {
     float: right;
     margin-top: 5px;

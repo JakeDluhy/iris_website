@@ -1,5 +1,9 @@
 <li>
-	<%= image_tag user.avatar_url(:thumb), class: "user-index-pic" %>
+  <% if user.avatar_url.nil?  %>
+  <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png', class: "user-index-pic" %>
+  <% else %>
+  <%= image_tag user.avatar_url(:thumb), class: "user-index-pic" %>
+  <% end %>
 	<%= link_to user.name, user %>
 	<% if current_user.admin? && !current_user?(user) %>
 		| <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>

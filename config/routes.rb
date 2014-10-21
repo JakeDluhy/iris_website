@@ -10,6 +10,7 @@ IrisWebsite::Application.routes.draw do
   resources :tasks
   resources :teams
   resources :subteams
+  resources :weekly_awards, :only => [:new, :create]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
