@@ -1,6 +1,6 @@
 <% provide(:title, 'Contact') %>
 <h1>Contact Us</h1>
-<div class="half-width-card-center center">
+<div class="half-width-card-left">
   <% unless @ateam.empty? %><h3 class="role-header">Team Leaders</h3><% end %>
   <% @ateam.each do |ateam| %>
   <div class="leader-wrapper">
@@ -15,6 +15,8 @@
     </div>
   </div>
   <% end %>
+</div>
+<div class="half-width-card-right">
   <% unless @exec.empty? %><h3 class="role-header">Executive Board Members</h3><% end %>
   <% @exec.each do |exec| %>
   <div class="leader-wrapper">
