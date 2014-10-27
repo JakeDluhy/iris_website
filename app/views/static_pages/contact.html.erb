@@ -1,22 +1,6 @@
 <% provide(:title, 'Contact') %>
 <h1>Contact Us</h1>
 <div class="half-width-card-left">
-  <% unless @ateam.empty? %><h3 class="role-header">Team Leaders</h3><% end %>
-  <% @ateam.each do |ateam| %>
-  <div class="leader-wrapper">
-    <div class="leader-top-container">
-      <a href=<%= ateam.avatar.url %> target="_blank"><img class="leader-pic" src=<%= ateam.avatar.url %> ></a>
-      <div class="info-container">
-        <h3><a class="user-name" href="/users/<%= ateam.id %>"><%= ateam.name %></a></h3>
-        <p class="user-role"><%= ateam.role %></p>
-        <% if signed_in? %><p class="user-email"><%= ateam.email %></p><% end %>
-        <div class="user-bio"><%= ateam.bio %></div>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div>
-<div class="half-width-card-right">
   <% unless @exec.empty? %><h3 class="role-header">Executive Board Members</h3><% end %>
   <% @exec.each do |exec| %>
   <div class="leader-wrapper">
@@ -27,6 +11,22 @@
         <p class="user-role"><%= exec.role %></p>
         <% if signed_in? %><p class="user-email"><%= exec.email %></p><% end %>
         <div class="user-bio"><%= exec.bio %></div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="half-width-card-right">
+  <% unless @ateam.empty? %><h3 class="role-header">Team Leaders</h3><% end %>
+  <% @ateam.each do |ateam| %>
+  <div class="leader-wrapper">
+    <div class="leader-top-container">
+      <a href=<%= ateam.avatar.url %> target="_blank"><img class="leader-pic" src=<%= ateam.avatar.url %> ></a>
+      <div class="info-container">
+        <h3><a class="user-name" href="/users/<%= ateam.id %>"><%= ateam.name %></a></h3>
+        <p class="user-role"><%= ateam.role %></p>
+        <% if signed_in? %><p class="user-email"><%= ateam.email %></p><% end %>
+        <div class="user-bio"><%= ateam.bio %></div>
       </div>
     </div>
   </div>
