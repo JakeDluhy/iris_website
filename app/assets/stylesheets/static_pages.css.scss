@@ -135,15 +135,18 @@ body, html, .container {
   float: left;
   clear: right;
   max-width: 275px;
-  padding-right: 10px;
+  padding: 10px 10px 0 0;
   img { width: 100%; }
 }
 .img-container2 {
   float: right;
   clear: left;
   max-width: 275px;
-  padding-left: 10px;
+  padding: 10px 0 0 10px;
   img { width: 100%; }
+}
+.about-wrapper {
+  overflow: hidden;
 }
 
 /* Contact */

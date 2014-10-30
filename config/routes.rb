@@ -23,7 +23,7 @@ IrisWebsite::Application.routes.draw do
     resources :tasks, only: [:index, :show]
     resources :updates, only: [:index, :show]
     resources :users, only: [:index, :show]
-    resources :tutorials, only: [:index, :show]
+    resources :resources, only: [:index, :show]
     resources :navigation, only: [:index]
     resources :filtering, only: [:index]
   end

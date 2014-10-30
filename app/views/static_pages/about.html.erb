@@ -1,10 +1,37 @@
 <% provide(:title, 'About') %>
 <h1 class="centered">Illinois Robotics In Space</h1>
-<div class="three-quarters-card-center">
-  <div class="img-container1"><%= image_tag 'about_pic1.png' %></div>
-  <div class="img-container2"><%= image_tag 'about_pic3.png' %></div>
-  <!-- <div class="img-container3"><%#= image_tag 'about_pic4.png' %></div> -->
-  <p>Illinois Robotics In Space is a multidisciplinary student organization formed to compete in the annual NASA Robotic Mining Competition.  IRIS provides an opportunity for University of Illinois students to experience the development of innovative robotic systems in a peer-based learning environment, fostering systems thinking and collaboration though development, manufacturing, and operation of complex, space-oriented robots in a Systems Engineering framework.  IRIS’s hands-on learning environment extends into the Champaign-Urbana community through educational outreach projects and demonstrations that promote Science, Technology, Engineering, and Mathematics and inspire the next generation of students about robotics and space exploration.</p>
+<div class="about-wrapper">
+  
+  <div class="half-width-card-left">
+    <h3 class="centered">Project Status</h3>
+    <div class="img-container1"><%= image_tag 'status_update1.png' %></div>
+    <div class="img-container2"><%= image_tag 'status_update3.png' %></div>
+    <div class="img-container1"><%= image_tag 'status_update2.png' %></div>
+    <p>The IRIS V project is continually evolving and growing. Every week we are working hard on implementing new code, designing the robot, and building circuits. Right now, we've completed our PDR, or Preliminary Design Review.</p>
+    <p>For PDR, we've designed a first cut CAD model of the robot, which allows us to check how different components interface with each other. From this design, the mechanical team will be working on refining the model, and choosing parts to order for the assembly next semester.</p>
+    <p>We've also been hard at work writing the code that will drive the robot. Simultaneous Localization and Mapping is working on determing where the robot is located via a method of triangulating laser signals. The Path Planning team is coordinating with SLAM to decide where the robot should move. Together, they're creating some great software that will make IRIS V the best robot yet.</p>
+    <p>Last, but certainly not least, is the amazing work the electrical team is doing to ensure the robot is powered and working round the clock. From selection and ordering of parts, to designing circuit boards to be implemented on the robot, the electrical team is working hard on designing the robot.</p>
+  </div>
+
+  <div class="half-width-card-right">
+    <h3 class="centered">IRIS Mission Statement</h3>
+    <div class="img-container1"><%= image_tag 'about_pic1.png' %></div>
+    <div class="img-container2"><%= image_tag 'about_pic3.png' %></div>
+    <!-- <div class="img-container3"><%#= image_tag 'about_pic4.png' %></div> -->
+    <p>Illinois Robotics In Space is a multidisciplinary student organization formed to compete in the annual NASA Robotic Mining Competition.  IRIS provides an opportunity for University of Illinois students to experience the development of innovative robotic systems in a peer-based learning environment, fostering systems thinking and collaboration though development, manufacturing, and operation of complex, space-oriented robots in a Systems Engineering framework.  IRIS’s hands-on learning environment extends into the Champaign-Urbana community through educational outreach projects and demonstrations that promote Science, Technology, Engineering, and Mathematics and inspire the next generation of students about robotics and space exploration.</p>
+
+    <h3 class="centered">Educational Outreach</h3>
+    <div class="img-container2"><%= image_tag 'ed_out1.png' %></div>
+    <p>IRIS believes that everyone should have the opportunity to particpate in science and engineering, especially from a young age. This is what motivates the educational outreach program we run. From going out to elementary and high schools to interact with students, to volunteering at robotic events, IRIS Ed Out is passionate about helping the community. Some of the projects that we've been involved with are:
+      <ul>
+        <li>Presenting at the IEEE Projects Fair</li>
+        <li>Taught students about robotics at Illinois Space Day and Engineering Open House</li>
+        <li>Collaborated with Women in Aerospace on Introduce a Girl to Engineering Day</li>
+        <li>Volunteered with the First Lego League Competition</li>
+      </ul>
+    </p>
+  </div>
+  
 </div>
 
 <h3 class="centered">IRIS Teams</h3>

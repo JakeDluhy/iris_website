@@ -17,8 +17,8 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     url: function() {'/api/users/' + this.get('id') + '.json'}
   });
 
-  Tutorial = Backbone.Model.extend({
-    url: function() {'/api/users/' + this.get('id') + '.json'}
+  Resource = Backbone.Model.extend({
+    url: function() {'/api/resources/' + this.get('id') + '.json'}
   });
 
   Nav = Backbone.Model.extend({
@@ -44,9 +44,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     url: '/api/users.json'
   });
 
-  TutorialsCollection = Backbone.Collection.extend({
-    model: Tutorial,
-    url: '/api/tutorials.json'
+  ResourcesCollection = Backbone.Collection.extend({
+    model: Resource,
+    url: '/api/resources.json'
   });
 
   NavigationCollection = Backbone.Collection.extend({
@@ -85,42 +85,48 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     className: 'calendar-container'
   });
 
-  TutorialView = Backbone.Marionette.ItemView.extend({
-    template: JST['templates/tutorial'],
+  // TutorialView = Backbone.Marionette.ItemView.extend({
+  //   template: JST['templates/tutorial'],
+  //   tagName: 'div',
+  //   className: 'display-item-card tutorial-card',
+
+  //   events: {
+  //     'click .instruction-toggle' : 'toggleInstructions',
+  //     'click .instruction-expand' : 'expandInstructions',
+  //     'click .instruction-collapse': 'collapseInstructions',
+  //     'click .instruction-container' : 'toggleInstruction'
+  //   },
+
+  //   /* ------------ Event Handlers -------------------- */
+
+  //   toggleInstructions: function(event) {
+  //     if(this.$el.find('.instructions-container').hasClass('hidden')){
+  //       this.$el.find('.instructions-container').removeClass('hidden');
+  //       $(event.target).html('Hide');
+  //     } else {
+  //       this.$el.find('.instructions-container').addClass('hidden');
+  //       $(event.target).html('Show');
+  //     }
+  //   },
+  //   expandInstructions: function(event) {
+  //     this.$el.find('.instructions-container').removeClass('hidden');
+  //     this.$el.find('.instruction-toggle').html('Hide');
+  //     this.$el.find('.instruction-content').removeClass('hidden');
+  //   },
+  //   collapseInstructions: function() {
+  //     this.$el.find('.instruction-content').addClass('hidden');
+  //   },
+  //   toggleInstruction: function(event) {
+  //     if(!$(event.target).hasClass('content-pic')) {
+  //       $(event.target).closest('.instruction-container').find('.instruction-content').toggleClass('hidden');
+  //     }
+  //   }
+  // });
+
+  ResourceView = Backbone.Marionette.ItemView.extend({
+    template: JST['templates/resource'],
     tagName: 'div',
-    className: 'display-item-card tutorial-card',
-
-    events: {
-      'click .instruction-toggle' : 'toggleInstructions',
-      'click .instruction-expand' : 'expandInstructions',
-      'click .instruction-collapse': 'collapseInstructions',
-      'click .instruction-container' : 'toggleInstruction'
-    },
-
-    /* ------------ Event Handlers -------------------- */
-
-    toggleInstructions: function(event) {
-      if(this.$el.find('.instructions-container').hasClass('hidden')){
-        this.$el.find('.instructions-container').removeClass('hidden');
-        $(event.target).html('Hide');
-      } else {
-        this.$el.find('.instructions-container').addClass('hidden');
-        $(event.target).html('Show');
-      }
-    },
-    expandInstructions: function(event) {
-      this.$el.find('.instructions-container').removeClass('hidden');
-      this.$el.find('.instruction-toggle').html('Hide');
-      this.$el.find('.instruction-content').removeClass('hidden');
-    },
-    collapseInstructions: function() {
-      this.$el.find('.instruction-content').addClass('hidden');
-    },
-    toggleInstruction: function(event) {
-      if(!$(event.target).hasClass('content-pic')) {
-        $(event.target).closest('.instruction-container').find('.instruction-content').toggleClass('hidden');
-      }
-    }
+    className: 'display-item-card'
   });
 
 
@@ -263,8 +269,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     childView: UserView
   });
 
-  TutorialsView = Backbone.Marionette.CollectionView.extend({
-    childView: TutorialView
+  // TutorialsView = Backbone.Marionette.CollectionView.extend({
+  //   childView: TutorialView
+  // });
+  ResourcesView = Backbone.Marionette.CollectionView.extend({
+    childView: ResourceView
   });
 
   NavigationView = Backbone.Marionette.CollectionView.extend({
@@ -287,15 +296,27 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         }
       });
     },
-    showTutorials: function() {
+    // showTutorials: function() {
+    //   var filter = docCookies.getItem('filter');
+    //   var tutorialsCollection = new TutorialsCollection();
+    //   var self = this;
+    //   tutorialsCollection.fetch({
+    //     data: {filter: filter },
+    //     success: function() {
+    //       var tutorialsView = new TutorialsView({collection: tutorialsCollection});
+    //       self.show(tutorialsView);
+    //     }
+    //   });
+    // },
+    showResources: function() {
       var filter = docCookies.getItem('filter');
-      var tutorialsCollection = new TutorialsCollection();
+      var resourcesCollection = new ResourcesCollection();
       var self = this;
-      tutorialsCollection.fetch({
+      resourcesCollection.fetch({
         data: {filter: filter },
         success: function() {
-          var tutorialsView = new TutorialsView({collection: tutorialsCollection});
-          self.show(tutorialsView);
+          var resourcesView = new ResourcesView({collection: resourcesCollection});
+          self.show(resourcesView);
         }
       });
     },
@@ -369,6 +390,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         case 'tutorials':
           FrontPage.leftRegion.showTutorials();
           break;
+        case 'resources':
+          FrontPage.leftRegion.showResources();
+          break;
         case 'tasks':
           FrontPage.leftRegion.showTasks();
           break;
@@ -397,6 +421,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
           break;
         case 'tutorials':
           FrontPage.rightRegion.showTutorials();
+          break;
+        case 'resources':
+          FrontPage.rightRegion.showResources();
           break;
         case 'tasks':
           FrontPage.rightRegion.showTasks();

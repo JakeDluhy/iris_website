@@ -6,10 +6,15 @@ class Api::NavigationController < Api::ApiController
         symbol: 'comment',
         tooltip: 'Updates'
       },
+      # {
+      #   link_to: 'tutorials',
+      #   symbol: 'university',
+      #   tooltip: 'Tutorials'
+      # },
       {
-        link_to: 'tutorials',
+        link_to: 'resources',
         symbol: 'university',
-        tooltip: 'Tutorials'
+        tooltip: 'Resources'
       },
       {
         link_to: 'tasks',
