@@ -1,5 +1,5 @@
 $(document).ready(function() {
-if(window.location.href === "http://localhost:3000/" || window.location.href === "https://irisengineering.herokuapp.com/"){
+if(window.location.href === "http://localhost:3000/" || window.location.href === "https://irisengineering.herokuapp.com/" || window.location.href === "https://www.illinoisroboticsinspace.com/"){
   FrontPage = new Backbone.Marionette.Application();
 
   /* -------------- Models -----------------------

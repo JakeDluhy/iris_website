@@ -134,14 +134,17 @@ body, html, .container {
 .img-container1, .img-container3 {
   float: left;
   clear: right;
-  max-width: 275px;
+  max-width: 250px;
   padding: 10px 10px 0 0;
   img { width: 100%; }
+  &.img-container3 {
+    max-width: 225px;
+  }
 }
 .img-container2 {
   float: right;
   clear: left;
-  max-width: 275px;
+  max-width: 250px;
   padding: 10px 0 0 10px;
   img { width: 100%; }
 }
