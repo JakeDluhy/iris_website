@@ -1,7 +1,6 @@
 <% provide(:title, 'Edit user') %>
 <h1>Update your profile</h1>
 
-<div class="row">
   <div class="half-width-card-left">
     <%= form_for(@user) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { object: @user } %>
@@ -16,6 +15,12 @@
 
       <%= f.label :bio, "A short bio" %>
       <%= f.text_area :bio, rows: 3 %>
+
+      <%= f.label :major, "Your Major" %>
+      <%= f.text_field :major %>
+
+      <%= f.label :year, "Year in School" %>
+      <%= f.select(:year, ['Freshman', 'Sophomore', 'Junior', 'Senior']) %>      
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
@@ -56,5 +61,4 @@
     </div>
 
     <%= submit_tag("Join Teams", class: "btn btn-primary team-join-button") %>
-</div>
 </div>

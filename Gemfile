@@ -19,6 +19,7 @@ gem 'font-awesome-sass'
 gem 'gibbon'
 gem 'newrelic_rpm'
 gem 'redcarpet'
+gem 'google_calendar'
 
 gem 'pry'
 

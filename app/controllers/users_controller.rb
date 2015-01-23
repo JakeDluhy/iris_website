@@ -16,15 +16,15 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     if @user.subteams.exists?
-      @subteams = @user.subteams
-      @other_subteams = Subteam.where('id NOT IN (?)', @subteams.pluck(:id))
+      @subteams, ids = filter_duplicate_subteams(@user.subteams)
+      @other_subteams = Subteam.where('id NOT IN (?)', ids)
     else
       @subteams = []
       Subteam.all.exists? ? @other_subteams = Subteam.all : @other_subteams = []
     end
     if @user.teams.exists?
-      @teams = @user.teams
-      @other_teams = Team.where('id NOT IN (?)', @teams.pluck(:id))
+      @teams, ids = filter_duplicate_teams(@user.teams)
+      @other_teams = Team.where('id NOT IN (?)', ids)
     else
       @teams = []
       Team.all.exists? ? @other_teams = Team.all : @other_teams = []
@@ -45,15 +45,15 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     if @user.subteams.exists?
-      @subteams = @user.subteams
-      @other_subteams = Subteam.where('id NOT IN (?)', @subteams.pluck(:id))
+      @subteams, ids = filter_duplicate_subteams(@user.subteams)
+      @other_subteams = Subteam.where('id NOT IN (?)', ids)
     else
       @subteams = []
       Subteam.all.exists? ? @other_subteams = Subteam.all : @other_subteams = []
     end
     if @user.teams.exists?
-      @teams = @user.teams
-      @other_teams = Team.where('id NOT IN (?)', @teams.pluck(:id))
+      @teams, ids = filter_duplicate_teams(@user.teams)
+      @other_teams = Team.where('id NOT IN (?)', ids)
     else
       @teams = []
       Team.all.exists? ? @other_teams = Team.all : @other_teams = []
@@ -86,6 +86,31 @@ class UsersController < ApplicationController
 
   	def user_params
       params[:user][:avatar] = params[:user][:pictures][0] unless params[:user][:pictures].nil?
-  		params.require(:user).permit(:name, :email, :bio, :avatar, :password, :password_confirmation)
+  		params.require(:user).permit(:name, :email, :bio, :avatar, :password, :password_confirmation, :major, :year)
   	end
+
+    #Hack to fix duplicate membership mistake
+    def filter_duplicate_teams(teams)
+      filtered = []
+      ids = []
+      teams.each do |team|
+        unless (ids.include?(team.id))
+          filtered.push(Team.find(team.id))
+          ids.push(team.id)
+        end
+      end
+      return filtered, ids
+    end
+
+    def filter_duplicate_subteams(subteams)
+      filtered = []
+      ids = []
+      subteams.each do |subteam|
+        unless (ids.include?(subteam.id))
+          filtered.push(Subteam.find(subteam.id))
+          ids.push(subteam.id)
+        end
+      end
+      return filtered, ids
+    end
 end

@@ -1,3 +1,4 @@
+require './lib/calendar.rb'
 class Api::ResourcesController < Api::ApiController
   def index
     @resources = [

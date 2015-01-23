@@ -25,6 +25,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.6)
     arel (4.0.2)
     aws_cf_signer (0.1.3)
     bcrypt (3.1.7)
@@ -63,6 +64,7 @@ GEM
     ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.2.1)
+    extlib (0.9.16)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -70,12 +72,17 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.2)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
     gibbon (1.1.3)
       httparty
       multi_json (>= 1.3.4)
+    google_calendar (0.4.4)
+      json (~> 1.8)
+      signet (~> 0.5)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -91,6 +98,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.1)
+    jwt (1.2.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -102,6 +110,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     netrc (0.7.7)
     newrelic_rpm (3.9.3.241)
     nokogiri (1.6.3)
@@ -167,6 +176,12 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    signet (0.6.0)
+      addressable (~> 2.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      jwt (~> 1.0)
+      multi_json (~> 1.10)
     slop (3.6.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -210,6 +225,7 @@ DEPENDENCIES
   faker
   font-awesome-sass
   gibbon
+  google_calendar
   jbuilder
   jquery-rails
   jquery-turbolinks

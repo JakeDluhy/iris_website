@@ -10,8 +10,10 @@
       	<h3>
       		<%= @user.name %>
       	</h3>
+        <% unless @user.major.blank? %><h5><%= @user.major %></h5><% end %>
+        <% unless @user.year.blank? %><h5><%= @user.year %></h5><% end %>
       </div>
-      <p class="description"><% if @user[:bio] %>
+      <p class="description"><% if !@user[:bio].blank? %>
         <%= @user[:bio] %>
         <% elsif @user == current_user %>
         <%= link_to "Write a short bio", edit_user_path(current_user) %>
