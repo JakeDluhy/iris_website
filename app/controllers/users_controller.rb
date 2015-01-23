@@ -86,8 +86,16 @@ class UsersController < ApplicationController
 
   	def user_params
       params[:user][:avatar] = params[:user][:pictures][0] unless params[:user][:pictures].nil?
+      # params[:resume] = upload_resume(params[:resume]) unless params[:resume].nil?
   		params.require(:user).permit(:name, :email, :bio, :avatar, :resume, :password, :password_confirmation, :major, :year)
   	end
+
+    # def upload_resume(resume)
+    #   user = current_user
+    #   public_id = "resume_#{user.id}"
+    #   Cloudinary::Uploader.upload(resume, :public_id => public_id)
+    #   return public_id
+    # end
 
     #Hack to fix duplicate membership mistake
     def filter_duplicate_teams(teams)
