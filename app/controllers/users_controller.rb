@@ -66,7 +66,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit'
+      redirect_to edit_user_path(@user)
     end
   end
 
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
 
   	def user_params
       params[:user][:avatar] = params[:user][:pictures][0] unless params[:user][:pictures].nil?
-  		params.require(:user).permit(:name, :email, :bio, :avatar, :password, :password_confirmation, :major, :year)
+  		params.require(:user).permit(:name, :email, :bio, :avatar, :resume, :password, :password_confirmation, :major, :year)
   	end
 
     #Hack to fix duplicate membership mistake

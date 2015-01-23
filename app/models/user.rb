@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :weekly_awards
 
   mount_uploader :avatar, AvatarUploader
+  mount_uploader :resume, AvatarUploader
 
   def User.new_remember_token
   	SecureRandom.urlsafe_base64

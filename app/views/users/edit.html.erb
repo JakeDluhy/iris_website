@@ -20,7 +20,15 @@
       <%= f.text_field :major %>
 
       <%= f.label :year, "Year in School" %>
-      <%= f.select(:year, ['Freshman', 'Sophomore', 'Junior', 'Senior']) %>      
+      <%= f.select(:year, ['Freshman', 'Sophomore', 'Junior', 'Senior']) %>   
+
+      <%= f.label :resume, 'Upload a resume' %>
+      <div class="resume-wrapper">
+        <div class="btn btn-default btn-file">
+          Browse <%= f.file_field :resume %>
+        </div>
+        <span class="resume-feedback"></span>
+      </div>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
