@@ -1,8 +1,20 @@
 @import "bootstrap";
 
+$darkPrimary: #1976d2;
+$primary: #2196f3;
+$lightPrimary: #bbdefb;
+$lightText: #ffffff;
+$accent: #ff5722;
+$primaryText: #212121;
+$secondaryText: #727272;
+$divider: #b6b6b6;
+
 /* header */
 $grayMediumLight: #eaeaea;
 
+.logo-container {
+	margin: 5px 0 0 5px;
+}
 #logo {
 	float: left;
 	margin-right: 10px;

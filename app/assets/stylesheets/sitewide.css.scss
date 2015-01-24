@@ -2,6 +2,11 @@
 
 /* universal styling */
 
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 300 !important;
+}
+
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
