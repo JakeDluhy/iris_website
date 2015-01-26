@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "colors";
 
 @mixin box_sizing {
 	-moz-box-sizing: border-box;
@@ -41,7 +42,6 @@ input {
 			h5 {
 				font-weight: none;
 				margin: 5px 0;
-				color: white;
 			}
 		}
 		.description {
@@ -92,26 +92,35 @@ input {
 }
 
 /* Users index */
+.container-left {
+	width: 50%;
+	float: left;
+	padding: 0 20px;
+}
+.container-right {
+	width: 50%;
+	float: right;
+	padding: 0 20px;
+}
 
-.users {
-	list-style: none;
-	margin: 0;
-	li {
-		overflow: auto;
-		padding: 10px 0;
-		border-top: 1px solid #999;
-		&:last-child {
-			border-bottom: 1px solid #999;
-		}
-
-		.user-index-pic {
-			max-height: 50px;
+.user-card {
+	width: 100%;
+	padding: 10px;
+	margin: 20px 0;
+	overflow: hidden;
+	background-color: white;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+	.image-container {
+		img {
+			max-width: 100% !important;
 		}
 	}
-}
-.users-prompt {
-	margin: 10px 40px;
-	text-align: center;
+	h3 {
+		margin: 0;
+		a {
+			color: $accent;
+		}
+	}
 }
 
 .pagination {
@@ -131,21 +140,10 @@ input {
 	}
 }
 
-label {
-	color: #EF8A1C;
-}
-input.btn {
-	background-color:  #777;
-	border: #777;
-	&:hover {
-		background-color:  #333;
-	border: #333;
-	}
-}
-
 .resume-wrapper {
-	margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 .resume-feedback {
 	color: white;
+	
 }

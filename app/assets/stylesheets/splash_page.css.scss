@@ -1,0 +1,131 @@
+@import 'bootstrap';
+@import 'colors';
+
+.splash-div {
+	width: 100%;
+	&.greeting {
+		margin-top: -1px;
+		background-color: $primary;
+		padding: 80px;
+		.content-wrapper {
+			padding: 10px;
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+			h2, h4 {
+				color: $lightText;
+			}
+			.email-signup {
+				margin-top: 80px;
+				#email {
+					width: 40%;
+					clear: both;
+					border-radius: 15px;
+					height: 40px !important;
+					padding: 5px;
+					text-align: center;
+				}
+				.email-submit {
+					width: 20%;
+					padding: 10px;
+					border: 0;
+					box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+				}
+			}
+		}
+	}
+
+	&.about {
+		padding: 40px 100px;
+		background-color: $backgroundLight;
+		overflow: hidden;
+		.about-card {
+			padding: 10px 25px;
+			margin-bottom: 40px;
+			box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+			background-color: white;
+			width: 75%;
+			overflow: hidden;
+			.image-container {
+				padding: 10px;
+				img {
+					max-width: 100%;
+				}
+			}
+			.about-info {
+				padding: 10px;
+
+			}
+			clear: both;
+			&.left {
+				float: left;
+			}
+			&.right {
+				float: right;
+			}
+		}
+	}
+
+	&.sponsors {
+		padding: 40px 100px;
+		background-color: $lightPrimary;
+		a {
+			color: $accent;
+		}
+		h2, h4 {
+			text-align: center;
+		}
+	}
+	&.contact {
+		padding: 40px 100px;
+		background-color: $backgroundLight;
+		overflow: hidden;
+		.exec-container {
+
+		}
+		.ateam-container {
+			h3 {
+				text-align: right;
+			}
+		}
+		.contact-card {
+			.row { margin: 0; }
+			background-color: white;
+			margin-bottom: 10px;
+			padding: 10px 0;
+			box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+			overflow: hidden;
+			.headshot-container {
+				img {
+					max-width: 100%
+				}
+			}
+			.user-bio {
+				margin: 0;
+				color: $primaryText;
+			}
+			a{ 
+				margin: 0;
+				color: $accent;
+		  }
+			p{ margin: 0; }
+			h3 { text-align: left; }
+		}
+	}
+	&.splash-footer {
+		background-color: #333;
+		padding: 10px 40px;
+		.row {
+			margin: 0;
+		}
+		h6 {
+			color: $lightText;
+		}
+		.right {
+			text-align: right;
+		}
+		a {
+			color: $accent;
+		}
+	}
+}

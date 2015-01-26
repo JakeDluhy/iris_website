@@ -1,10 +1,12 @@
 @import "bootstrap";
+@import "colors";
 
 /* universal styling */
 
 body {
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 300 !important;
+  background-color: $backgroundLight !important;
 }
 
 @mixin box_sizing {
@@ -28,6 +30,12 @@ section {
 textarea {
 	resize: vertical;
 }
+form {
+  label {
+    color: $lightText;
+  }
+}
+
 
 /* typography */
 
@@ -74,6 +82,11 @@ p {
 	@include box_sizing;
 }
 
+.alert {
+  text-align: center;
+  margin: -1px 0 0 0 !important;
+}
+
 .alert-error {
   color: #a94442;
   background-color: #f2dede;
@@ -81,9 +94,9 @@ p {
 }
 
 .alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+  color: $lightText !important;
+  background-color: #FFC107 !important;
+  border-color: #FFC107 !important;
 }
 
 .alert-info {
@@ -100,24 +113,41 @@ p {
 
 /* Card styling */
 .full-width-card, .half-width-card-left, .half-width-card-right, .half-width-card-center, .three-quarters-card-center {
-  background-color: #51668C;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden;
   padding: 10px;
   p {
-    color: #fff;
+    color: $primaryText;
   }
   li {
     font-size: 1.1em;
-    color: #fff;
+    color: $lightText;
     margin: 5px 0;
   }
   a {
-    color: #D17918;
+    color: $accent;
     &:hover {  color: #fff;}
   }
   h1, h2, h3, h4, h5, h6 {
-    color: #D17918;
+    color: $primaryText;
     margin: 0 0 5px 0;
+  }
+  label {
+    color: $primaryText;
+  }
+  input, .file-input-container, textarea {
+    background-color: #f8f8f8 !important;
+  }
+}
+
+input.btn, div.btn {
+  background-color: $accent !important;
+  color: white;
+  border: 0;
+  &:hover {
+    background-color: $accentLight !important; 
+    color: $primaryText;
   }
 }
 

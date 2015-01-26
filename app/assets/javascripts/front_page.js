@@ -82,7 +82,7 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
   CalendarView = Backbone.Marionette.ItemView.extend({
     template: JST['templates/calendar'],
     tagName: 'div',
-    className: 'calendar-container'
+    className: 'calendar-wrapper'
   });
 
   // TutorialView = Backbone.Marionette.ItemView.extend({
@@ -147,22 +147,21 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     },
     
     events: {
-      'mouseover': 'showArrows',
-      'mouseout': 'removeArrow',
-      'click .left-arrow': 'setLeft',
-      'click .right-arrow': 'setRight'
+      'mouseover .arrow-container': 'showArrows',
+      'mouseover .arrow': 'showMe',
+      'mouseout .arrow-container': 'removeArrow',
+      'click .left': 'setLeft',
+      'click .right': 'setRight'
     },
 
     /* ------------ Event Handlers -------------------- */
 
-    showArrows: function() {
-      if(!this.$el.find('.left-arrow.orange').hasClass('hidden')) {
-        this.$el.find('.nav-arrow.right-arrow').removeClass('hidden');
-      } else if (!this.$el.find('.right-arrow.orange').hasClass('hidden')) {
-        this.$el.find('.nav-arrow.left-arrow').removeClass('hidden');
-      } else {
-        this.$el.find('.nav-arrow').removeClass('hidden');
-      }
+    showArrows: function(event) {
+      var target = $(event.target);
+      target.find('.arrow').removeClass('hidden');
+    },
+    showMe: function(event) {
+      $(event.target).removeClass('hidden');
     },
     removeArrow: function() {
       this.setIndicators();
@@ -197,13 +196,13 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
     setIndicators: function() {
       if(docCookies.getItem('leftType') === this.model.get('link_to')) {
-        this.$el.find('.left-arrow.orange').removeClass('hidden');
-        this.$el.find('.right-arrow').addClass('hidden');
+        this.$el.find('.left').find('.arrow').removeClass('hidden');
+        this.$el.find('.right').find('.arrow').addClass('hidden');
       } else if(docCookies.getItem('rightType') === this.model.get('link_to')) {
-        this.$el.find('.right-arrow.orange').removeClass('hidden');
-        this.$el.find('.left-arrow').addClass('hidden');
+        this.$el.find('.right').find('.arrow').removeClass('hidden');
+        this.$el.find('.left').find('.arrow').addClass('hidden');
       } else {
-        this.$el.find('.nav-arrow').addClass('hidden');
+        this.$el.find('.arrow').addClass('hidden');
       }
     }
   });

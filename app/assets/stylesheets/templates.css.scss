@@ -1,9 +1,10 @@
 @import "bootstrap";
+@import "colors";
 
 .display-item-card {
   p {
     margin: 0;
-    color: #fff;
+    color: $primaryText;
   }
 }
 
@@ -19,12 +20,12 @@
       margin: 0;
       display: block;
       font-size: 20px;
-      color: #EF8A1C;
+      color: $primary;
     }
   }
   a {
-    color: #eee;
-    &:hover { color: #D17918;}
+    color: $accent;
+    &:hover { color: $primaryText;}
   }
   .user-name {
     margin-left: 10px;
@@ -130,9 +131,17 @@
 }
 
 /* Calendar View */
-.calendar-container {
-  width: 100%;
+.calendar-wrapper {
+  padding: 20px 0;
   height: 100%;
+  width: 100%;
+  .calendar-container {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
+  }
 }
 
 a.edit-link {

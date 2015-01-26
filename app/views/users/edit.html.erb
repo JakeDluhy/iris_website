@@ -1,7 +1,6 @@
 <% provide(:title, 'Edit user') %>
-<h1>Update your profile</h1>
-
   <div class="half-width-card-left">
+    <h3>Edit your Profile</h3>
     <%= form_for(@user) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { object: @user } %>
       
@@ -34,6 +33,7 @@
     <% end %>
   </div>
   <div class="half-width-card-right team-memberships">
+    <h3>Sign up for teams</h3>
     <%= form_tag("/users/#{@user.id}/join_teams", method: :put, id: "join_teams") %>
     <div class="team-options">
       <% unless @teams.empty? %>

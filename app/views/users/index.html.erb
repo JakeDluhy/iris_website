@@ -1,9 +1,11 @@
 <% provide(:title, 'All users') %>
-<div class="three-quarters-card-center">
-  <h3 class="users-prompt">IRIS Members</h3>
-  <ul class="users">
-  	<%= render @users %>
-  </ul>
-
-  <%= will_paginate %>
+<div class="container-left">
+<% @users.each_with_index do |user, index| %>
+	<% if index.even? %><%= render partial: 'user', locals: { user: user} %><% end %>
+<% end %>
+</div>
+<div class="container-right">
+<% @users.each_with_index do |user, index| %>
+	<% if index.odd? %><%= render partial: 'user', locals: {user: user} %><% end %>
+<% end %>
 </div>

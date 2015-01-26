@@ -1,5 +1,6 @@
 class Mailchimp
   MAILING_LIST_ID = "77bc6731c9"
+  SPONSORS_LIST_ID = "752cf3a6ba"
 
   def initialize
     @gb = Gibbon::API.new('356819224db1b541568200d055dd8f3c-us8')
@@ -13,6 +14,16 @@ class Mailchimp
         :FNAME => name.split[0],
         :LNAME => name.split[1]
       },
+      :double_optin => false,
+      :send_welcome => true
+    }
+    @gb.lists.subscribe(data)
+  end
+
+  def subscribe_to_sponsors(email)
+    data = {
+      :id => SPONSORS_LIST_ID,
+      :email => { :email => email },
       :double_optin => false,
       :send_welcome => true
     }

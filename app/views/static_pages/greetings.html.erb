@@ -1,0 +1,103 @@
+<div class="greeting splash-div">
+	<div class="content-wrapper">
+		<h2>Welcome to Illinois Robotics in Space</h2>
+		<h4>A multidisciplinary student organization at UIUC</h4>
+		<div class="email-signup">
+			<h4>Sponsors, organizations, and friends sign up for our mailing list!</h4>
+			<%= form_tag do %>
+				<%= text_field_tag(:email, nil, placeholder: 'Email') %><br>
+				<%= submit_tag("Sign up!", :class => 'email-submit btn') %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="about splash-div">
+	<div class="about-card left">
+		<div class="row">
+			<div class="col-md-3 image-container">
+				<%= image_tag 'about_pic1.png' %>
+			</div>
+			<div class="col-md-9 about-info">
+				<p>IRIS is an organization that gives students the opportunity to design and create innovative robots for the NASA robotic mining competition. With a hands on learning environment and self directed work, we produce some of the best engineers on campus!</p>
+			</div>
+		</div>
+	</div>
+	<div class="about-card right">
+		<div class="row">
+			<div class="col-md-9 about-info">
+				<p>The IRIS robot is a continuous work in progress. At the moment, we've completed our Critical Design Review and are about to begin building! As soon as it's complete we can start tests to ensure that it works as planned.</p>
+			</div>
+			<div class="col-md-3 image-container">
+				<%= image_tag 'status_update1.png' %>
+			</div>
+		</div>
+	</div>
+	<div class="about-card left">
+		<div class="row">
+			<div class="col-md-3 image-container">
+				<%= image_tag 'about_pic3.png' %>
+			</div>
+			<div class="col-md-9 about-info">
+				<p>We are also very involved with the community, reaching out to elementary and high schools to encourage STEM for the younger generation. This unique experience is rewarding for both our members and the students they mentor.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="sponsors splash-div">
+<h2>Sponsor? We'd love to hear from you!</h2>
+<h4>Contact us at <a href="mailto:iris.uiuc@gmail.com">iris.uiuc@gmail.com</a> or visit our <%= link_to 'Sponsors page', sponsors_path %> for more details</h4>
+</div>
+<div class="contact splash-div">
+	<div class="row">
+		<div class="col-md-6 exec-container">
+			<% unless @exec.empty? %><h3>Executive Board Members</h3><% end %>
+			<% @exec.each do |exec| %>
+				<div class="contact-card">
+					<div class="row">
+						<div class="col-md-3 headshot-container">
+							<img class="leader-pic" src=<%= exec.avatar.url %> >
+						</div>
+						<div class="col-md-9 info-container">
+							<h3><a class="user-name" href="/users/<%= exec.id %>"><%= exec.name %></a></h3>
+			        <p class="user-role"><%= exec.role %></p>
+			        <% if signed_in? %><p class="user-email"><%= exec.email %></p><% end %>
+			        <div class="user-bio"><%= exec.bio %></div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-md-6 ateam-container">
+			<% unless @ateam.empty? %><h3>Team Leaders</h3><% end %>
+			<% @ateam.each do |ateam| %>
+				<div class="contact-card">
+					<div class="row">
+						<div class="col-md-3 headshot-container">
+							<img class="leader-pic" src=<%= ateam.avatar.url %> >
+						</div>
+						<div class="col-md-9 info-container">
+							<h3><a class="user-name" href="/users/<%= ateam.id %>"><%= ateam.name %></a></h3>
+			        <p class="user-role"><%= ateam.role %></p>
+			        <% if signed_in? %><p class="user-email"><%= ateam.email %></p><% end %>
+			        <div class="user-bio"><%= ateam.bio %></div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="splash-footer splash-div">
+	<div class="row">
+		<div class="col-md-4">
+			<h6>Connect with us <a href="https://www.facebook.com/IllinoisRoboticsInSpace"><i class="fa fa-facebook"></i></a> | <a href="https://twitter.com/iris_uiuc"><i class="fa fa-twitter"></i></a></h6>
+			<h6>Questions? Email <a href="mailto:iris.uiuc@gmail.com">iris.uiuc@gmail.com</a></h6>
+		</div>
+		<div class="col-md-4">
+
+		</div>
+		<div class="col-md-4">
+			<h6 class="right">&#169 Copyright 2014-2015</h6><h6 class="right">Illinois Robotics in Space</h6>
+		</div>
+	</div>
+</div>

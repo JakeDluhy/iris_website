@@ -5,7 +5,7 @@
   <% @exec.each do |exec| %>
   <div class="leader-wrapper">
     <div class="leader-top-container">
-      <a href=<%= exec.avatar.url %> target="_blank"><img class="leader-pic" src=<%= exec.avatar.url %> ></a>
+      <img class="leader-pic" src=<%= exec.avatar.url %> >
       <div class="info-container">
         <h3><a class="user-name" href="/users/<%= exec.id %>"><%= exec.name %></a></h3>
         <p class="user-role"><%= exec.role %></p>
@@ -21,7 +21,7 @@
   <% @ateam.each do |ateam| %>
   <div class="leader-wrapper">
     <div class="leader-top-container">
-      <a href=<%= ateam.avatar.url %> target="_blank"><img class="leader-pic" src=<%= ateam.avatar.url %> ></a>
+      <img class="leader-pic" src=<%= ateam.avatar.url %> >
       <div class="info-container">
         <h3><a class="user-name" href="/users/<%= ateam.id %>"><%= ateam.name %></a></h3>
         <p class="user-role"><%= ateam.role %></p>

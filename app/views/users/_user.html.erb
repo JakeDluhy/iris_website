@@ -1,11 +1,16 @@
-<li>
-  <% if user.avatar_url.nil?  %>
-  <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png', class: "user-index-pic" %>
-  <% else %>
-  <%= image_tag user.avatar_url(:thumb), class: "user-index-pic" %>
-  <% end %>
-	<%= link_to user.name, user %>
-	<% if current_user.admin? && !current_user?(user) %>
-		| <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
-	<% end %>
-</li>
+<div class="user-card">
+	<div class="row">
+		<div class="col-md-3 image-container">
+			<% if user.avatar_url.nil?  %>
+		  <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png', class: "user-index-pic" %>
+		  <% else %>
+		  <%= image_tag user.avatar_url(:display), class: "user-index-pic" %>
+		  <% end %>
+		</div>
+		<div class="col-md-9 image-container">
+			<h3><%= link_to user.name, user %></h3>
+			<% unless user.major.blank? %><h5><%= user.major %></h5><% end %>
+      <% unless user.year.blank? %><h5><%= user.year %></h5><% end %>
+		</div>
+	</div>
+</div>

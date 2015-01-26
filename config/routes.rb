@@ -11,13 +11,15 @@ IrisWebsite::Application.routes.draw do
   resources :teams
   resources :subteams
   resources :weekly_awards, :only => [:new, :create]
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-  match '/about',   to: 'static_pages#about',   via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/sponsors',to: 'static_pages#sponsors',via: 'get'
-  match '/backend', to: 'static_pages#backend', via: 'get'
+  match '/signup',    to: 'users#new',                 via: 'get'
+  match '/signin',    to: 'sessions#new',              via: 'get'
+  match '/signout',   to: 'sessions#destroy',          via: 'delete'
+  match '/greetings', to: 'static_pages#greetings',    via: 'get'
+  match '/greetings', to: 'static_pages#email_signup', via: 'post'
+  match '/about',     to: 'static_pages#about',        via: 'get'
+  match '/contact',   to: 'static_pages#contact',      via: 'get'
+  match '/sponsors',  to: 'static_pages#sponsors',     via: 'get'
+  match '/backend',   to: 'static_pages#backend',      via: 'get'
 
   namespace :api do
     resources :tasks, only: [:index, :show]
