@@ -15,6 +15,13 @@ class StaticPagesController < ApplicationController
     @exec = User.where(role_type: "exec").order('name ASC')
   end
 
+  def sponsors
+    send_file( "#{Rails.root}/app/assets/pdfs/sponsorship_packet.pdf",
+    :disposition => 'inline',
+    :type => 'application/pdf',
+    :x_sendfile => true )
+  end
+
   def email_signup
     if validates_email(params[:email])
       signup_to_mailing_list(params[:email])
