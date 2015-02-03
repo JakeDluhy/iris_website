@@ -19,6 +19,7 @@ IrisWebsite::Application.routes.draw do
   match '/about',     to: 'static_pages#about',        via: 'get'
   match '/contact',   to: 'static_pages#contact',      via: 'get'
   match '/sponsors',  to: 'static_pages#sponsors',     via: 'get'
+  match '/sponsors_packet', to: 'static_pages#sponsors_packet', via: 'get'
   match '/backend',   to: 'static_pages#backend',      via: 'get'
 
   namespace :api do
