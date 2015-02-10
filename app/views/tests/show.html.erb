@@ -1,0 +1,35 @@
+<% provide(:title, 'Test') %>
+
+<div class="test-wrapper">
+	<div class="test-info">
+	  <h4 class="test-name"><%= @test.name %></h4>
+	  <h5 class="subteam">Subteam: <%= @test.subteam.name %></h5>
+	  <div class="circle-div test-index"><span><%= "#{@test.robot_version}.#{@test.test_index}" %></span></div>
+	  <% if current_user.admin? %>
+	  	
+	  <% end %>
+	</div>
+	<div class="objectives-container">
+	<% unless @test.test_objectives.empty? %>
+		<% each @test.test_objectives.each do |objective| %>
+			<%= render partial: 'objective_display' %>
+		<% end %>
+	<% end %>
+	<% if current_user.admin? %><div class="circle-div add-objective"><span><i class="fa fa-plus"></i></span></div><% end %>
+	</div>
+	<div class="create-objective">
+	<%= form_for(@objective) do |f| %>
+
+	    <%= f.label :objective, "Objective:", class: "form-label" %>
+	    <%= f.text_field :objective, class: "update-field" %><br/>
+	    
+	    <%= f.label :expected_result, "The Expected Result", class: "form-label" %>
+	    <%= f.text_field :expected_result %><br/>
+
+	    <%= f.label :result, "Robot version number", class: "form-label" %>
+	    <%= f.text_field :result %>
+
+	    <%= f.submit "Create", class: "btn btn-primary" %>
+	  <% end %>
+	</div>
+</div>

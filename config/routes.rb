@@ -8,6 +8,9 @@ IrisWebsite::Application.routes.draw do
   resources :instructions, :except => [:create]
   resources :instructions, :only => [:create], :format => :json
   resources :tasks
+  resources :tests
+  resources :test_objectives
+  resources :test_comments, :only => [:new, :create, :update, :destroy]
   resources :teams
   resources :subteams
   resources :weekly_awards, :only => [:new, :create]

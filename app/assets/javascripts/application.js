@@ -19,5 +19,7 @@
 //= require backbone
 //= require marionette
 //= require mozilla_cookies
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree ./templates
 //= require_tree .

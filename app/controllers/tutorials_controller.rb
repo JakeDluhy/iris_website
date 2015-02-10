@@ -29,7 +29,7 @@ class TutorialsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     Tutorial.find(params[:id]).destroy
     redirect_to tutorials_url
   end

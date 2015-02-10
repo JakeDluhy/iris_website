@@ -62,7 +62,7 @@
 						<div class="col-md-9 info-container">
 							<h3><a class="user-name" href="/users/<%= exec.id %>"><%= exec.name %></a></h3>
 			        <p class="user-role"><%= exec.role %></p>
-			        <% if signed_in? %><p class="user-email"><%= exec.email %></p><% end %>
+			        <% if signed_in? %><a href="mailto:<%= exec.email %>" class="user-email"><%= exec.email %></a><% end %>
 			        <div class="user-bio"><%= exec.bio %></div>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						<div class="col-md-9 info-container">
 							<h3><a class="user-name" href="/users/<%= ateam.id %>"><%= ateam.name %></a></h3>
 			        <p class="user-role"><%= ateam.role %></p>
-			        <% if signed_in? %><p class="user-email"><%= ateam.email %></p><% end %>
+			        <% if signed_in? %><a href="mailto:<%= ateam.email %>" class="user-email"><%= ateam.email %></a><% end %>
 			        <div class="user-bio"><%= ateam.bio %></div>
 						</div>
 					</div>
@@ -99,7 +99,7 @@
 
 		</div>
 		<div class="col-md-4">
-			<h6 class="right">&#169 Copyright 2014-2015</h6><h6 class="right">Illinois Robotics in Space</h6>
+			<h6 class="right">&#169 Copyright 2014-2015</h6><h6 class="right">Illinois Robotics in Space @ <a href="http://illinois.edu/" class="uofi">The University of Illinois</a></h6>
 		</div>
 	</div>
 </div>

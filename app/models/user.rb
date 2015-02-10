@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :tutorials, foreign_key: "author_id"
   has_many :workers
   has_many :tasks, through: :workers
+  has_many :tests, through: :test_assignments
   has_many :memberships
   has_many :subteams, through: :memberships
   has_many :teams, through: :memberships

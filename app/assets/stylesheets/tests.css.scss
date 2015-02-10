@@ -1,0 +1,55 @@
+@import 'colors';
+@import 'calc';
+
+.test-wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.test-info {
+	position: relative;
+	width: 30%;
+	height: 100%;
+	padding: 5px 20px;
+	float: left;
+	background-color: $backgroundLight;
+	box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	.subteam, .test-name {
+		@include calc(width, "100% - 70px");
+	}
+	.test-index {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		box-shadow: none;
+	}
+}
+.objectives-container {
+	background-color: $backgroundDark;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 70%;
+	float: right;
+
+	
+}
+.create-objective {
+	position: absolute;
+	right: -70%;
+	top: 0;
+	background-color: $backgroundDark;
+	height: 100%;
+	width: 70%;
+}
+.add-objective {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		i {
+			font-size: 20px;
+		}
+	}

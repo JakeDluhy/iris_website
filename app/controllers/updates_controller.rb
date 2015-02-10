@@ -51,7 +51,7 @@ class UpdatesController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     Update.find(params[:id]).destroy
   end
 

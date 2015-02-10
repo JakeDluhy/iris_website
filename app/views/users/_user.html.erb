@@ -9,6 +9,7 @@
 		</div>
 		<div class="col-md-9 image-container">
 			<h3><%= link_to user.name, user %></h3>
+			<a href="mailto:<%= user.email %>"><%= user.email %></a>
 			<% unless user.major.blank? %><h5><%= user.major %></h5><% end %>
       <% unless user.year.blank? %><h5><%= user.year %></h5><% end %>
 		</div>

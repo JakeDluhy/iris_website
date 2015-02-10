@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123161459) do
+ActiveRecord::Schema.define(version: 20150209042332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,48 @@ ActiveRecord::Schema.define(version: 20150123161459) do
     t.string   "description"
     t.string   "hook"
     t.integer  "segment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_assignments", force: true do |t|
+    t.integer  "test_objective_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_assignments", ["test_objective_id"], name: "index_test_assignments_on_test_objective_id", using: :btree
+  add_index "test_assignments", ["user_id"], name: "index_test_assignments_on_user_id", using: :btree
+
+  create_table "test_comments", force: true do |t|
+    t.string   "comment"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_comments", ["user_id"], name: "index_test_comments_on_user_id", using: :btree
+
+  create_table "test_objectives", force: true do |t|
+    t.integer  "test_id"
+    t.string   "objective"
+    t.string   "expected_result"
+    t.string   "result"
+    t.string   "status"
+    t.date     "completed_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_objectives", ["test_id"], name: "index_test_objectives_on_test_id", using: :btree
+
+  create_table "tests", force: true do |t|
+    t.string   "name"
+    t.integer  "subteam_id"
+    t.date     "test_date"
+    t.integer  "robot_version"
+    t.integer  "test_index"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

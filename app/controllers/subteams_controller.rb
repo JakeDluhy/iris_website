@@ -39,7 +39,7 @@ class SubteamsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     subteam = Subteam.find(params[:id]).destroy
     redirect_to subteam.team
   end
