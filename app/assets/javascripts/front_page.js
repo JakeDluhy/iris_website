@@ -9,6 +9,10 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
     url: function() {'/api/tasks/' + this.get('id') + '.json'}
   });
 
+  Test = Backbone.Model.extend({
+    url: function() {'/api/tests/' + this.get('id') + '.json'}
+  });
+
   Update = Backbone.Model.extend({
     url: function() {'/api/updates/' + this.get('id') + '.json'}
   });
@@ -32,6 +36,11 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
   TasksCollection = Backbone.Collection.extend({
     model: Task,
     url: '/api/tasks.json'
+  });
+
+  TestsCollection = Backbone.Collection.extend({
+    model: Test,
+    url: '/api/tests.json'
   });
 
   UpdatesCollection = Backbone.Collection.extend({
@@ -60,6 +69,12 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
   TaskView = Backbone.Marionette.ItemView.extend({
     template: JST['templates/task'],
+    tagName: 'div',
+    className: 'display-item-card',
+  });
+
+  TestView = Backbone.Marionette.ItemView.extend({
+    template: JST['templates/test'],
     tagName: 'div',
     className: 'display-item-card',
   });
@@ -187,8 +202,6 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         leftType = this.model.get('link_to');
         ((currentRight === this.model.get('link_to')) ? rightType = currentLeft : rightType = currentRight);
       } else { console.log('error'); }
-      console.log(leftType);
-      console.log(rightType);
       FrontPage.displayItems(leftType, rightType);
       this.model.collection.fetch(); //Hack, should think of better way to rerender items
     },
@@ -258,6 +271,10 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
 
   TasksView = Backbone.Marionette.CollectionView.extend({
     childView: TaskView
+  });
+
+  TestsView = Backbone.Marionette.CollectionView.extend({
+    childView: TestView
   });
 
   UpdatesView = Backbone.Marionette.CollectionView.extend({
@@ -331,6 +348,19 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         }
       });
     },
+    showTests: function() {
+      console.log('here');
+      var filter = docCookies.getItem('filter');
+      var testsCollection = new TestsCollection();
+      var self = this;
+      testsCollection.fetch({
+        data: {filter: filter },
+        success: function() {
+          var testsView = new TestsView({collection: testsCollection});
+          self.show(testsView);
+        }
+      });
+    },
     showUsers: function() {
       var filter = docCookies.getItem('filter');
       var usersCollection = new UsersCollection();
@@ -395,6 +425,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
         case 'tasks':
           FrontPage.leftRegion.showTasks();
           break;
+        case 'tests':
+          FrontPage.leftRegion.showTests();
+          break;
         case 'calendar':
           FrontPage.leftRegion.showCalendar();
           break;
@@ -426,6 +459,9 @@ if(window.location.href === "http://localhost:3000/" || window.location.href ===
           break;
         case 'tasks':
           FrontPage.rightRegion.showTasks();
+          break;
+        case 'tests':
+          FrontPage.rightRegion.showTests();
           break;
         case 'calendar':
           FrontPage.rightRegion.showCalendar();

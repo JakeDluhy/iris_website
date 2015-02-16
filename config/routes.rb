@@ -11,6 +11,7 @@ IrisWebsite::Application.routes.draw do
   resources :tests
   resources :test_objectives
   resources :test_comments, :only => [:new, :create, :update, :destroy]
+  resources :test_assignments, :only => [:create]
   resources :teams
   resources :subteams
   resources :weekly_awards, :only => [:new, :create]
@@ -27,6 +28,7 @@ IrisWebsite::Application.routes.draw do
 
   namespace :api do
     resources :tasks, only: [:index, :show]
+    resources :tests, only: [:index, :show]
     resources :updates, only: [:index, :show]
     resources :users, only: [:index, :show]
     resources :resources, only: [:index, :show]

@@ -2,6 +2,7 @@ class Test < ActiveRecord::Base
 
   belongs_to :subteam
   has_many :test_objectives
+  has_many :users, :through => :test_objectives
   has_many :pictures, :class_name => "PictureAttachment", :as => :imageable, dependent: :destroy
 
   after_create :assign_test_index

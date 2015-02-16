@@ -5,7 +5,7 @@ class CreateTestObjectives < ActiveRecord::Migration
     	t.string :objective
     	t.string :expected_result
     	t.string :result
-    	t.string :status
+    	t.string :status, default: 'incomplete'
     	t.date :completed_date
 
     	t.timestamps

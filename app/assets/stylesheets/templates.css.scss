@@ -65,6 +65,34 @@
   }
 }
 
+/* Tests */
+.frontpage-test {
+  min-height: 110px;
+  .circle-div {
+    position: absolute;
+  }
+  .test-index {
+    height: 30px;
+    width: 30px;
+    top: 10px;
+    right: 10px;
+  }
+  .completed {
+    height: 30px;
+    width: 30px;
+    top: 50px;
+    right: 10px;
+    background-color: $complete;
+  }
+  .incomplete {
+    height: 30px;
+    width: 30px;
+    top: 90px;
+    right: 10px;
+    background-color: $error;
+  }
+}
+
 /* Tutorials */
 .tut-info-container {
   padding: 10px;

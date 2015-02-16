@@ -2,34 +2,63 @@
 
 <div class="test-wrapper">
 	<div class="test-info">
-	  <h4 class="test-name"><%= @test.name %></h4>
-	  <h5 class="subteam">Subteam: <%= @test.subteam.name %></h5>
+	  <h3 class="test-name"><%= @test.name %></h3>
+	  <h4><%= link_to "#{@test.subteam.name}", @test.subteam %></h4>
 	  <div class="circle-div test-index"><span><%= "#{@test.robot_version}.#{@test.test_index}" %></span></div>
-	  <% if current_user.admin? %>
-	  	
-	  <% end %>
+	  <div class="circle-div complete-counter"><span><%= @completed_count %></span></div>
+	  <div class="circle-div incomplete-counter"><span><%= @incomplete_count %></span></div>
+	  <div class="test-users">
+	  	<% @all_users.each do |user| %>
+	  	<div class="user-info">
+	  		<%= image_tag user.avatar_url(:display) %>
+	  		<div>
+	  			<h4><a href="/users/<%= user.id %>"><%= user.name %></a></h4>
+		  		<h5><%= user.email %></h5>
+	  		</div>
+	  	</div>
+	  	<% end %>
+	  	<% unless @team_lead.nil? %>
+	  	<div class="user-info">
+	  		<%= image_tag @team_lead.avatar_url(:display) %>
+	  		<div>
+	  			<h5>Team Lead: <a href="/users/<%= @team_lead.id %>"><%= @team_lead.name %></a></h5>
+		  		<h6><%= @team_lead.email %></h6>
+	  		</div>
+	  	</div>
+	  	<% end %>
+	  </div>
 	</div>
-	<div class="objectives-container">
+	<div class="objectives-container active">
 	<% unless @test.test_objectives.empty? %>
-		<% each @test.test_objectives.each do |objective| %>
-			<%= render partial: 'objective_display' %>
+		<% @test.test_objectives.each do |objective| %>
+			<%= render partial: 'objective_display', locals: {objective: objective} %>
 		<% end %>
 	<% end %>
-	<% if current_user.admin? %><div class="circle-div add-objective"><span><i class="fa fa-plus"></i></span></div><% end %>
 	</div>
+	<% if current_user.admin? %><div class="circle-div add-objective"><span><i class="fa fa-plus"></i></span></div><% end %>
 	<div class="create-objective">
-	<%= form_for(@objective) do |f| %>
+		
+		<div class="display-item-card">
+			<div class="response-container">
+				<h5 class="response"></h5>
+			</div>
+			<%= form_for(@objective) do |f| %>
 
-	    <%= f.label :objective, "Objective:", class: "form-label" %>
-	    <%= f.text_field :objective, class: "update-field" %><br/>
-	    
-	    <%= f.label :expected_result, "The Expected Result", class: "form-label" %>
-	    <%= f.text_field :expected_result %><br/>
+		    <%= f.label :objective, "Objective:", class: "form-label" %>
+		    <%= f.text_field :objective, class: "test-objective" %><br/>
+		    
+		    <%= f.label :expected_result, "The Expected Result:", class: "form-label" %>
+		    <%= f.text_field :expected_result, class: "expected-result" %><br/>
 
-	    <%= f.label :result, "Robot version number", class: "form-label" %>
-	    <%= f.text_field :result %>
+		    <%= f.label :users, 'Assign Team Members:' %>
+		    <%= f.select :users, @users,{}, {multiple: true} %>
 
-	    <%= f.submit "Create", class: "btn btn-primary" %>
-	  <% end %>
+		    <input type="hidden" id="test_id" name="test_objective[test_id]" value="<%= @test.id %>" />
+
+		    <%= f.submit "Add Another", class: "add-button btn btn-primary" %>
+
+		    <%= f.submit "Finished", class: "submit-button btn btn-primary" %>
+		  <% end %>
+		</div>
 	</div>
 </div>

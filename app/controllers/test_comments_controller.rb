@@ -7,11 +7,14 @@ class TestCommentsController < ApplicationController
 
   def create
     @comment = TestComment.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "#{@comment.name} comment created"
-      redirect_to @comment
+      render :json => {
+        :name => @comment.user.name,
+        :comment => @comment.comment
+      }.to_json
     else
-      render 'new'
+      redirect_to @comment.test_objective.test
     end
   end
 
@@ -37,6 +40,6 @@ class TestCommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:comment, :user_id)
+      params.require(:test_comment).permit(:comment, :user_id, :test_objective_id)
     end
 end

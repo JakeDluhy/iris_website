@@ -1,5 +1,6 @@
 class TestObjectivesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update]
+  skip_before_action :verify_authenticity_token, only: [:create]
   
   def index
     @objectives = TestObjective.all
@@ -11,6 +12,8 @@ class TestObjectivesController < ApplicationController
 
   def show
     @objective = TestObjective.find(params[:id])
+    @assignment = TestAssignment.new
+    @comment = TestComment.new
     respond_to do |format|
       format.html
       format.json { render json: @team }
@@ -20,8 +23,15 @@ class TestObjectivesController < ApplicationController
   def create
     @objective = TestObjective.new(objective_params)
     if @objective.save
-      flash[:success] = "#{@objective.name} objective created"
-      redirect_to @objective
+      params["test_objective"]["users"].each do |id|
+        unless id.blank?
+          TestAssignment.create({:test_objective_id => @objective.id, :user_id => id})
+        end
+      end
+      respond_to do |format|
+        format.html { redirect_to @objective.test }
+        format.json { render json: @objective.to_json }
+       end
     else
       render 'new'
     end
@@ -33,9 +43,20 @@ class TestObjectivesController < ApplicationController
 
   def update
     @objective = TestObjective.find(params[:id])
-    if @objective.update_attributes(team_params)
-      flash[:success] = "TestObjective updated"
-      redirect_to @objective
+    if @objective.update_attributes(objective_params)
+      unless params[:test_objective][:pictures].nil?
+        params[:test_objective][:pictures].each do |picture|
+          PictureAttachment.create({avatar: picture, imageable: @objective})
+        end
+      end
+      unless params[:test_objective][:videos].nil?
+        @objective.videos.delete_all
+        videos = params[:test_objective][:videos].each_line do |video|
+          VideoAttachment.create({url: video.sub("watch?v=","embed/"), video: @objective})
+        end
+      end
+      flash[:success] = "Test Objective updated"
+      redirect_to @objective.test
     else
       render 'edit'
     end
@@ -49,6 +70,6 @@ class TestObjectivesController < ApplicationController
   private
 
     def objective_params
-      params.require(:objective).permit(:test_id, :objective, :expected_result, :result, :status, :completed_date)
+      params.require(:test_objective).permit(:test_id, :objective, :expected_result, :result, :status, :completed_date)
     end
 end

@@ -1,3 +1,70 @@
 <div class="display-item-card">
-	
+	<div class="all-content">
+		<h4><%= link_to "Objective: ", objective %> <%= objective.objective %></h4>
+		<h5>Expected Result: <%= objective.expected_result %></h5>
+		<% if objective.status == 'completed' %>
+			<div class="circle-div completion-status completed"><span><i class="fa fa-check"></i></span></div>
+		<% else %>
+			<div class="circle-div completion-status incomplete"><span><i class="fa fa-times"></i></span></div>
+		<% end %>
+	</div>
+	<% if objective.status == 'completed' %>
+	<div class="completed-content">
+		<h5>Result: <%= objective.result %></h5>
+		<h5>Date Completed: <%= objective.completed_date.strftime("%m/%d/%Y") %></h5>
+	</div>
+	<div class="picture-container">
+		<% objective.pictures.each do |picture| %>
+		<div class="picture-wrapper">
+      <a href="<%= picture.avatar_url %>"><%= image_tag picture.avatar_url %></a>
+    </div>
+    <% end %>
+	</div>
+	<% end %>
+	<div class="objective-users">
+		<% objective.users.each do |user| %>
+			<a href="/users/<%= user.id %>"><div class="user-name"><%= user.name %></div></a>
+		<% end %>
+			<div class="user-name signup">Volunteer</div>
+			<%= form_for(@assignment) do |f| %>
+				<input type="hidden" id="assignment_user_id" name="test_assignment[test_objective_id]" value="<%= objective.id %>" />
+			<% end %>
+	</div>
+	<div class="complete-content">
+		<%= form_for(objective) do |f| %>
+	    
+	    <%= f.label :result, "The Result:", class: "form-label" %>
+	    <%= f.text_field :result, class: "result" %><br/>
+
+			<%= f.label :pictures, 'Relevant Pictures' %>
+			<%= f.file_field :pictures, :multiple => true, class: 'file-input' %>
+
+			<%= f.label :videos, 'Video Links (Seperate multiple by new lines)' %>
+			<textarea id="test_objective_videos" name="test_objective[videos]"><% unless objective.videos.empty? %><% objective.videos.each do |video| %><%= "#{video.url}" %><% end %><% end %></textarea>
+
+			<%= f.radio_button :status, 'completed', class: 'radio' %>
+			<%= f.label :status, 'Complete' %><br>
+			<%= f.radio_button :status, 'incomplete', class: 'radio' %>
+			<%= f.label :status, 'Incomplete' %><br>
+
+			<input type="hidden" id="test_id" name="test_objective[completed_date]" value="<%= Date.today %>" />
+
+	    <%= f.submit "Update Objective", class: "submit-button btn btn-primary" %>
+	  <% end %>
+	</div>
+	<div class="comments-container">
+		<div class="comments">
+			<% unless objective.test_comments.empty? %>
+				<% objective.test_comments.each do |comment| %>
+					<%= render partial: 'comment_display', locals: {comment: comment} %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="create-comment">
+			<%= form_for(@comment) do |f| %>
+				<%= f.text_field :comment, placeholder: 'Leave a message' %>
+				<input type="hidden" id="objective_id" name="test_comment[test_objective_id]" value="<%= objective.id %>" />
+			<% end %>
+		</div>
+	</div>
 </div>

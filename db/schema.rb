@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209042332) do
+ActiveRecord::Schema.define(version: 20150212022528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,12 +86,14 @@ ActiveRecord::Schema.define(version: 20150209042332) do
   add_index "test_assignments", ["user_id"], name: "index_test_assignments_on_user_id", using: :btree
 
   create_table "test_comments", force: true do |t|
-    t.string   "comment"
+    t.text     "comment"
     t.integer  "user_id"
+    t.integer  "test_objective_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "test_comments", ["test_objective_id"], name: "index_test_comments_on_test_objective_id", using: :btree
   add_index "test_comments", ["user_id"], name: "index_test_comments_on_user_id", using: :btree
 
   create_table "test_objectives", force: true do |t|
@@ -99,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150209042332) do
     t.string   "objective"
     t.string   "expected_result"
     t.string   "result"
-    t.string   "status"
+    t.string   "status",          default: "incomplete"
     t.date     "completed_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -152,10 +154,19 @@ ActiveRecord::Schema.define(version: 20150209042332) do
     t.string   "major"
     t.string   "year"
     t.string   "resume"
+    t.integer  "teamlead_team"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
+  create_table "video_attachments", force: true do |t|
+    t.string   "url"
+    t.integer  "video_id"
+    t.string   "video_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "weekly_awards", force: true do |t|
     t.string   "award_type"

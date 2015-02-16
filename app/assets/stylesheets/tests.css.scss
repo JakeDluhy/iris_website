@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'calc';
+@import 'transition';
 
 .test-wrapper {
 	position: relative;
@@ -9,15 +10,38 @@
 }
 
 .test-info {
+	a {
+		color: $accent;
+	}
 	position: relative;
+	z-index: 10;
 	width: 30%;
 	height: 100%;
 	padding: 5px 20px;
 	float: left;
 	background-color: $backgroundLight;
 	box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	overflow-y: scroll;
+	.test-name {
+		margin-top: 5px;
+	}
 	.subteam, .test-name {
 		@include calc(width, "100% - 70px");
+		&.subteam {margin: 5px 0 20px;}
+	}
+	.complete-counter {
+		background-color: $complete;
+		position: absolute;
+		top: 70px;
+		right: 10px;
+		box-shadow: none;
+	}
+	.incomplete-counter {
+		background-color: $error;
+		position: absolute;
+		top: 130px;
+		right: 10px;
+		box-shadow: none;
 	}
 	.test-index {
 		position: absolute;
@@ -25,31 +49,164 @@
 		top: 10px;
 		box-shadow: none;
 	}
+	.test-users {
+		margin-top: 30px;
+		.user-info {
+			overflow: hidden;
+			img {
+				max-width: 20%;
+				float: left;
+			}
+			div {
+				margin-left: 10px;
+				width: 60%;
+				float: left;
+			}
+		}
+	}
+}
+.all-content {
+	a {
+		color: $accent;
+	}
 }
 .objectives-container {
+	z-index: 5;
 	background-color: $backgroundDark;
+	padding: 20px 40px;
 	position: absolute;
-	right: 0;
+	right: 70%;
 	top: 0;
 	height: 100%;
 	width: 70%;
-	float: right;
+	@include transition('0.5s');
+	overflow-y: scroll;
+	&.active {
+		right: 0;
+	}
+}
+.picture-container {
+	.picture-wrapper {
+		max-width: 20%;
+		display: inline-block;
+		margin-right: 10px;
+		img {
+			max-width: 100%;
 
-	
+		}
+	}
 }
 .create-objective {
+	z-index: 5;
 	position: absolute;
+	padding: 20px 80px;
 	right: -70%;
 	top: 0;
 	background-color: $backgroundDark;
 	height: 100%;
 	width: 70%;
-}
-.add-objective {
-		position: absolute;
-		right: 10px;
-		bottom: 10px;
-		i {
-			font-size: 20px;
+	@include transition('0.5s');
+	&.active {
+		right: 0;
+	}
+	.response-container {
+		height: 0;
+		@include transition('0.5s');
+		margin: -10px -10px 10px;
+		&.visible {
+			padding: 20px;
+			height: 75px;
+			.response {
+				color: white;
+				text-align: center;
+			}
+		}
+		&.success {
+			background-color: $primary;
+		}
+		&.error {
+			background-color: $error;
 		}
 	}
+	.submit-button {
+		float: right;
+	}
+}
+.add-objective {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	z-index: 7;
+	i {
+		font-size: 20px;
+	}
+	&:hover {
+		cursor: pointer;
+		box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.3);
+		transform: translateY(-2px);
+
+	}
+}
+.objective-users {
+	.user-name {
+		display: inline-block;
+		padding: 8px;
+		margin: 10px 10px 10px 0;
+		background-color: $accent;
+		color: white;
+		&:hover {
+			cursor: pointer;
+			box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+			transform: translateY(-2px);
+		}
+	}
+}
+.completion-status {
+	position: absolute;
+	box-shadow: none;
+	top: 10px;
+	right: 10px;
+	color: white;
+	&:hover {
+		cursor: pointer;
+		box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+		transform: translateY(-2px);
+	}
+	&.completed {background-color: $complete;}
+	&.incomplete {background-color: $error;}
+	i {
+		font-size: 20px;
+	}
+}
+.complete-content {
+	display: none;
+	.radio {
+		width: 20px;
+		display: inline-block;
+	}
+	.btn {
+		margin-top: 10px;
+	}
+}
+.file-input {
+	border: none;
+}
+.comments-container {
+	margin-top: 20px;
+}
+.create-comment {
+	margin-top: 20px;
+}
+
+.test-objectives-wrapper {
+	padding: 20px 80px;
+	.picture-card {
+		.picture-wrapper {
+			width: 100%;
+			padding: 10px;
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}

@@ -30,11 +30,6 @@ section {
 textarea {
 	resize: vertical;
 }
-form {
-  label {
-    color: $lightText;
-  }
-}
 
 
 /* typography */
@@ -204,7 +199,7 @@ input.btn, div.btn {
     position: absolute;
     width: 100%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-47%);
     text-align: center;
   }
 }

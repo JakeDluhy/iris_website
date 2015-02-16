@@ -16,10 +16,15 @@ class Api::NavigationController < Api::ApiController
         symbol: 'university',
         tooltip: 'Resources'
       },
+      # {
+      #   link_to: 'tasks',
+      #   symbol: 'pencil',
+      #   tooltip: 'Tasks'
+      # },
       {
-        link_to: 'tasks',
+        link_to: 'tests',
         symbol: 'pencil',
-        tooltip: 'Tasks'
+        tooltip: 'Tests'
       },
       # {
       #   link_to: 'users',

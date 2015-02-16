@@ -12,8 +12,21 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @objectives = @test.test_objectives
+    @all_users = []
+    @team_lead = @test.subteam.team.team_lead
+    @objectives.each do |obj|
+      obj.users.each do |user|
+        @all_users.push(user) unless @all_users.include?(user) or user == @team_lead
+      end
+    end
+    @users = User.order('name').pluck(:name, :id)
+    @completed_count = @objectives.where(:status => 'completed').count
+    @incomplete_count = @objectives.where(:status => 'incomplete').count
     @objective = TestObjective.new
-    @users = @test.subteam.users
+    @comment = TestComment.new
+    @assignment = TestAssignment.new
+
     respond_to do |format|
       format.html
       format.json { render json: @team }

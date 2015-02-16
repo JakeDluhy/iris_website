@@ -12,6 +12,8 @@ class Team < ActiveRecord::Base
 
   has_many :subteams
 
+  has_one :team_lead, class_name: 'User', foreign_key: 'teamlead_team'
+
   #Methods
   def add_user_membership(user)
     Membership.create({:team_id => self.id, :user_id => user.id})
