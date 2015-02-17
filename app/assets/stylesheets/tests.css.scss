@@ -32,14 +32,18 @@
 	.complete-counter {
 		background-color: $complete;
 		position: absolute;
-		top: 70px;
+		width: 20px;
+		height: 20px;
+		top: 10px;
 		right: 10px;
 		box-shadow: none;
 	}
 	.incomplete-counter {
 		background-color: $error;
 		position: absolute;
-		top: 130px;
+		width: 20px;
+		height: 20px;
+		top: 40px;
 		right: 10px;
 		box-shadow: none;
 	}
@@ -173,7 +177,9 @@
 		transform: translateY(-2px);
 	}
 	&.completed {background-color: $complete;}
-	&.incomplete {background-color: $error;}
+	&.incomplete {
+		background-color: $backgroundDark;
+	}
 	i {
 		font-size: 20px;
 	}

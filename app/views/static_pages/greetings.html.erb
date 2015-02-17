@@ -1,14 +1,14 @@
 <div class="greeting splash-div">
 	<div class="content-wrapper">
-		<h2>Welcome to Illinois Robotics in Space</h2>
+		<h1>Welcome to Illinois Robotics in Space</h1>
 		<h4>A multidisciplinary student organization at UIUC</h4>
-		<div class="email-signup">
-			<h4>Sponsors, organizations, and friends sign up for our mailing list!</h4>
-			<%= form_tag do %>
-				<%= text_field_tag(:email, nil, placeholder: 'Email') %><br>
-				<%= submit_tag("Sign up!", :class => 'email-submit btn') %>
-			<% end %>
-		</div>
+		<!-- <div class="email-signup"> -->
+			<!-- <h4>Sponsors, organizations, and friends sign up for our mailing list!</h4> -->
+			<%#= form_tag do %>
+				<%#= text_field_tag(:email, nil, placeholder: 'Email') %><br>
+				<%#= submit_tag("Sign up!", :class => 'email-submit btn') %>
+			<%# end %>
+		<!-- </div> -->
 		<h4>Student looking to get involved with the project?</h4>
 		<h4><%= link_to 'Sign up', signup_path %> to join our community site!</h4>
 	</div>

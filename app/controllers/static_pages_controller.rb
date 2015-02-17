@@ -59,7 +59,6 @@ class StaticPagesController < ApplicationController
 
     def signup_to_mailing_list(email)
       mailchimp = Mailchimp.new
-      binding.pry
       begin
         mailchimp.subscribe_to_sponsors(email)
       rescue Gibbon::MailChimpError => e

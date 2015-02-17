@@ -5,14 +5,21 @@
 	width: 100%;
 	&.greeting {
 		margin-top: -1px;
+		background-image: url('frontpage1.jpg');
 		background-color: $primary;
-		padding: 80px;
+	  background-position: center center;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  height: 100%;
 		.content-wrapper {
-			padding: 10px;
-			width: 600px;
-			margin: 0 auto;
+			background-color: rgba(0, 0, 0, 0.6);
+			padding: 200px;
+			width: 100%;
+			height: 100%;
 			text-align: center;
-			h2, h4 {
+			h1,h2,h3, h4 {
 				color: $lightText;
 			}
 			.email-signup {

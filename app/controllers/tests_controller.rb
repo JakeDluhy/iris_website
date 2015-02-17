@@ -35,6 +35,7 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(test_params)
+    @test.robot_version = 5
     if @test.save
       flash[:success] = "#{@test.name} test created"
       redirect_to @test
@@ -65,6 +66,6 @@ class TestsController < ApplicationController
   private
 
     def test_params
-      params.require(:test).permit(:name, :subteam_id, :test_date, :robot_version)
+      params.require(:test).permit(:name, :subteam_id, :test_date)
     end
 end

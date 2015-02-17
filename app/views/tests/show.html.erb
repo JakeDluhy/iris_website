@@ -4,7 +4,6 @@
 	<div class="test-info">
 	  <h3 class="test-name"><%= @test.name %></h3>
 	  <h4><%= link_to "#{@test.subteam.name}", @test.subteam %></h4>
-	  <div class="circle-div test-index"><span><%= "#{@test.robot_version}.#{@test.test_index}" %></span></div>
 	  <div class="circle-div complete-counter"><span><%= @completed_count %></span></div>
 	  <div class="circle-div incomplete-counter"><span><%= @incomplete_count %></span></div>
 	  <div class="test-users">
