@@ -4,6 +4,7 @@ class TestObjective < ActiveRecord::Base
   has_many :test_comments
   has_many :test_assignments
   has_many :users, :through => :test_assignments
+  belongs_to :user
   has_many :pictures, :class_name => "PictureAttachment", :as => :imageable, dependent: :destroy
   has_many :videos, :class_name => "VideoAttachment", :as => :video, dependent: :destroy
 
@@ -17,4 +18,7 @@ class TestObjective < ActiveRecord::Base
   # 	end
   # end
 
+  def completer
+    user = User.find(self.completer_id) unless self.completer_id.nil?
+  end
 end

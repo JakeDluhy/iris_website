@@ -1,6 +1,7 @@
 class Test < ActiveRecord::Base
 
   belongs_to :subteam
+  belongs_to :team
   has_many :test_objectives
   has_many :users, :through => :test_objectives
   has_many :pictures, :class_name => "PictureAttachment", :as => :imageable, dependent: :destroy
@@ -8,7 +9,7 @@ class Test < ActiveRecord::Base
   after_create :assign_test_index
 
   def assign_test_index
-  	indices = Test.pluck(:test_index)
+  	indices = Test.where("ID != ?", self.id).pluck(:test_index)
   	if indices[0].nil?
   		self.test_index = 1
   	else

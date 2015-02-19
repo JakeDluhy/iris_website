@@ -1,4 +1,4 @@
-<div class="display-item-card">
+<div class="display-item-card <%= objective.status == 'completed' ? 'completed' : 'incomplete' %>">
 	<div class="all-content">
 		<h4><%= link_to "Objective: ", objective %> <%= objective.objective %></h4>
 		<h5>Expected Result: <%= objective.expected_result %></h5>
@@ -12,20 +12,22 @@
 	<div class="completed-content">
 		<h5>Result: <%= objective.result %></h5>
 		<h5>Date Completed: <%= objective.completed_date.strftime("%m/%d/%Y") %></h5>
+		<h5>Completed by: <%= objective.completer.name unless objective.completer.nil? %></h5>
 	</div>
-	<div class="picture-container">
-		<% objective.pictures.each do |picture| %>
-		<div class="picture-wrapper">
-      <a href="<%= picture.avatar_url %>"><%= image_tag picture.avatar_url %></a>
-    </div>
-    <% end %>
-	</div>
+	<!-- <div class="picture-container"> -->
+		<%# objective.pictures.each do |picture| %>
+		<!-- <div class="picture-wrapper">
+      <a href="<%#= picture.avatar_url %>"><%#= image_tag picture.avatar_url %></a>
+    </div> -->
+    <%# end %>
+	<!-- </div> -->
 	<% end %>
 	<div class="objective-users">
+		Testers:
 		<% objective.users.each do |user| %>
 			<a href="/users/<%= user.id %>"><div class="user-name"><%= user.name %></div></a>
 		<% end %>
-			<div class="user-name signup">Volunteer</div>
+			<div class="user-name signup"><i class="fa fa-plus"></i></div>
 			<%= form_for(@assignment) do |f| %>
 				<input type="hidden" id="assignment_user_id" name="test_assignment[test_objective_id]" value="<%= objective.id %>" />
 			<% end %>

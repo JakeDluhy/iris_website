@@ -17,9 +17,8 @@
 	z-index: 10;
 	width: 30%;
 	height: 100%;
-	padding: 5px 20px;
 	float: left;
-	background-color: $backgroundLight;
+	background-color: $backgroundDark;
 	box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.2);
 	overflow-y: scroll;
 	.test-name {
@@ -34,18 +33,32 @@
 		position: absolute;
 		width: 20px;
 		height: 20px;
-		top: 10px;
+		top: 5px;
 		right: 10px;
 		box-shadow: none;
+		&.active {
+			cursor: pointer;
+			&:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			}
+		}
 	}
 	.incomplete-counter {
 		background-color: $error;
 		position: absolute;
 		width: 20px;
 		height: 20px;
-		top: 40px;
+		top: 35px;
 		right: 10px;
 		box-shadow: none;
+		&.active {
+			cursor: pointer;
+			&:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			}
+		}
 	}
 	.test-index {
 		position: absolute;
@@ -53,10 +66,22 @@
 		top: 10px;
 		box-shadow: none;
 	}
+	.active-test-info {
+		padding: 10px 20px;
+		position: relative;
+		
+		h3,h4 {
+			margin: 0;
+		}
+	}
 	.test-users {
-		margin-top: 30px;
+		padding: 20px 20px;
+		background-color: $backgroundLight;
 		.user-info {
 			overflow: hidden;
+			h5,h4 {
+				margin: 2px;
+			}
 			img {
 				max-width: 20%;
 				float: left;
@@ -68,6 +93,17 @@
 			}
 		}
 	}
+	.test-details {
+		padding: 10px 20px;
+		position: relative;
+		margin: 0;
+		border-bottom: black;
+		background-color: $backgroundDark;
+		h3, h4 {
+			font-weight: normal;
+			margin: 0;
+		}
+	}
 }
 .all-content {
 	a {
@@ -76,7 +112,7 @@
 }
 .objectives-container {
 	z-index: 5;
-	background-color: $backgroundDark;
+	background-color: $backgroundDarker;
 	padding: 20px 40px;
 	position: absolute;
 	right: 70%;
@@ -106,7 +142,7 @@
 	padding: 20px 80px;
 	right: -70%;
 	top: 0;
-	background-color: $backgroundDark;
+	background-color: $backgroundDarker;
 	height: 100%;
 	width: 70%;
 	@include transition('0.5s');
@@ -156,7 +192,7 @@
 		display: inline-block;
 		padding: 8px;
 		margin: 10px 10px 10px 0;
-		background-color: $accent;
+		background-color: rgb(100,100,100);
 		color: white;
 		&:hover {
 			cursor: pointer;

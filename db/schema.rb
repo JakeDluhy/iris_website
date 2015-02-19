@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212022528) do
+ActiveRecord::Schema.define(version: 20150219021631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150212022528) do
     t.date     "completed_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "completer_id"
   end
 
   add_index "test_objectives", ["test_id"], name: "index_test_objectives_on_test_id", using: :btree
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150212022528) do
     t.integer  "test_index"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
 
   create_table "tutorials", force: true do |t|

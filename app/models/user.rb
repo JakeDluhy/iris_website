@@ -30,11 +30,12 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :workers
   has_many :tasks, through: :workers
-  has_many :tests, through: :test_assignments
+  has_many :test_objectives, through: :test_assignments
   has_many :memberships
   has_many :subteams, through: :memberships
   has_many :teams, through: :memberships
   has_many :weekly_awards
+  has_many :completed_tests, :class_name => "TestObjective", foreign_key: "completer_id"
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :resume, ResumeUploader

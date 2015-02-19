@@ -74,7 +74,19 @@ $(document).ready( function() {
   });
 
   $('.user-name.signup').click(function(){
-    $('#new_test_assignment').submit();//Trigger search button click event
+    $(event.target).parent().find('#new_test_assignment').submit();//Trigger search button click event
+  });
+  $('.user-name.signup:first-child').click(function(){
+    $(event.target).parent().parent().find('#new_test_assignment').submit();//Trigger search button click event
+  });
+
+  $('.complete-counter.active').click(function() {
+    $('.display-item-card.incomplete').slideUp(500);
+    $('.display-item-card.completed').slideDown(500);
+  });
+  $('.incomplete-counter.active').click(function() {
+    $('.display-item-card.completed').slideUp(500);
+    $('.display-item-card.incomplete').slideDown(500);
   });
 
   //Pull subteam containers down

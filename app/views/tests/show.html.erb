@@ -2,31 +2,37 @@
 
 <div class="test-wrapper">
 	<div class="test-info">
-	  <h3 class="test-name"><%= @test.name %></h3>
-	  <h4><%= link_to "#{@test.subteam.name}", @test.subteam %></h4>
-	  <div class="circle-div complete-counter"><span><%= @completed_count %></span></div>
-	  <div class="circle-div incomplete-counter"><span><%= @incomplete_count %></span></div>
+		<div class="active-test-info">
+			<h3 class="test-name"><%= @test.name %></h3>
+		  <h4>Team: <%= link_to "#{@test.team.name}", @test.team  unless @test.team.nil?%></h4>
+		  <div class="circle-div complete-counter active"><span><%= @completed_count %></span></div>
+		  <div class="circle-div incomplete-counter active"><span><%= @incomplete_count %></span></div>
+		</div>
 	  <div class="test-users">
+	  	<h4>Testers</h4>
 	  	<% @all_users.each do |user| %>
 	  	<div class="user-info">
-	  		<%= image_tag user.avatar_url(:display) %>
-	  		<div>
-	  			<h4><a href="/users/<%= user.id %>"><%= user.name %></a></h4>
-		  		<h5><%= user.email %></h5>
-	  		</div>
+	  			<h5><a href="/users/<%= user.id %>"><%= user.name %></a></h5>
 	  	</div>
 	  	<% end %>
 	  	<% unless @team_lead.nil? %>
 	  	<div class="user-info">
-	  		<%= image_tag @team_lead.avatar_url(:display) %>
-	  		<div>
 	  			<h5>Team Lead: <a href="/users/<%= @team_lead.id %>"><%= @team_lead.name %></a></h5>
-		  		<h6><%= @team_lead.email %></h6>
-	  		</div>
 	  	</div>
 	  	<% end %>
 	  </div>
+	  <div class="other-tests">
+			<% @other_tests.each do |test| %>
+				<div class="test-details">
+					<h3 class="test-name"><%= link_to test.name, test %></h3>
+				  <h4>Team: <%= link_to "#{test.team.name}", test.team  unless test.team.nil?%></h4>
+				  <div class="circle-div complete-counter"><span><%= test.test_objectives.where(:status => 'completed').count %></span></div>
+				  <div class="circle-div incomplete-counter"><span><%= test.test_objectives.where(:status => 'incomplete').count %></span></div>
+				</div>
+			<% end %>
+		</div>
 	</div>
+	
 	<div class="objectives-container active">
 	<% unless @test.test_objectives.empty? %>
 		<% @test.test_objectives.each do |objective| %>

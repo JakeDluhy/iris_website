@@ -7,14 +7,15 @@ class TestsController < ApplicationController
 
   def new
     @test = Test.new
-    @subteams = Subteam.all
+    @teams = Team.all
   end
 
   def show
     @test = Test.find(params[:id])
+    @other_tests = Test.where("ID != ?", params[:id])
     @objectives = @test.test_objectives
     @all_users = []
-    @team_lead = @test.subteam.team.team_lead
+    @team_lead = @test.team.team_lead unless @test.team.nil?
     @objectives.each do |obj|
       obj.users.each do |user|
         @all_users.push(user) unless @all_users.include?(user) or user == @team_lead
@@ -37,7 +38,6 @@ class TestsController < ApplicationController
     @test = Test.new(test_params)
     @test.robot_version = 5
     if @test.save
-      flash[:success] = "#{@test.name} test created"
       redirect_to @test
     else
       render 'new'
@@ -51,7 +51,6 @@ class TestsController < ApplicationController
   def update
     @test = Test.find(params[:id])
     if @test.update_attributes(team_params)
-      flash[:success] = "Test updated"
       redirect_to @test
     else
       render 'edit'
@@ -66,6 +65,6 @@ class TestsController < ApplicationController
   private
 
     def test_params
-      params.require(:test).permit(:name, :subteam_id, :test_date)
+      params.require(:test).permit(:name, :team_id, :test_date)
     end
 end

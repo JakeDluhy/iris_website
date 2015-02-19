@@ -43,6 +43,9 @@ class TestObjectivesController < ApplicationController
 
   def update
     @objective = TestObjective.find(params[:id])
+    if(@objective.status == 'incomplete' and params[:test_objective][:status] == 'completed')
+      @objective.update_attributes({:completer_id => current_user.id})
+    end
     if @objective.update_attributes(objective_params)
       unless params[:test_objective][:pictures].nil?
         params[:test_objective][:pictures].each do |picture|
@@ -70,6 +73,6 @@ class TestObjectivesController < ApplicationController
   private
 
     def objective_params
-      params.require(:test_objective).permit(:test_id, :objective, :expected_result, :result, :status, :completed_date)
+      params.require(:test_objective).permit(:test_id, :objective, :expected_result, :result, :status, :completed_date, :completer_id)
     end
 end
