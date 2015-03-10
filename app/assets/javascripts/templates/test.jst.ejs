@@ -1,7 +1,7 @@
 <div class="info-container frontpage-test">
   <h3><a href="/tests/<%= id %>"><%= name %></a></h3>
   <h5>Subteam: <a href="/subteams/<%= subteam_id %>"><%= subteam_name %></a></h5>
-  <h5>Test Date: <%= test_date %></h5>
+  <% if(!(test_date === undefined)) { %><h5>Test Date: <%= test_date} %></h5><% } %>
   <div class="circle-div test-index"><span><%= robot_version %>.<%= test_index %></span></div>
 	<div class="circle-div completed"><span><%= completed_obj %></span></div>
 	<div class="circle-div incomplete"><span><%= incomplete_obj %></span></div>
