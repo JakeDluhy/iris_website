@@ -4,6 +4,7 @@
 	<div class="test-info">
 		<div class="active-test-info">
 			<h3 class="test-name"><%= @test.name %></h3>
+			<% if current_user.admin? %><%= link_to 'edit', edit_test_path(@test) %><% end %>
 		  <h4>Team: <%= link_to "#{@test.team.name}", @test.team  unless @test.team.nil?%></h4>
 		  <div class="circle-div complete-counter active"><span><%= @completed_count %></span></div>
 		  <div class="circle-div incomplete-counter active"><span><%= @incomplete_count %></span></div>

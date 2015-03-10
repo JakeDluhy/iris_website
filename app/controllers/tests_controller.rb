@@ -10,6 +10,11 @@ class TestsController < ApplicationController
     @teams = Team.all
   end
 
+  def edit
+    @test = Test.find(params[:id])
+    @teams = Team.all
+  end
+
   def show
     @test = Test.find(params[:id])
     @other_tests = Test.where("ID != ?", params[:id])
@@ -44,13 +49,9 @@ class TestsController < ApplicationController
     end
   end
 
-  def edit
-    @test = Test.find(params[:id])
-  end
-
   def update
     @test = Test.find(params[:id])
-    if @test.update_attributes(team_params)
+    if @test.update_attributes(test_params)
       redirect_to @test
     else
       render 'edit'
