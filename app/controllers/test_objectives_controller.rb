@@ -39,6 +39,7 @@ class TestObjectivesController < ApplicationController
 
   def edit
     @objective = TestObjective.find(params[:id])
+    @users = User.order('name').pluck(:name, :id)
   end
 
   def update

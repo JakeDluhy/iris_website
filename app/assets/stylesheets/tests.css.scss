@@ -106,6 +106,9 @@
 	}
 }
 .all-content {
+	h4, h5 {
+		width: 90%;
+	}
 	a {
 		color: $accent;
 	}

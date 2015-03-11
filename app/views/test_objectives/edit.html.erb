@@ -1,0 +1,20 @@
+<% provide(:title, 'Edit an Objective') %>
+<h1>Edit an Objective</h1>
+
+<div class="card-container">
+	<div class="half-width-card-center title-container">
+	  <%= form_for(@objective) do |f| %>
+
+		  <%= f.label :objective, "Objective:", class: "form-label" %>
+		  <%= f.text_field :objective, class: "test-objective" %><br/>
+		  
+		  <%= f.label :expected_result, "The Expected Result:", class: "form-label" %>
+		  <%= f.text_field :expected_result, class: "expected-result" %><br/>
+
+		  <%= f.label :users, 'Assign Team Members:' %>
+		  <%= f.select :users, @users,{}, {multiple: true} %>
+
+	    <%= f.submit "Update Objective", class: "submit-button btn btn-primary" %>
+		<% end %>
+	</div>
+</div>
