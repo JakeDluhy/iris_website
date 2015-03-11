@@ -1,5 +1,4 @@
 class TestCommentsController < ApplicationController
-  before_action :admin_user, only: [:new, :create, :edit, :update]
 
   def new
     @comment = TestComment.new

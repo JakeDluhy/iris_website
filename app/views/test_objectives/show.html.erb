@@ -5,6 +5,7 @@
 			<div class="all-content">
 				<h5>Objective: <%= @objective.objective %></h5>
 				<h5>Expected Result: <%= @objective.expected_result %></h5>
+				<%= link_to 'edit', edit_test_objective_path(@objective) %>
 				<% if @objective.status == 'completed' %>
 					<div class="circle-div completion-status completed"><span><i class="fa fa-check"></i></span></div>
 				<% else %>
