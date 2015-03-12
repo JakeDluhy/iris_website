@@ -67,8 +67,8 @@ class TestObjectivesController < ApplicationController
   end
 
   def destroy
-    TestObjective.find(params[:id]).destroy
-    redirect_to objectives_url
+    objective = TestObjective.find(params[:id]).destroy
+    redirect_to objective.test
   end
 
   private

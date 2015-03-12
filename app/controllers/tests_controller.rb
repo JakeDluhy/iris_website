@@ -59,8 +59,8 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    Test.find(params[:id]).destroy
-    redirect_to tests_url
+    test = Test.find(params[:id]).destroy
+    redirect_to root_url
   end
 
   private
