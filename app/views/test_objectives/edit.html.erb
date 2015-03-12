@@ -16,6 +16,6 @@
 
 	    <%= f.submit "Update Objective", class: "submit-button btn btn-primary" %>
 		<% end %>
-		<%= link_to 'Delete this objective', test_objective_path(@objective), :method => :delete %>
+		<% if current_user.admin? %><%= link_to 'Delete this objective', test_objective_path(@objective), :method => :delete %><% end %>
 	</div>
 </div>
