@@ -276,26 +276,24 @@ $padding: 25px;
   padding:  50px 150px;
   background-color: $backgroundLight;
   .sponsor-card {
-    float: left;
-    margin: 20px 4%;
-    &.info {
-      width: 64%;
-      padding: 10px;
-    }
-    &.image {
-      max-width: 20%;
-      img {
-        width: 100%;
-      }
-    }
+    margin: 0 4% 20px;
+    padding: 10px;
     background-color: white;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
     h3 {
       margin: 0 0 5px 0;
     }
-    
+    .logo {
+      text-align: center;
+      color: $secondaryText;
+    }
+    img {
+      max-width: 100%;
+    }
   }
-
+  a {
+    color: $accent;
+  }
 }
 
 .sponsor-year {

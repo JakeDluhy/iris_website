@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
     @exec = User.where(role_type: "exec").order('name ASC')
   end
 
+  def sponsors
+
+  end
+
   def sponsors_packet
     send_file( "#{Rails.root}/app/assets/pdfs/sponsorship_packet.pdf",
     :disposition => 'inline',

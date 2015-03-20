@@ -12,5 +12,5 @@
 
     <%= f.submit "Create", class: "btn btn-primary" %>
   <% end %>
-  <% if current_user.admin? %><%= link_to 'Delete this test', test_path(@test), :method => :delete %><% end %>
+  <% if !is_new and current_user.admin? %><%= link_to 'Delete this test', test_path(@test), :method => :delete %><% end %>
 </div>
