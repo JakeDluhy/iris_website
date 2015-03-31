@@ -270,13 +270,48 @@ $padding: 25px;
 }
 
 /* Sponsor Page */
+.sponsor-us {
+  position: absolute;
+  right: 5px;
+  top: 65px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+  }
+  &:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+  }
+}
 .sponsor-wrapper {
   width: 100%;
   min-height: 100%;
-  padding:  50px 150px;
+  padding:  50px 100px;
   background-color: $backgroundLight;
+  text-align: center;
+  .tier-label {
+    clear: both;
+  }
+  .column-left {
+    float: left;
+    width: 48%;
+  }
+  .column-right {
+    float: right;
+    width: 48%;
+  }
   .sponsor-card {
-    margin: 0 4% 20px;
+    text-align: justify;
+    display: inline-block;
+    margin: 0 0 20px;
+    width: 100%;
     padding: 10px;
     background-color: white;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -289,6 +324,14 @@ $padding: 25px;
     }
     img {
       max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+    div.support-tier {
+      position: relative;
+      h5 {
+        margin-top: 50%;
+      }
     }
   }
   a {
@@ -305,5 +348,31 @@ $padding: 25px;
     max-width: 32%;
     padding: 1%;
     float: left;
+  }
+}
+
+// Outreach
+#outreach-carousel {
+  margin-top: -1px;
+  height: 80%;
+  .carousel-inner {
+    height: 100%;
+  }
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+.outreach-content {
+  h3 {
+    text-align: center;
+  }
+  p {
+    text-align: justify;
+  }
+  img {
+    float: right;
+    width: 30%;
+    margin-left: 10px;
   }
 }

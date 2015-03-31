@@ -5,9 +5,8 @@ class StaticPagesController < ApplicationController
   before_action :signed_and_primed, only: :home
 	
   def home
-    members_of_the_week = User.where('member_of_the_week IS TRUE').order('created_at DESC')
-    members_of_the_week[0].nil? ? @first_member = User.all.first : @first_member = members_of_the_week[0]
-    @weekly_award = @first_member.weekly_awards.last
+    @weekly_awards = WeeklyAward.order('created_at DESC').limit(3)
+    @members = @weekly_awards.map {|award| award.user}
   end
 
   def greetings
@@ -16,6 +15,10 @@ class StaticPagesController < ApplicationController
   end
 
   def sponsors
+
+  end
+
+  def outreach
 
   end
 

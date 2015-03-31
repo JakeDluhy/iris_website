@@ -92,7 +92,9 @@
 			margin-bottom: 10px;
 		}
 		img {
-			max-width: 100%;
+			display: inline-block;
+			width: 29%;
+			margin: 10px 2%;
 		}
 	}
 	&.contact {

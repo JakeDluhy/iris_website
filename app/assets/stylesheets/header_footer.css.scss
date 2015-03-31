@@ -79,11 +79,20 @@ header {
 
 .footer-container {
 	width: 100%;
-	height: 18%;
+	height: 20%;
 	padding: 10px;
 	box-shadow: 0 -2px 2px rgba(0,0,0,0.2);
 	z-index: 1000;
 	position: relative;
+	#member-carousel {
+		height: 100%;
+		.carousel-inner {
+			height: 100%;
+			.item {
+				height: 100%;
+			}
+		}
+	}
 	.footer-info {
 		height: 100%;
 		width: 100%;

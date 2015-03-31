@@ -12,21 +12,30 @@
 </div>
 
 <footer class="footer-container">
-  <div class="footer-info">
-    <div class="footer-heading">
-      <h3>IRIS Members of the Week</h3>
-      <p>Week of <%= @weekly_award.award_week %></p>
-    </div>
-    <div class="member-of-week">
-      <% if @first_member.avatar_url.nil?  %>
-      <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png' %>
-      <% else %>
-      <%= image_tag @first_member.avatar_url(:display) %>
-      <% end %>
-      <div class="info-container">
-        <h3><a class="user-name" href="/users/<%= @first_member.id %>"><%= @first_member.name %></a></h3>
-        <p><%= @weekly_award.award_description %></p>
+  <div id="member-carousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <% @members.each_with_index do |member, i| %>
+      <div class="item <%= i == 0 ? 'active' : '' %>">
+        <div class="footer-info">
+          <div class="footer-heading">
+            <h3>IRIS Members of the Week</h3>
+            <p>Week of <%= @weekly_awards[i].award_week %></p>
+          </div>
+          <div class="member-of-week">
+            <% if member.avatar_url.nil?  %>
+            <%= image_tag 'http://res.cloudinary.com/illinois-robotics-in-space/image/upload/v1410838106/default_nohvld.png' %>
+            <% else %>
+            <%= image_tag member.avatar_url(:display) %>
+            <% end %>
+            <div class="info-container">
+              <h3><a class="user-name" href="/users/<%= member.id %>"><%= member.name %></a></h3>
+              <p><%= @weekly_awards[i].award_description %></p>
+            </div>
+          </div>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 </footer>
