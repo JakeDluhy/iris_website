@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   before_action :signed_and_primed, only: :home
 	
   def home
-    @weekly_awards = WeeklyAward.order('created_at DESC').limit(3)
+    @weekly_awards = WeeklyAward.where('user_id IS NOT NULL').order('created_at DESC').limit(3)
     @members = @weekly_awards.map {|award| award.user}
   end
 
