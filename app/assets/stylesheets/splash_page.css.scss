@@ -66,12 +66,20 @@
 				padding: 10px;
 
 			}
+			&>img {
+				float: left;
+				width: 33%;
+			}
 			clear: both;
 			&.left {
 				float: left;
 			}
 			&.right {
 				float: right;
+			}
+			&.center {
+				margin-right: auto;
+				margin-left: auto;
 			}
 			a {
 				color: $accent;
